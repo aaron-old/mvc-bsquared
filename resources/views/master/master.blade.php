@@ -37,7 +37,7 @@
 -->
 <html lang="en">
 <head>
-    <title>b[squared] | @yeild('PageTitle') </title>
+    <title>b[squared] | @yield('PageTitle') </title>
 
     <!-- Meta Tags -->
     <meta charset="utf-8">
@@ -47,7 +47,7 @@
 
     <!-- Stylesheets -->
     <link rel="icon" type="image/ico" href="favicon.ico">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="{{elixir('css/app.css')}}">
     <link rel="stylesheet" href="">
     <link rel="stylesheet" href="">
     <link href='http://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css'>
