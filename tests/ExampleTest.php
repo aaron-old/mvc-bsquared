@@ -10,10 +10,14 @@ class ExampleTest extends TestCase
      * A basic functional test example.
      *
      * @return void
+     * @throws \InvalidArgumentException
      */
     public function testBasicExample()
     {
+        // 1. Visit the home page. 
         $this->visit('/')
-             ->see('Laravel 5');
+            ->click('Click Me')
+            ->see('You\'ve been clicked, punk.')
+            ->seePageIs('/feedback');
     }
 }
