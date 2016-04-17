@@ -12,9 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    
+    return view('main.index');
 });
 
-Route::get('feedback', function(){
-   return "You've been clicked, punk.";
-});

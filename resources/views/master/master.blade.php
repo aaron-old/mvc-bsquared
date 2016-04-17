@@ -74,17 +74,14 @@
 <!--Footer-->
 <footer class="container navbar-fixed-bottom">
     <p id="socialMediaFooter">
-        <a target ="_blank" title="follow me on facebook" href="https://www.facebook.com/groups/641262162679997/">
-            <img src=""
-                 width="20" height="20" alt="follow bsquared on facebook"  border=0>
+        <a target ="_blank" title="follow us on facebook" href="https://www.facebook.com/groups/641262162679997/">
+            <img src="" width="20" height="20" alt="follow bsquared on facebook"  border=0>
         </a>
-        <a target ="_blank" href="https://www.linkedin.com/pub/binary-beasts/112/994/819" >
-            <img src=""
-                 width="20" height="20" alt="View Binary Beasts's LinkedIn profile"  border="0">
+        <a target ="_blank" title="follow us on Linked-In" href="https://www.linkedin.com/pub/binary-beasts/112/994/819" >
+            <img src="" width="20" height="20" alt="View Binary Beasts's LinkedIn profile"  border="0">
         </a>
-        <a target="_blank" href="https://github.com/basis14/basis2016-bsquared">
-            <img src=""
-                 width="20" height="20" alt="View this site with github" border="0">
+        <a target="_blank" title="follow us on GitHub" href="https://github.com/basis14/basis2016-bsquared">
+            <img src="" width="20" height="20" alt="View this site with github" border="0">
         </a>
     </p>
     <p><a href="">b<span>[</span>squared<span>]</span></a>  &nbsp; <span>&#9672;</span> &nbsp;
