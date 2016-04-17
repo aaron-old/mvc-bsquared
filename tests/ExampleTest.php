@@ -17,7 +17,6 @@ class ExampleTest extends TestCase
         // 1. Visit the home page. 
         $this->visit('/')
             ->click('Click Me')
-            ->see('You\'ve been clicked, punk.')
-            ->seePageIs('/feedback');
+            ->seePageIs('/');
     }
 }
