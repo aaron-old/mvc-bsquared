@@ -37,7 +37,7 @@
 -->
 <html lang="en">
 <head>
-    <title>b[squared] | @section('PageTitle')@stop </title>
+    <title>b[squared] | @yeild('PageTitle') </title>
 
     <!-- Meta Tags -->
     <meta charset="utf-8">
@@ -57,38 +57,38 @@
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-    @section('uniqueHeaderInformation')
-    @stop
+    @yield('uniqueHeaderInformation')
 </head>
+<body content="container">
 
-@section('BodyContentStart')@stop
+    @yield('Navigation')
 
-@section('BodyContent')@stop
+    @yield('BodyContent')
 
-<script>
-    var d     = new Date();
-    var year = d.getFullYear();
-</script>
+    <script>
+        var d     = new Date();
+        var year = d.getFullYear();
+    </script>
 
 
-<!--Footer-->
-<footer class="container navbar-fixed-bottom">
-    <p id="socialMediaFooter">
-        <a target ="_blank" title="follow us on facebook" href="https://www.facebook.com/groups/641262162679997/">
-            <img src="" width="20" height="20" alt="follow bsquared on facebook"  border=0>
-        </a>
-        <a target ="_blank" title="follow us on Linked-In" href="https://www.linkedin.com/pub/binary-beasts/112/994/819" >
-            <img src="" width="20" height="20" alt="View Binary Beasts's LinkedIn profile"  border="0">
-        </a>
-        <a target="_blank" title="follow us on GitHub" href="https://github.com/basis14/basis2016-bsquared">
-            <img src="" width="20" height="20" alt="View this site with github" border="0">
-        </a>
-    </p>
-    <p><a href="">b<span>[</span>squared<span>]</span></a>  &nbsp; <span>&#9672;</span> &nbsp;
-        &copy; 2014<script>document.write("-" + year);</script> &nbsp; <span>&#9672;</span>&nbsp;
-        <a target="_blank " href="">Privacy Policy</a>
-    </p>
-</footer>
-@section('BodyContentStop')@stop
+    <!--Footer-->
+    {{--<footer class="container navbar-fixed-bottom">--}}
+        {{--<p id="socialMediaFooter">--}}
+            {{--<a target ="_blank" title="follow us on facebook" href="https://www.facebook.com/groups/641262162679997/">--}}
+                {{--<img src="" width="20" height="20" alt="follow bsquared on facebook"  border=0>--}}
+            {{--</a>--}}
+            {{--<a target ="_blank" title="follow us on Linked-In" href="https://www.linkedin.com/pub/binary-beasts/112/994/819" >--}}
+                {{--<img src="" width="20" height="20" alt="View Binary Beasts's LinkedIn profile"  border="0">--}}
+            {{--</a>--}}
+            {{--<a target="_blank" title="follow us on GitHub" href="https://github.com/basis14/basis2016-bsquared">--}}
+                {{--<img src="" width="20" height="20" alt="View this site with github" border="0">--}}
+            {{--</a>--}}
+        {{--</p>--}}
+        {{--<p><a href="">b<span>[</span>squared<span>]</span></a>  &nbsp; <span>&#9672;</span> &nbsp;--}}
+            {{--&copy; 2014<script>document.write("-" + year);</script> &nbsp; <span>&#9672;</span>&nbsp;--}}
+            {{--<a target="_blank " href="">Privacy Policy</a>--}}
+        {{--</p>--}}
+    {{--</footer>--}}
+</body>
 
-@section('ExtraJavaScript')@stop
+@yield('ExtraJavaScript')
