@@ -16,8 +16,8 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
-CREATE DATABASE basis_bsquared;
-USE basis_bsquared;
+
+USE `ssp9srv98ykhzwt3`;
 --
 -- Table structure for table `admin`
 --
