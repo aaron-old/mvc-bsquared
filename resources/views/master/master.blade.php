@@ -87,6 +87,5 @@
         </p>
     </footer>
 </body>
-
-
 @yield('ExtraJavaScript')
+</html>
