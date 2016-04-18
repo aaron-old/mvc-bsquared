@@ -48,8 +48,6 @@
     <!-- Stylesheets -->
     <link rel="icon" type="image/ico" href="favicon.ico">
     <link rel="stylesheet" href="{{elixir('css/app.css')}}">
-    <link rel="stylesheet" href="">
-    <link rel="stylesheet" href="">
     <link href='http://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
