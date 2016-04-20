@@ -46,7 +46,7 @@
     <meta name="keywords" content="">
 
     <!-- Stylesheets -->
-    <link rel="icon" type="image/ico" href="favicon.ico">
+    <link rel="icon" type="image/ico" href="{{asset('assets/img/graphics/logo4.png')}}">
     <link rel="stylesheet" href="{{elixir('css/app.css')}}">
     <link href='http://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
