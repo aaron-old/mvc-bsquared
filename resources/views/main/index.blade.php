@@ -14,7 +14,7 @@ Home
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="#"><img id="logo" src="" alt="b[squared]"></a>
+                    <a href="#"><img id="logo" src="{{ asset('img/graphics/logo4.png') }}" alt="b[squared]"></a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">

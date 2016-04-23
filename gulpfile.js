@@ -16,28 +16,33 @@
 elixir(function(mix) {
 
     var paths = {
-        'jquery' : 'node_modules/jquery/dist',
+        'jquery' : 'node_modules/jquery/dist/',
         'bootstrap' : 'node_modules/bootstrap/dist',
-        'jquery_ui' : 'node_modules/jquery-ui',
+        'jquery_ui' : 'node_modules/jquery-ui/',
         'bootstrap_fonts' : 'node_modules/bootstrap'
     };
 
-    var bootstrapCSS = paths.bootstrap + '/css/bootstrap.css';
-    var jqueryUICSS  = paths.jquery_ui + '/themes/base/jquery.ui.all.css';
+    mix.browserSync({
+    });
 
     mix.copy(paths.bootstrap_fonts + '/fonts/**', 'public/fonts');
-    mix.copy(paths.jquery_ui + '/themes/base/images/**', 'public/css/images');
+    mix.copy(paths.jquery_ui + 'themes/base/images/**', 'public/css/images');
+    mix.copy('resources/assets/img/**', 'public/img')
+
 
     mix.sass([
         'app.scss'
     ]);
 
+    mix.babel([
+       paths.jquery + 'jquery.min.js',
+        paths.jquery_ui + 'jquery-ui.js'
+    ], null, 'node_modules');
+
     mix.styles([
         paths.bootstrap + '/css/bootstrap.css',
-        paths.jquery_ui + '/themes/base/jquery.ui.all.css'
-    ],'public/css/site.css', 'node_modules')
-
-        .version(['public/css/site.css', 'public/css/app.css']);
+        paths.jquery_ui + 'themes/base/jquery.ui.all.css'],
+        'public/css/site.css', 'node_modules').version(['public/css/site.css', 'public/css/app.css']);
 
 
 });
