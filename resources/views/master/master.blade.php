@@ -46,14 +46,13 @@
     <meta name="keywords" content="">
 
     <!-- Stylesheets -->
-    <link rel="icon" type="image/ico" href="{{asset('assets/img/graphics/logo4.png')}}">
-    <link rel="stylesheet" href="{{elixir('css/app.css')}}">
-    <link href='http://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="{{ asset('favicon.ico') }}"  rel="icon" type="image/ico">
+    <link href="{{ elixir('css/app.css') }}"  rel="stylesheet" type="text/css">
+    <link href="{{ elixir('css/site.css') }}}" rel="stylesheet"  type="text/css">
 
     <!-- JavaScript -->
     <script src="//code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" type="text/javascript"></script>
 
     @yield('uniqueHeaderInformation')
 </head>
@@ -62,11 +61,6 @@
     @yield('Navigation')
 
     @yield('BodyContent')
-
-    <script>
-        var d     = new Date();
-        var year = d.getFullYear();
-    </script>
 
     <!--Footer-->
     <footer class="container navbar-fixed-bottom">

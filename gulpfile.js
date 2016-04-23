@@ -15,20 +15,29 @@
 
 elixir(function(mix) {
 
+    var paths = {
+        'jquery' : 'node_modules/jquery/dist',
+        'bootstrap' : 'node_modules/bootstrap/dist',
+        'jquery_ui' : 'node_modules/jquery-ui',
+        'bootstrap_fonts' : 'node_modules/bootstrap'
+    };
+
+    var bootstrapCSS = paths.bootstrap + '/css/bootstrap.css';
+    var jqueryUICSS  = paths.jquery_ui + '/themes/base/jquery.ui.all.css';
+
+    mix.copy(paths.bootstrap_fonts + '/fonts/**', 'public/fonts');
+    mix.copy(paths.jquery_ui + '/themes/base/images/**', 'public/css/images');
+
     mix.sass([
-        'app.scss',
-        'buttons.css',
-        'form_style.css',
-        'portfolio_styles.css',
-        'style.css'
-    ])
-        .version([
-            'app.scss',
-            'buttons.css',
-            'form_style.css',
-            'portfolio_styles.css',
-            'style.css'
-        ])
+        'app.scss'
+    ]);
+
+    mix.styles([
+        paths.bootstrap + '/css/bootstrap.css',
+        paths.jquery_ui + '/themes/base/jquery.ui.all.css'
+    ],'public/css/site.css', 'node_modules')
+
+        .version(['public/css/site.css', 'public/css/app.css']);
 
 
 });
