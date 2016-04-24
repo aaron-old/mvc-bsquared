@@ -46,14 +46,12 @@
     <meta name="keywords" content="">
 
     <!-- Stylesheets -->
-    <link rel="icon" type="image/ico" href="{{asset('assets/img/graphics/logo4.png')}}">
-    <link rel="stylesheet" href="{{elixir('css/app.css')}}">
-    <link href='http://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="{{ asset('favicon.ico') }}"  rel="icon" type="image/ico">
+    <link href="{{ elixir('css/app.css') }}"  rel="stylesheet" type="text/css">
+    <link href="{{ elixir('css/site.css') }}" rel="stylesheet"  type="text/css">
 
     <!-- JavaScript -->
-    <script src="//code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/all.js') }}" type="text/javascript"></script>
 
     @yield('uniqueHeaderInformation')
 </head>
@@ -63,28 +61,27 @@
 
     @yield('BodyContent')
 
-    <script>
-        var d     = new Date();
-        var year = d.getFullYear();
-    </script>
-
+    <!--Footer-->
     <!--Footer-->
     <footer class="container navbar-fixed-bottom">
-        <p id="socialMediaFooter">
-            <a target ="_blank" title="follow us on facebook" href="https://www.facebook.com/groups/641262162679997/">
-                <img src="" width="20" height="20" alt="follow bsquared on facebook"  border=0>
-            </a>
-            <a target ="_blank" title="follow us on Linked-In" href="https://www.linkedin.com/pub/binary-beasts/112/994/819" >
-                <img src="" width="20" height="20" alt="View Binary Beasts's LinkedIn profile"  border="0">
-            </a>
-            <a target="_blank" title="follow us on GitHub" href="https://github.com/basis14/basis2016-bsquared">
-                <img src="" width="20" height="20" alt="View this site with github" border="0">
-            </a>
-        </p>
-        <p><a href="">b<span>[</span>squared<span>]</span></a>  &nbsp; <span>&#9672;</span> &nbsp;
-            &copy; 2014<script>document.write("-" + year);</script> &nbsp; <span>&#9672;</span>&nbsp;
-            <a target="_blank " href="">Privacy Policy</a>
-        </p>
+       <p id="socialMediaFooter">
+          <a target ="_blank" title="follow me on facebook" href="https://www.facebook.com/groups/641262162679997/">
+             <img src="{{ asset('img/icons/FB2.png')}}"
+                  width="20" height="20" alt="follow bsquared on facebook"  border=0>
+          </a>
+          <a target ="_blank" href="https://www.linkedin.com/pub/binary-beasts/112/994/819" >
+             <img src="{{ asset('img/icons/linkedin-square-social-media2.png') }}"
+                  width="20" height="20" alt="View Binary Beasts's LinkedIn profile"  border="0">
+          </a>
+          <a target="_blank" href="https://github.com/basis14/basis2016-bsquared">
+             <img src="{{ asset('img/icons/github-square-social-media2.jpg') }}"
+                  width="20" height="20" alt="View this site with github" border="0">
+          </a>
+       </p>
+       <p><a href="../faq.php">b<span>[</span>squared<span>]</span></a>  &nbsp; <span>&#9672;</span> &nbsp;
+                &copy; 2014<script>document.write("-" + year);</script> &nbsp; <span>&#9672;</span>&nbsp;
+                <a target="_blank " href="../privacy/b%5Bsquared%5D_privacy_policy.pdf">Privacy Policy</a>
+       </p>
     </footer>
 </body>
 @yield('ExtraJavaScript')
