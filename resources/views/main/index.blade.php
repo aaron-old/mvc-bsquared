@@ -14,7 +14,7 @@ Home
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="#"><img id="logo" src="../../assets/img/graphics/logo4.png" alt="b[squared]"></a>
+                    <a href="#"><img id="logo" src="{{asset('img/graphics/logo4.png')}}" alt="b[squared]"></a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
@@ -41,7 +41,7 @@ Home
         <br>
         <a  href="http://www.olympic.edu/information-systems-bachelor-applied-science-bas" target="_blank">
             Olympic College Bachelors of Applied Science Information Systems</a><br>
-        <span class="logoBlack">Cohort 2014-2016 </span>
+        <span class="logoBlack">Cohort 2014-2016</span>
     </p>
     <hr id="indexDivider">
 
