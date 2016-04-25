@@ -18,16 +18,16 @@ Home
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
-                        <li id="homePageActive"><a href="#">HOME</a></li>
+                        <li id="homePageActive"><a href="{{url('/')}}">HOME</a></li>
                         <li id="portfolioPageActive" class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="{{url('/portfolio')}}">
                                 PORTFOLIOS<span class="caret"></span>
                             </a>
                             <ul id="navList" class="dropdown-menu">
                             </ul>
                         </li>
-                        <li id="faqPageActive"><a href="#">FAQ</a></li>
-                        <li id="loginPageActive"><a href="#">LOGIN</a></li>
+                        <li id="faqPageActive"><a href="{{url('/faq')}}">FAQ</a></li>
+                        <li id="loginPageActive"><a href="{{url('/home')}}">LOGIN</a></li>
                     </ul>
                 </div>
             </div>
@@ -49,7 +49,7 @@ Home
     <hr id="indexDivider">
     <div class="container">
         <p id="descripPar ocLink" class="descripPar"><span class="logoBlack">Want to know more about the program?</span>
-            <a href="faq.php"><br>view the FAQ.</a>
+            <a href="{{url('/faq')}}"><br>view the FAQ.</a>
         </p>
     </div>
 @stop

@@ -18,3 +18,19 @@ Route::get('/', function () {
     return view('main.index');
 });
 
+
+Route::auth();
+
+Route::get('/home', 'LoginController@index');
+
+
+
+Route::get('/faq', function(){
+    
+   return view ('main.faq'); 
+});
+
+Route::get('/portfolio', function(){
+   
+    return view ('main.portfolio');
+});

@@ -51,7 +51,8 @@
     <link href="{{ elixir('css/site.css') }}" rel="stylesheet"  type="text/css">
 
     <!-- JavaScript -->
-    <script src="{{ elixir('js/all.js') }}" type="text/javascript"></script>
+    <script src="{{ elixir('js/jquery.js') }}" type="text/javascript"></script>
+    <script src="{{ elixir('js/main.js') }}" type="text/javascript"></script>
 
     @yield('uniqueHeaderInformation')
 </head>
@@ -77,9 +78,9 @@
                   width="20" height="20" alt="View this site with github" border="0">
           </a>
        </p>
-       <p><a href="../faq.php">b<span>[</span>squared<span>]</span></a>  &nbsp; <span>&#9672;</span> &nbsp;
+       <p><a href="{{url('/faq')}}">b<span>[</span>squared<span>]</span></a>  &nbsp; <span>&#9672;</span> &nbsp;
                 &copy; 2014<script>document.write("-" + year);</script> &nbsp; <span>&#9672;</span>&nbsp;
-                <a target="_blank " href="../privacy/b%5Bsquared%5D_privacy_policy.pdf">Privacy Policy</a>
+                <a target="_blank " href="{{url('')}}">Privacy Policy</a>
        </p>
     </footer>
 </body>
