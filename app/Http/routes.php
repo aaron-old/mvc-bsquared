@@ -11,19 +11,14 @@
 |
 */
 
-
-
 Route::get('/', function () {
     
     return view('main.index');
 });
 
-
 Route::auth();
 
 Route::get('/home', 'LoginController@index');
-
-
 
 Route::get('/faq', function(){
     
@@ -34,3 +29,33 @@ Route::get('/portfolio', function(){
    
     return view ('main.portfolio');
 });
+
+/*
+ * Member Routes
+ */
+
+Route::get('/member/profile', function(){
+   return view ('member.profile'); 
+});
+
+Route::get('/member/about', function(){
+    return view ('member.about');
+});
+
+Route::get('/member/skills', function(){
+    return view ('member.skills');
+});
+
+Route::get('/member/works', function(){
+    return view ('member.works');
+});
+
+Route::get('/member/statement', function(){
+    return view ('member.statement');
+});
+
+Route::get('/member/changepassword', function(){
+    return view ('member.change_password');
+});
+
+
