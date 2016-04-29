@@ -14,8 +14,7 @@ class AddForeignKeysToPortfolioLabelsTable extends Migration {
 	{
 		Schema::table('portfolio_labels', function(Blueprint $table)
 		{
-			$table->foreign('destination_id', 'portfolio_labels_ibfk_2')->references('destination_id')->on('file_path_lookup')->onUpdate('RESTRICT')->onDelete('RESTRICT');
-			$table->foreign('userID', 'portfolio_labels_portfolio_members_userId_fk')->references('userId')->on('portfolio_members')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('user_id', 'portfolio_labels_portfolio_members_userId_fk')->references('user_id')->on('portfolio_members')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 		});
 	}
 
@@ -29,7 +28,6 @@ class AddForeignKeysToPortfolioLabelsTable extends Migration {
 	{
 		Schema::table('portfolio_labels', function(Blueprint $table)
 		{
-			$table->dropForeign('portfolio_labels_ibfk_2');
 			$table->dropForeign('portfolio_labels_portfolio_members_userId_fk');
 		});
 	}

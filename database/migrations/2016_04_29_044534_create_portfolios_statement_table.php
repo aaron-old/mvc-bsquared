@@ -14,10 +14,9 @@ class CreatePortfoliosStatementTable extends Migration {
 	{
 		Schema::create('portfolios_statement', function(Blueprint $table)
 		{
-			$table->integer('userID')->primary();
+			$table->integer('user_id')->primary();
 			$table->text('statement', 65535)->nullable();
-			$table->timestamp('created')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->timestamp('modified')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamps();
 		});
 	}
 

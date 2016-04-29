@@ -14,11 +14,8 @@ class CreateLoginAttemptsTable extends Migration {
 	{
 		Schema::create('login_attempts', function(Blueprint $table)
 		{
-			$table->integer('userId');
-			$table->string('time', 30);
-			$table->timestamp('created')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->timestamp('modified')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->primary(['userId','time']);
+			$table->integer('user_id')->primary();
+			$table->timestamps();
 		});
 	}
 

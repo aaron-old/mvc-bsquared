@@ -14,7 +14,7 @@ class AddForeignKeysToPortfoliosStatementTable extends Migration {
 	{
 		Schema::table('portfolios_statement', function(Blueprint $table)
 		{
-			$table->foreign('userID', 'portfolios_statement_portfolio_members_userId_fk')->references('userId')->on('portfolio_members')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('user_id', 'portfolios_statement_portfolio_members_userId_fk')->references('user_id')->on('portfolio_members')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 		});
 	}
 

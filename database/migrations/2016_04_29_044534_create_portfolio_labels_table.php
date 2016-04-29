@@ -15,12 +15,11 @@ class CreatePortfolioLabelsTable extends Migration {
 		Schema::create('portfolio_labels', function(Blueprint $table)
 		{
 			$table->integer('label_id', true);
-			$table->integer('userID')->index('userID');
+			$table->integer('user_id')->index('user_id');
 			$table->string('label', 48)->nullable();
 			$table->integer('destination_id')->nullable()->index('destination_id');
-			$table->timestamp('created')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->timestamp('modified')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->primary(['label_id','userID']);
+			$table->timestamps();
+			$table->unique(['label_id','user_id']);
 		});
 	}
 

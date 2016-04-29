@@ -14,14 +14,13 @@ class CreatePortfolioWorksTable extends Migration {
 	{
 		Schema::create('portfolio_works', function(Blueprint $table)
 		{
-			$table->integer('userID')->default(0);
-			$table->integer('worksID')->default(0);
+			$table->integer('user_id')->default(0);
+			$table->integer('works_id')->default(0);
 			$table->string('title', 48)->nullable();
-			$table->text('projectDescription', 65535)->nullable();
+			$table->text('project_description', 65535)->nullable();
 			$table->string('work_link', 512)->nullable();
-			$table->timestamp('created')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->timestamp('modified')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->primary(['userID','worksID']);
+			$table->timestamps();
+			$table->unique(['user_id','works_id']);
 		});
 	}
 

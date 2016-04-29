@@ -14,13 +14,13 @@ class CreatePortfolioMembersTable extends Migration {
 	{
 		Schema::create('portfolio_members', function(Blueprint $table)
 		{
-			$table->integer('userId', true);
+			$table->integer('user_id', true);
 			$table->string('username', 48);
 			$table->string('email', 320);
-			$table->char('password', 128);
-			$table->char('salt', 128);
-			$table->timestamp('created')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->timestamp('modified')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->char('password');
+			$table->string('remember_token', 100)->nullable();
+			$table->timestamps();
+			$table->char('role', 48);
 		});
 	}
 

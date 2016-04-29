@@ -15,12 +15,11 @@ class CreatePortfolioColumnsTable extends Migration {
 		Schema::create('portfolio_columns', function(Blueprint $table)
 		{
 			$table->integer('column_id', true);
-			$table->integer('userID')->index('userID');
+			$table->integer('user_id');
 			$table->text('column_text', 65535)->nullable();
 			$table->integer('destination_id')->nullable()->index('destination_id');
-			$table->timestamp('created')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->timestamp('modified')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->primary(['column_id','userID']);
+			$table->timestamps();
+			$table->unique(['user_id','column_id']);
 		});
 	}
 

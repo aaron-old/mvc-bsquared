@@ -14,12 +14,11 @@ class CreatePortfolioProfilesTable extends Migration {
 	{
 		Schema::create('portfolio_profiles', function(Blueprint $table)
 		{
-			$table->integer('userID', true);
+			$table->integer('user_id', true);
 			$table->string('firstName', 48)->nullable();
 			$table->string('lastName', 48)->nullable();
 			$table->text('aboutMe', 65535)->nullable();
-			$table->timestamp('created')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->timestamp('modified')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamps();
 		});
 	}
 

@@ -15,12 +15,11 @@ class CreatePortfolioPathsTable extends Migration {
 		Schema::create('portfolio_paths', function(Blueprint $table)
 		{
 			$table->integer('path_id', true);
-			$table->integer('userID')->index('userID');
+			$table->integer('user_id')->index('portfolio_paths_portfolio_members_userId_fk');
 			$table->string('path', 256)->nullable();
 			$table->integer('destination_id')->nullable()->index('destination_id');
-			$table->timestamp('created')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->timestamp('modified')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->primary(['path_id','userID']);
+			$table->timestamps();
+			$table->unique(['path_id','user_id']);
 		});
 	}
 

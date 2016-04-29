@@ -16,8 +16,7 @@ class CreateFilePathLookupTable extends Migration {
 		{
 			$table->integer('destination_id', true);
 			$table->string('destination', 25)->nullable();
-			$table->timestamp('created')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->timestamp('modified')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamps();
 		});
 	}
 

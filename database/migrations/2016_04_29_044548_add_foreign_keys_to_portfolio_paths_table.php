@@ -14,8 +14,8 @@ class AddForeignKeysToPortfolioPathsTable extends Migration {
 	{
 		Schema::table('portfolio_paths', function(Blueprint $table)
 		{
-			$table->foreign('destination_id', 'portfolio_paths_ibfk_2')->references('destination_id')->on('file_path_lookup')->onUpdate('RESTRICT')->onDelete('RESTRICT');
-			$table->foreign('userID', 'portfolio_paths_portfolio_members_userId_fk')->references('userId')->on('portfolio_members')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('destination_id', 'portfolio_paths_file_path_lookup_destination_id_fk')->references('destination_id')->on('file_path_lookup')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('user_id', 'portfolio_paths_portfolio_members_userId_fk')->references('user_id')->on('portfolio_members')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 		});
 	}
 
@@ -29,7 +29,7 @@ class AddForeignKeysToPortfolioPathsTable extends Migration {
 	{
 		Schema::table('portfolio_paths', function(Blueprint $table)
 		{
-			$table->dropForeign('portfolio_paths_ibfk_2');
+			$table->dropForeign('portfolio_paths_file_path_lookup_destination_id_fk');
 			$table->dropForeign('portfolio_paths_portfolio_members_userId_fk');
 		});
 	}
