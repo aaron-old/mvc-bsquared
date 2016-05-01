@@ -18,7 +18,6 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
      */
     public function createApplication()
     {
-        putenv('DB_DEFAULT=mysql_testing');
 
         $app = require __DIR__.'/../bootstrap/app.php';
 
@@ -27,15 +26,4 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
         return $app;
     }
 
-    public function setUp()
-    {
-        parent::setUp();
-        Artisan::call('migrate');
-    }
-
-    public function tearDown()
-    {
-        Artisan::call('migrate:reset');
-        parent::tearDown();
-    }
 }
