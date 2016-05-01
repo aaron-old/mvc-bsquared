@@ -14,9 +14,9 @@ class PortfolioController extends Controller {
 	public function index()
 	{
 		//
-        $user_id = PortfolioProfile::all();
+        $profiles = PortfolioProfile::all();
 		
-		return view('layouts.navigation.visitor', compact('user_id'));
+		return view('/portfolio', compact('profiles'));
 	}
 
 	/**
@@ -41,16 +41,19 @@ class PortfolioController extends Controller {
 		//
 	}
 
-	/**
-	 * Display the specified resource.
-	 * GET /portfolio/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
+    /**
+     * Display the specified resource.
+     * GET /portfolio/{id}
+     *
+     * @param $portfolio
+     * @return Response
+     * @internal param int $id
+     */
+	public function show($portfolio)
 	{
-		//
+        $profiles = PortfolioProfile::all();
+        
+		return view('main.portfolio', compact('portfolio', 'profiles'));
 	}
 
 	/**

@@ -1,12 +1,11 @@
 <?php namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use App\Models\PortfolioProfile;
-use App\Models\PortfolioPath;
+use App\PortfolioProfile;
 
 class MainPagesController extends Controller {
-	
-	
+
+    protected $profiles;
 
 	/**
 	 * Display a listing of the resource.
@@ -14,20 +13,27 @@ class MainPagesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function home()
 	{
 		//
-		return view ('main.index');
+		$profiles = PortfolioProfile::all();
+
+		return view ('main.index', compact('profiles'));
 	}
 
 	public function faq()
 	{
-		return view('main.faq');
+        $profiles = PortfolioProfile::all();
+        
+		return view('main.faq', compact('profiles'));
 	}
 	
 	
-	public function portfolio(){
-		
+	public function portfolio()
+    {
+        $profiles = PortfolioProfile::all();
+
+        return view('main.portfolio/{portfolio}', compact('profiles'));
 	}
 
 	/**

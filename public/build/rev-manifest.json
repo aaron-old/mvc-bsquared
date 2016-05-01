@@ -1,5 +1,5 @@
 {
-  "css/app.css": "css/app-97ccae9192.css",
+  "css/app.css": "css/app-4119fb904a.css",
   "img/graphics/bg.png": "img/graphics/bg-ff449adff1.png",
   "img/graphics/leftArrow.png": "img/graphics/leftArrow-536eb03cd6.png",
   "img/graphics/leftArrowHov.png": "img/graphics/leftArrowHov-323e0a22ce.png",
@@ -15,5 +15,11 @@
   "img/icons/linkedin-square-social-media.png": "img/icons/linkedin-square-social-media-997d2b8e62.png",
   "img/icons/linkedin-square-social-media2.png": "img/icons/linkedin-square-social-media2-3a11da0a3c.png",
   "img/icons/social-facebook-square.svg": "img/icons/social-facebook-square-c6c73d8835.svg",
-  "img/member_uploads/default_profile.png": "img/member_uploads/default_profile-5a1c921d51.png"
+  "img/member_uploads/about/default_profile.png": "img/member_uploads/about/default_profile-5a1c921d51.png",
+  "img/member_uploads/default_profile.png": "img/member_uploads/default_profile-5a1c921d51.png",
+  "img/member_uploads/icons/default_icon.png": "img/member_uploads/icons/default_icon-05752506f9.png",
+  "img/member_uploads/member_backgrounds/member_background_default.jpg": "img/member_uploads/member_backgrounds/member_background_default-39263da2d4.jpg",
+  "img/member_uploads/project_uploads/project_preview_default.png": "img/member_uploads/project_uploads/project_preview_default-8a8e5b95b0.png",
+  "img/member_uploads/skills/default_icon.png": "img/member_uploads/skills/default_icon-05752506f9.png",
+  "img/member_uploads/works/default_works.png": "img/member_uploads/works/default_works-6e5b9ba2ce.png"
 }

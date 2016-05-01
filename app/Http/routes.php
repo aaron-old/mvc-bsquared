@@ -21,11 +21,11 @@ Route::get('/file_paths/{destination_id}', 'FilePathLookupController@show');
  * Main Routes
  */
 
-Route::get('/', 'MainPagesController@index');
+Route::get('/', 'MainPagesController@home');
 
 Route::get('/faq', 'MainPagesController@faq');
 
-Route::get('/portfolio/{user_id}', 'PortfolioController@show');
+Route::get('/portfolio/{portfolio}', 'PortfolioController@show');
 
 Route::get('/portfolio', 'PortfolioController@index');
 
