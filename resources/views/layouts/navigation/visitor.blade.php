@@ -20,7 +20,7 @@
                         </ul>
                     </li>
                     <li id="faqPageActive"><a href="{{url('/faq')}}">FAQ</a></li>
-                    <li id="loginPageActive"><a href="{{url('/home')}}">LOGIN</a></li>
+                    <li id="loginPageActive"><a href="{{url('/login')}}">LOGIN</a></li>
                 </ul>
             </div>
         </div>

@@ -5,35 +5,31 @@
 | Application Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
 */
-
 
 use Illuminate\Support\Facades\Route;
 
-/**
+
+/*
+ * Test Routes
+ */
+
+Route::get('/file_paths', 'FilePathLookupController@index');
+Route::get('/file_paths/{destination_id}', 'FilePathLookupController@show');
+
+/*
  * Main Routes
  */
 
-Route::get('/', function () {
-    
-    return view('main.index');
-});
+Route::get('/', 'MainPagesController@index');
+
+Route::get('/faq', 'MainPagesController@faq');
+
+Route::get('/portfolio', 'MainPagesController@portfolio');
+
+Route::get('/login', 'LoginController@index');
 
 Route::auth();
-
-Route::get('/home', 'LoginController@index');
-
-Route::get('/faq', 'FaqController@index');
-
-Route::get('/portfolio', function(){
-   
-    return view ('main.portfolio');
-});
-
 
 
 /*
@@ -68,8 +64,4 @@ Route::get('/member/change-password', function(){
 /*
  * Admin Routes
  */
-
-
-
-
 

@@ -1,6 +1,6 @@
 @extends('master.master')
 
-@section('PageTitle')Faq @stop
+@section('PageTitle')FAQ @stop
 
 @section('Navigation')
         <!-- Add Logic Here to change navigation heading. -->
@@ -97,6 +97,8 @@
             </div>
         </div>
     </div>
+
+    @include('forms.FAQContactForm')
 @stop
 
 @section('ExtraJavaScript')

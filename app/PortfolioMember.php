@@ -1,4 +1,4 @@
-<?php namespace App\Models;
+<?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,6 +10,8 @@ class PortfolioMember extends Model {
 
     protected $table = 'portfolio_members';
     protected $fillable = ['user_id', 'username', 'email', 'password', 'remember_token', 'role'];
+    protected $primaryKey = 'user_id';
+    
 
 
     public function filePathLookups() {

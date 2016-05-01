@@ -1,8 +1,6 @@
 @extends('master.master')
 
-@section('PageTitle')
-    Name's Portfolio
-@stop
+@section('PageTitle') Name's Portfolio @stop
 
 @section('Navigation')
         <!-- Add Logic Here to change navigation heading. -->

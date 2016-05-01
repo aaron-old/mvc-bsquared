@@ -2,11 +2,11 @@
 
 use Illuminate\Routing\Controller;
 
-class Portfolio extends Controller {
+class MemberPagesController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
-	 * GET /portfolio
+	 * GET /memberpages
 	 *
 	 * @return Response
 	 */
@@ -17,7 +17,7 @@ class Portfolio extends Controller {
 
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /portfolio/create
+	 * GET /memberpages/create
 	 *
 	 * @return Response
 	 */
@@ -28,7 +28,7 @@ class Portfolio extends Controller {
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /portfolio
+	 * POST /memberpages
 	 *
 	 * @return Response
 	 */
@@ -39,7 +39,7 @@ class Portfolio extends Controller {
 
 	/**
 	 * Display the specified resource.
-	 * GET /portfolio/{id}
+	 * GET /memberpages/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -51,7 +51,7 @@ class Portfolio extends Controller {
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /portfolio/{id}/edit
+	 * GET /memberpages/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -63,7 +63,7 @@ class Portfolio extends Controller {
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /portfolio/{id}
+	 * PUT /memberpages/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -75,7 +75,7 @@ class Portfolio extends Controller {
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /portfolio/{id}
+	 * DELETE /memberpages/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response

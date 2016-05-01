@@ -4,12 +4,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class FilePathLookup extends Model {
 
-    /**
-     * Generated
-     */
 
-    protected $table = 'file_path_lookup';
-    protected $fillable = ['destination_id', 'destination'];
+
+    protected  $table = 'file_path_lookup';
+    protected  $fillable = ['destination_id', 'destination'];
 
 
     public function portfolioMembers() {

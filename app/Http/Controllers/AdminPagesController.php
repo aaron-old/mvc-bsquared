@@ -1,25 +1,23 @@
 <?php namespace App\Http\Controllers;
 
-use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 
-class FaqController extends Controller {
+class AdminPagesController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
-	 * GET /faq
+	 * GET /adminpages
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
 		//
-		return view('main.faq');
 	}
 
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /faq/create
+	 * GET /adminpages/create
 	 *
 	 * @return Response
 	 */
@@ -30,7 +28,7 @@ class FaqController extends Controller {
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /faq
+	 * POST /adminpages
 	 *
 	 * @return Response
 	 */
@@ -41,7 +39,7 @@ class FaqController extends Controller {
 
 	/**
 	 * Display the specified resource.
-	 * GET /faq/{id}
+	 * GET /adminpages/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -53,7 +51,7 @@ class FaqController extends Controller {
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /faq/{id}/edit
+	 * GET /adminpages/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -65,7 +63,7 @@ class FaqController extends Controller {
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /faq/{id}
+	 * PUT /adminpages/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -77,7 +75,7 @@ class FaqController extends Controller {
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /faq/{id}
+	 * DELETE /adminpages/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
