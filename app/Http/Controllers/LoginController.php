@@ -10,7 +10,6 @@ class LoginController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @return void
      */
     public function __construct()
     {
@@ -24,6 +23,6 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('auth.login');
     }
 }

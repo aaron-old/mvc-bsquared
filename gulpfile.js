@@ -1,16 +1,5 @@
  var elixir = require('laravel-elixir');
- var gulp = require('gulp');
- var server = require('gulp-server-livereload');
-
- gulp.task('webserver', function() {
-     gulp.src('app')
-         .pipe(server({
-             livereload: true,
-             directoryListing: true,
-             open: true
-         }));
- });
-
+ 
  /*
   |--------------------------------------------------------------------------
   | Elixir Asset Management
@@ -25,48 +14,26 @@
 
 
 elixir(function(mix) {
-
-    var paths = {
-        'jquery' : 'node_modules/jquery/dist/',
-        'bootstrap' : 'node_modules/bootstrap/dist',
-        'jquery_ui' : 'node_modules/jquery-ui/',
-        'bootstrap_fonts' : 'node_modules/bootstrap'
-    };
-
-    mix.browserSync({
-    });
-
-    mix.copy(paths.bootstrap_fonts + '/fonts/**', 'public/fonts');
-    mix.copy(paths.jquery_ui + 'themes/base/images/**', 'public/css/images');
+    
     mix.copy('resources/assets/img/**', 'public/img');
-
-
+    mix.copy('resources/assets/fonts/**', 'public/fonts');
+    
     mix.sass([
-        'app.scss'
+        'app.scss',
+        'buttons.scss',
+        'form_style.scss',
+        'portfolio_styles.scss'
     ]);
-
+    
     mix.babel([
-       paths.jquery + 'jquery.min.js',
-        paths.jquery_ui + 'jquery-ui.js',
-        paths.bootstrap + '/js/bootstrap.min.js'
-    ], ('public/js/jquery.js'), 'node_modules');
-
-    mix.babel([
-        'jquery.validate.min.js',
+       'jquery.validate.min',
         'rollbar.js',
-        'sha512.min.js'
-    ], ('public/js/main.js'), ('resources/assets/js/'));
-
-
-
-    mix.styles([
-        paths.bootstrap + '/css/bootstrap.min.css',
-        paths.jquery_ui + 'themes/base/jquery.ui.all.css'],
-        'public/css/site.css', 'node_modules')
-        .version([
-            'public/css/site.css',
-            'public/css/app.css',
-            'public/js/jquery.js',
-            'public/js/main.js'
+        'sha512.min.js',
+        'forms.js'
+    ]);
+    
+    mix.version([
+        'public/css/app.css',
+        'public/img/**'
         ]);
 });
