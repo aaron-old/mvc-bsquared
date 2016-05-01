@@ -11,9 +11,9 @@
 <div class="container" style="padding-top: 4%; padding-bottom: 10%">
     <h1>File Paths</h1>
 
-    @foreach ($filePaths as $filPath)
+    @foreach ($filePaths as $filePath)
         <div class="container">
-            {{ $filPath->destination }}
+            {{ $filePath->destination }}
         </div>
 
     @endforeach

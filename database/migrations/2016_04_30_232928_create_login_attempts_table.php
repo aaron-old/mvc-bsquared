@@ -17,6 +17,11 @@ class CreateLoginAttemptsTable extends Migration {
 			$table->integer('user_id')->primary();
 			$table->timestamps();
 		});
+
+		Schema::table('login_attempts', function(Blueprint $table)
+		{
+			$table->foreign('user_id', 'login_attempts_portfolio_members_user_id_fk')->references('user_id')->on('portfolio_members')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+		});
 	}
 
 
@@ -27,6 +32,11 @@ class CreateLoginAttemptsTable extends Migration {
 	 */
 	public function down()
 	{
+        Schema::table('login_attempts', function(Blueprint $table)
+        {
+            $table->dropForeign('login_attempts_portfolio_members_user_id_fk');
+        });
+        
 		Schema::drop('login_attempts');
 	}
 

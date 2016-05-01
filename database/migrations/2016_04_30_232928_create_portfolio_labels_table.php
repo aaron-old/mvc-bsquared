@@ -21,6 +21,11 @@ class CreatePortfolioLabelsTable extends Migration {
 			$table->timestamps();
 			$table->unique(['label_id','user_id']);
 		});
+
+		Schema::table('portfolio_labels', function(Blueprint $table)
+		{
+			$table->foreign('user_id', 'portfolio_labels_portfolio_members_userId_fk')->references('user_id')->on('portfolio_members')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+		});
 	}
 
 
@@ -31,6 +36,11 @@ class CreatePortfolioLabelsTable extends Migration {
 	 */
 	public function down()
 	{
+		Schema::table('portfolio_labels', function(Blueprint $table)
+		{
+			$table->dropForeign('portfolio_labels_portfolio_members_userId_fk');
+		});
+		
 		Schema::drop('portfolio_labels');
 	}
 

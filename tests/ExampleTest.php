@@ -14,6 +14,7 @@ class ExampleTest extends TestCase
      */
     public function testBasicExample()
     {
+        
         // 1. Visit the home page. 
         $this->visit('/')
             ->seePageIs('/');

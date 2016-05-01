@@ -20,6 +20,11 @@ class CreatePortfolioProfilesTable extends Migration {
 			$table->text('aboutMe', 65535)->nullable();
 			$table->timestamps();
 		});
+
+		Schema::table('portfolio_profiles', function(Blueprint $table)
+		{
+			$table->foreign('user_id', 'portfolio_profiles_portfolio_members_userId_fk')->references('user_id')->on('portfolio_members')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+		});
 	}
 
 
@@ -30,6 +35,11 @@ class CreatePortfolioProfilesTable extends Migration {
 	 */
 	public function down()
 	{
+        Schema::table('portfolio_profiles', function(Blueprint $table)
+        {
+            $table->dropForeign('portfolio_profiles_portfolio_members_userId_fk');
+        });
+        
 		Schema::drop('portfolio_profiles');
 	}
 

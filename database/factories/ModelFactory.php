@@ -21,5 +21,15 @@ $factory->define(App\PortfolioMember::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\PortfolioProfile::class, function (Faker\Generator $faker){
+   return [
+
+       'firstName' => $faker->firstName,
+       'lastName' => $faker->lastName,
+       'aboutMe' => $faker->paragraph
+   ];
+    
+});
+
 
 

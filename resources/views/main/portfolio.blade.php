@@ -6,3 +6,7 @@
         <!-- Add Logic Here to change navigation heading. -->
     @include('layouts.navigation.visitor')
 @stop
+
+@section('BodyContent')
+
+@stop

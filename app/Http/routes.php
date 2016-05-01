@@ -25,7 +25,9 @@ Route::get('/', 'MainPagesController@index');
 
 Route::get('/faq', 'MainPagesController@faq');
 
-Route::get('/portfolio', 'MainPagesController@portfolio');
+Route::get('/portfolio/{user_id}', 'PortfolioController@show');
+
+Route::get('/portfolio', 'PortfolioController@index');
 
 Route::get('/login', 'LoginController@index');
 

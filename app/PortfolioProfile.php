@@ -14,8 +14,6 @@ class PortfolioProfile extends Model {
 
 
     public function portfolioMember() {
-        return $this->belongsTo('App\Models\PortfolioMember', 'user_id', 'user_id');
+        return $this->belongsTo(PortfolioProfile::class, 'user_id', 'user_id');
     }
-
-
 }

@@ -21,6 +21,12 @@ class CreatePortfolioPathsTable extends Migration {
 			$table->timestamps();
 			$table->unique(['path_id','user_id']);
 		});
+
+		Schema::table('portfolio_paths', function(Blueprint $table)
+		{
+			$table->foreign('destination_id', 'portfolio_paths_file_path_lookup_destination_id_fk')->references('destination_id')->on('file_path_lookup')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('user_id', 'portfolio_paths_portfolio_members_userId_fk')->references('user_id')->on('portfolio_members')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+		});
 	}
 
 
@@ -31,6 +37,12 @@ class CreatePortfolioPathsTable extends Migration {
 	 */
 	public function down()
 	{
+        Schema::table('portfolio_paths', function(Blueprint $table)
+        {
+            $table->dropForeign('portfolio_paths_file_path_lookup_destination_id_fk');
+            $table->dropForeign('portfolio_paths_portfolio_members_userId_fk');
+        });
+        
 		Schema::drop('portfolio_paths');
 	}
 
