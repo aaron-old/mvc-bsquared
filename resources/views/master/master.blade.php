@@ -47,12 +47,13 @@
 
     <!-- Stylesheets -->
     <link href="{{ asset('favicon.ico') }}"  rel="icon" type="image/ico">
+    <link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link href="{{ elixir('css/app.css') }}"  rel="stylesheet" type="text/css">
-    <link href="{{ elixir('css/site.css') }}" rel="stylesheet"  type="text/css">
 
     <!-- JavaScript -->
-    <script src="{{ elixir('js/jquery.js') }}" type="text/javascript"></script>
-    <script src="{{ elixir('js/main.js') }}" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     @yield('uniqueHeaderInformation')
 </head>
@@ -80,7 +81,7 @@
        </p>
        <p><a href="{{url('/faq')}}">b<span>[</span>squared<span>]</span></a>  &nbsp; <span>&#9672;</span> &nbsp;
                 &copy; 2014<script>document.write("-" + year);</script> &nbsp; <span>&#9672;</span>&nbsp;
-                <a target="_blank " href="{{url('')}}">Privacy Policy</a>
+                <a target="_blank " href="{{url('#')}}">Privacy Policy</a>
        </p>
     </footer>
 </body>
