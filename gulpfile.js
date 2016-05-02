@@ -24,6 +24,18 @@ elixir(function(mix) {
         'form_style.scss',
         'portfolio_styles.scss'
     ]);
+
+    mix.styles([
+        'bootstrap.min.css'
+    ], 'public/css/bootstrap.css', 'node_modules/bootstrap/dist/css/');
+
+    mix.babel([
+       'jquery.min.js'
+    ], 'public/js/jquery.js', 'node_modules/jquery/dist/');
+
+    mix.babel([
+        'bootstrap.min.js'
+    ], 'public/js/bootstrap.js', 'node_modules/bootstrap/dist/js/');
     
     mix.babel([
        'jquery.validate.min',
@@ -34,6 +46,10 @@ elixir(function(mix) {
     
     mix.version([
         'public/css/app.css',
-        'public/img/**'
-        ]);
+        'public/img/**',
+        'public/js/all.js',
+        'public/css/bootstrap.css',
+        'public/js/jquery.js',
+        'public/js/bootstrap.js'
+    ]);
 });

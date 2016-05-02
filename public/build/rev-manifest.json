@@ -1,5 +1,6 @@
 {
   "css/app.css": "css/app-4119fb904a.css",
+  "css/bootstrap.css": "css/bootstrap-352a86103e.css",
   "img/graphics/bg.png": "img/graphics/bg-ff449adff1.png",
   "img/graphics/leftArrow.png": "img/graphics/leftArrow-536eb03cd6.png",
   "img/graphics/leftArrowHov.png": "img/graphics/leftArrowHov-323e0a22ce.png",
@@ -21,5 +22,8 @@
   "img/member_uploads/member_backgrounds/member_background_default.jpg": "img/member_uploads/member_backgrounds/member_background_default-39263da2d4.jpg",
   "img/member_uploads/project_uploads/project_preview_default.png": "img/member_uploads/project_uploads/project_preview_default-8a8e5b95b0.png",
   "img/member_uploads/skills/default_icon.png": "img/member_uploads/skills/default_icon-05752506f9.png",
-  "img/member_uploads/works/default_works.png": "img/member_uploads/works/default_works-6e5b9ba2ce.png"
+  "img/member_uploads/works/default_works.png": "img/member_uploads/works/default_works-6e5b9ba2ce.png",
+  "js/all.js": "js/all-46f8cb177f.js",
+  "js/bootstrap.js": "js/bootstrap-de375b5141.js",
+  "js/jquery.js": "js/jquery-f823c81986.js"
 }

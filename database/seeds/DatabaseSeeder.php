@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(UsersTableSeeder::class);
 
         factory(PortfolioMember::class, 11)->create();
+        factor
 
         $filePaths = [
             ['destination_id'=> '1', 'destination' => 'skills_label_1'],

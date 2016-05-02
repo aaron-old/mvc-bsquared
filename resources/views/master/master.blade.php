@@ -48,12 +48,12 @@
     <!-- Stylesheets -->
     <link href="{{ asset('favicon.ico') }}"  rel="icon" type="image/ico">
     <link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{elixir('css/bootstrap.css')}}">
     <link href="{{ elixir('css/app.css') }}"  rel="stylesheet" type="text/css">
 
     <!-- JavaScript -->
-    <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="{{elixir('js/jquery.js')}}" type="text/javascript"></script>
+    <script src="{{elixir('js/bootstrap.js')}}"></script>
 
     @yield('uniqueHeaderInformation')
 </head>
