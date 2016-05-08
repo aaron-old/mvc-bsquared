@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\PortfolioMember::class,
+            'model' => bsquared\User::class,
         ],
 
         // 'users' => [

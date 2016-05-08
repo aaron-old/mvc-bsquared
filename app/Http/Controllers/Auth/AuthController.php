@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace bsquared\Http\Controllers\Auth;
 
-use App\Models\PortfolioMember;
-use App\Http\Controllers\Controller;
+use bsquared\User;
+use bsquared\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Support\Facades\Validator;
@@ -63,7 +63,7 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return PortfolioMember::create([
+        return User::create([
             'username' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),

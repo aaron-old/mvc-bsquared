@@ -17,14 +17,13 @@
                             PORTFOLIOS<span class="caret"></span>
                         </a>
                         <ul id="navList" class="dropdown-menu">
-
-                            @foreach($profiles as $profile)
-                                   <li>
-                                       <a href="/portfolio/{{$profile->user_id}}">
-                                           {{ $profile->firstName.' '.$profile->lastName}}
-                                       </a>
-                                   </li>
-                            @endforeach
+                            @for($i = 1; $i<11; $i++)
+                                <li>
+                                    <a href="/portfolio/{{$members[$i]->username}}">
+                                        {{$profiles[$i]->firstName. ' '. $profiles[$i]->lastName}}
+                                    </a>
+                                </li>
+                            @endfor
                         </ul>
                     </li>
                     <li id="faqPageActive"><a href="{{url('/faq')}}">FAQ</a></li>

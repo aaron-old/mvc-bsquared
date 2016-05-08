@@ -1,4 +1,4 @@
-<?php namespace App\Models;
+<?php namespace bsquared\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,7 +13,7 @@ class PortfolioProfile extends Model {
 
 
     public function portfolioMember() {
-        return $this->belongsTo('App\Models\PortfolioMember', 'user_id', 'user_id');
+        return $this->belongsTo('bsquared\Models\PortfolioMember', 'user_id', 'user_id');
     }
 
 

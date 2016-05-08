@@ -11,7 +11,7 @@
 |
 */
 
-$factory->define(App\PortfolioMember::class, function (Faker\Generator $faker) {
+$factory->define(bsquared\PortfolioMember::class, function (Faker\Generator $faker) {
     return [
         'username' => $faker->userName,
         'email' => $faker->safeEmail,
@@ -21,7 +21,7 @@ $factory->define(App\PortfolioMember::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\PortfolioProfile::class, function (Faker\Generator $faker){
+$factory->define(bsquared\PortfolioProfile::class, function (Faker\Generator $faker){
    return [
 
        'firstName' => $faker->firstName,

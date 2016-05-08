@@ -54,6 +54,7 @@
     <!-- JavaScript -->
     <script src="{{elixir('js/jquery.js')}}" type="text/javascript"></script>
     <script src="{{elixir('js/bootstrap.js')}}"></script>
+    <script src="{{elixir('js/all.js')}}"></script>
 
     @yield('uniqueHeaderInformation')
 </head>

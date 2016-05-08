@@ -1,4 +1,4 @@
-<?php namespace App\Models;
+<?php namespace bsquared;
 
 use Illuminate\Database\Eloquent\Model;
 

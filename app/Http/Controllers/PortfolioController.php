@@ -1,7 +1,8 @@
-<?php namespace App\Http\Controllers;
+<?php namespace bsquared\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use App\PortfolioProfile;
+use bsquared\PortfolioProfile;
+use bsquared\PortfolioMember;
 
 class PortfolioController extends Controller {
 
@@ -15,8 +16,9 @@ class PortfolioController extends Controller {
 	{
 		//
         $profiles = PortfolioProfile::all();
+		$members = PortfolioMember::all();
 		
-		return view('/portfolio', compact('profiles'));
+		return view('/portfolio', compact('profiles', 'members'));
 	}
 
 	/**
@@ -52,8 +54,10 @@ class PortfolioController extends Controller {
 	public function show($portfolio)
 	{
         $profiles = PortfolioProfile::all();
-        
-		return view('main.portfolio', compact('portfolio', 'profiles'));
+		$members = PortfolioMember::all();
+
+
+		return view('main.portfolio', compact('portfolio', 'profiles', 'members'));
 	}
 
 	/**

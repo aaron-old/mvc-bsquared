@@ -29,9 +29,9 @@ Route::get('/portfolio/{portfolio}', 'PortfolioController@show');
 
 Route::get('/portfolio', 'PortfolioController@index');
 
-Route::get('/login', 'LoginController@index');
-
 Route::auth();
+
+Route::get('/log', 'HomeController@index');
 
 
 /*
@@ -66,4 +66,5 @@ Route::get('/member/change-password', function(){
 /*
  * Admin Routes
  */
+
 

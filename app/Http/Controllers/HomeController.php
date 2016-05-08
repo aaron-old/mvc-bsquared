@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace bsquared\Http\Controllers;
 
-use App\Http\Requests;
+use bsquared\Http\Requests;
 use Illuminate\Http\Request;
 
-class LoginController extends Controller
+class HomeController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -23,6 +23,6 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('auth.login');
+        return view('home');
     }
 }

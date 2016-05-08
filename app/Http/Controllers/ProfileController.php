@@ -1,8 +1,8 @@
-<?php namespace App\Http\Controllers;
+<?php namespace bsquared\Http\Controllers;
 
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use App\PortfolioProfile;
+use bsquared\PortfolioProfile;
 
 class ProfileController extends Controller {
 

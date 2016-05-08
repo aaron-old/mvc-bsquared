@@ -26,7 +26,8 @@ elixir(function(mix) {
     ]);
 
     mix.styles([
-        'bootstrap.min.css'
+        'bootstrap.min.css',
+        'bootstrap-theme.min.css'
     ], 'public/css/bootstrap.css', 'node_modules/bootstrap/dist/css/');
 
     mix.babel([
@@ -41,7 +42,9 @@ elixir(function(mix) {
        'jquery.validate.min',
         'rollbar.js',
         'sha512.min.js',
-        'forms.js'
+        'forms.js',
+        'keen.js',
+        'keen.data.js'
     ]);
     
     mix.version([

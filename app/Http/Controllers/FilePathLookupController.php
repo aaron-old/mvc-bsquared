@@ -1,7 +1,7 @@
-<?php namespace App\Http\Controllers;
+<?php namespace bsquared\Http\Controllers;
 
 
-use App\FilePathLookup;
+use bsquared\FilePathLookup;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;

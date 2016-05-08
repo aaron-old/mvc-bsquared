@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace bsquared\Events;
 
 abstract class Event
 {
