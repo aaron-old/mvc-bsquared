@@ -12,10 +12,10 @@ class CreateFilePathLookupTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('file_path_lookup', function(Blueprint $table)
+		Schema::create('destinations', function(Blueprint $table)
 		{
-			$table->integer('destination_id', true);
-			$table->string('destination', 25)->nullable();
+			$table->increments('destination_id')->unsigned();
+			$table->string('destination', 25);
 			$table->timestamps();
 		});
 	}
@@ -28,7 +28,7 @@ class CreateFilePathLookupTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('file_path_lookup');
+		Schema::drop('destinations');
 	}
 
 }

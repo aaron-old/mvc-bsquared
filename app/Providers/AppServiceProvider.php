@@ -1,6 +1,6 @@
 <?php
 
-namespace bsquared\Providers;
+namespace Bsquared\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace bsquared\Http\Middleware;
+namespace Bsquared\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;

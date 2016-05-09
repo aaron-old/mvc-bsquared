@@ -152,10 +152,10 @@ return [
         /*
          * Application Service Providers...
          */
-        bsquared\Providers\AppServiceProvider::class,
-        bsquared\Providers\AuthServiceProvider::class,
-        bsquared\Providers\EventServiceProvider::class,
-        bsquared\Providers\RouteServiceProvider::class,
+        Bsquared\Providers\AppServiceProvider::class,
+        Bsquared\Providers\AuthServiceProvider::class,
+        Bsquared\Providers\EventServiceProvider::class,
+        Bsquared\Providers\RouteServiceProvider::class,
         
     ],
 

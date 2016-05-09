@@ -1,7 +1,17 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="container">
+@section('PageTitle')Login @stop
+
+@section('Navigation')
+        <!-- Add Logic Here to change navigation heading. -->
+@include('layouts.navigation')
+
+@stop
+
+@section('BodyContent')
+
+<div class="container" style="padding-top: 150px;">
+
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
