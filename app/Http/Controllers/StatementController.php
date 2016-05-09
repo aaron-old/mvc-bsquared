@@ -1,4 +1,4 @@
-<?php namespace App\Http\Controllers;
+<?php namespace Bsquared\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 
@@ -44,9 +44,9 @@ class StatementController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($username)
 	{
-		//
+		return view('members.statement');
 	}
 
 	/**

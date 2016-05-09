@@ -14,6 +14,10 @@
         <a  href="http://www.olympic.edu/information-systems-bachelor-applied-science-bas" target="_blank">
             Olympic College Bachelors of Applied Science Information Systems</a><br>
         <span class="logoBlack">Cohort 2014-2016</span>
+
+        <br>
+
+        The Laravel Remix
     </p>
     <hr id="indexDivider">
 

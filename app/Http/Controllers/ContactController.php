@@ -1,4 +1,4 @@
-<?php namespace App\Http\Controllers;
+<?php namespace Bsquared\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 

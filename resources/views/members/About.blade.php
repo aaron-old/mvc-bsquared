@@ -5,5 +5,5 @@
 @stop
 
 @section('BodyContent')
-    @include('forms.AboutForm')
+
 @stop

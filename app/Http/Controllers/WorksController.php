@@ -1,4 +1,4 @@
-<?php namespace App\Http\Controllers;
+<?php namespace Bsquared\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 
@@ -41,12 +41,13 @@ class WorksController extends Controller {
 	 * Display the specified resource.
 	 * GET /works/{id}
 	 *
-	 * @param  int  $id
+	 * @param $username
 	 * @return Response
+	 * @internal param int $id
 	 */
-	public function show($id)
+	public function show($username)
 	{
-		//
+		return view('members.works');
 	}
 
 	/**

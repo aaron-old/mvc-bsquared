@@ -47,11 +47,11 @@ $profileCount = count($profiles);
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">UPDATE PORTFOLIO
                                 <span class="caret"></span></a>
                             <ul id="navList" class="dropdown-menu">
-                                <li><a href="{{url('/profile')}}">PROFILE</a></li>
-                                <li><a href="{{url('/statement')}}">STATEMENT</a></li>
-                                <li><a href="{{url('/about')}}">ABOUT</a></li>
-                                <li><a href="{{url('/skills')}}">SKILLS</a></li>
-                                <li><a href="{{url('/works')}}">WORKS</a></li>
+                                <li><a href="{{url('/profile/'.Auth::user()->username)}}">PROFILE</a></li>
+                                <li><a href="{{url('/statement/'.Auth::user()->username)}}">STATEMENT</a></li>
+                                <li><a href="{{url('/about/'.Auth::user()->username)}}">ABOUT</a></li>
+                                <li><a href="{{url('/skills/'.Auth::user()->username)}}">SKILLS</a></li>
+                                <li><a href="{{url('/works/'.Auth::user()->username)}}">WORKS</a></li>
                             </ul>
                         </li>
                         <li class="dropdown-toggle">
@@ -59,9 +59,9 @@ $profileCount = count($profiles);
                                 {{ Auth::user()->username }} <span class="caret"></span>
                             </a>
 
-                            <ul class="dropdown-menu" role="menu">
+                            <ul class="dropdown-menu" role="menu" id="navList">
                                 <li><a href="#">ACCOUNT SETTINGS</a> </li>
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>LOGOUT</a></li>
+                                <li><a href="{{ url('/logout') }}">LOGOUT</a></li>
                             </ul>
                         </li>
                     @endif

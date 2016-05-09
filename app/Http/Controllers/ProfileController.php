@@ -1,4 +1,6 @@
-<?php namespace App\Http\Controllers;
+<?php namespace
+
+Bsquared\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 
@@ -44,9 +46,9 @@ class ProfileController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($username)
 	{
-		//
+		return view ('members.profile');
 	}
 
 	/**

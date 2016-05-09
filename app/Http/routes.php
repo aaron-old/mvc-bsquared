@@ -9,16 +9,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-
-/*
- * Test Routes
- */
-
-Route::get('/file_paths', 'FilePathLookupController@index');
-Route::get('/file_paths/{destination_id}', 'FilePathLookupController@show');
-
-
-
 /*
  * Main Routes
  */
@@ -38,29 +28,15 @@ Route::get('/portfolio/{username}', 'MainController@show');
  * Member Routes
  */
 
-Route::get('/member/profile', function(){
-   return view ('member.profile'); 
-});
+Route::get('/profile/{username}', 'ProfileController@show');
 
-Route::get('/member/about', function(){
-    return view ('member.about');
-});
+Route::get('/about/{username}', 'AboutController@show');
 
-Route::get('/member/skills', function(){
-    return view ('member.skills');
-});
+Route::get('/skills/{username}', 'SkillsController@show');
 
-Route::get('/member/works', function(){
-    return view ('member.works');
-});
+Route::get('/works/{username}', 'WorksController@show');
 
-Route::get('/member/statement', function(){
-    return view ('member.statement');
-});
-
-Route::get('/member/change-password', function(){
-    return view ('member.change_password');
-});
+Route::get('/statement/{username}', 'StatementController@show');
 
 
 /*
