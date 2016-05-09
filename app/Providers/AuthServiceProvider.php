@@ -1,6 +1,6 @@
 <?php
 
-namespace bsquared\Providers;
+namespace Bsquared\Providers;
 
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'bsquared\Model' => 'bsquared\Policies\ModelPolicy',
+        'Bsquared\Model' => 'Bsquared\Policies\ModelPolicy',
     ];
 
     /**

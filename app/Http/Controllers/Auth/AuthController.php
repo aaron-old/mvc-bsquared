@@ -1,13 +1,12 @@
 <?php
 
-namespace bsquared\Http\Controllers\Auth;
+namespace Bsquared\Http\Controllers\Auth;
 
-use bsquared\User;
-use bsquared\Http\Controllers\Controller;
+use Bsquared\User;
+use Validator;
+use Bsquared\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-use Illuminate\Support\Facades\Validator;
-
 
 class AuthController extends Controller
 {
@@ -59,7 +58,7 @@ class AuthController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return PortfolioMember
+     * @return User
      */
     protected function create(array $data)
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace bsquared\Http\Controllers;
+namespace Bsquared\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;

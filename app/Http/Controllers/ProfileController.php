@@ -1,8 +1,8 @@
-<?php namespace bsquared\Http\Controllers;
+<?php namespace
 
-use Illuminate\Http\Response;
+Bsquared\Http\Controllers;
+
 use Illuminate\Routing\Controller;
-use bsquared\PortfolioProfile;
 
 class ProfileController extends Controller {
 
@@ -46,9 +46,9 @@ class ProfileController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($username)
 	{
-		//
+		return view ('members.profile');
 	}
 
 	/**

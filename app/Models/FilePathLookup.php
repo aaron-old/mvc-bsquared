@@ -1,4 +1,4 @@
-<?php namespace bsquared\Models;
+<?php namespace Bsquared\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,11 +11,11 @@ class FilePathLookup extends Model {
 
 
     public function portfolioMembers() {
-        return $this->belongsToMany('bsquared\Models\PortfolioMember', 'portfolio_paths', 'destination_id', 'user_id');
+        return $this->belongsToMany('Bsquared\Models\PortfolioMember', 'portfolio_paths', 'destination_id', 'user_id');
     }
 
     public function portfolioPaths() {
-        return $this->hasMany('bsquared\Models\PortfolioPath', 'destination_id', 'destination_id');
+        return $this->hasMany('Bsquared\Models\PortfolioPath', 'destination_id', 'destination_id');
     }
 
 
