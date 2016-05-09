@@ -1,6 +1,6 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
+    "name": "Bsquared-Laravel",
+    "description": "A portfolio management solution.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
@@ -20,7 +20,7 @@
             "database"
         ],
         "psr-4": {
-            "bsquared\\": "app/"
+            "Bsquared\\": "app/"
         }
     },
     "autoload-dev": {

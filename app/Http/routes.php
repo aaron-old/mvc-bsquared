@@ -17,21 +17,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/file_paths', 'FilePathLookupController@index');
 Route::get('/file_paths/{destination_id}', 'FilePathLookupController@show');
 
+
+
 /*
  * Main Routes
  */
 
-Route::get('/', 'MainPagesController@home');
-
-Route::get('/faq', 'MainPagesController@faq');
-
-Route::get('/portfolio/{portfolio}', 'PortfolioController@show');
-
-Route::get('/portfolio', 'PortfolioController@index');
+Route::get('/', 'MainController@index');
 
 Route::auth();
 
-Route::get('/log', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
+
+Route::get('/faq', 'FAQController@index');
+
+Route::get('/portfolio/{username}', 'MainController@show');
 
 
 /*

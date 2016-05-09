@@ -1,6 +1,6 @@
 <?php
 
-namespace bsquared\Providers;
+namespace Bsquared\Providers;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'bsquared\Events\SomeEvent' => [
-            'bsquared\Listeners\EventListener',
+        'Bsquared\Events\SomeEvent' => [
+            'Bsquared\Listeners\EventListener',
         ],
     ];
 

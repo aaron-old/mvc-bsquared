@@ -1,6 +1,6 @@
 <?php
 
-namespace bsquared\Console\Commands;
+namespace Bsquared\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Inspiring;

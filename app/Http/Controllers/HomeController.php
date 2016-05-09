@@ -1,8 +1,8 @@
 <?php
 
-namespace bsquared\Http\Controllers;
+namespace Bsquared\Http\Controllers;
 
-use bsquared\Http\Requests;
+use Bsquared\Http\Requests;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -10,7 +10,12 @@ class HomeController extends Controller
     /**
      * Create a new controller instance.
      *
+     * @return void
      */
+
+    protected $profiles;
+    protected $members;
+
     public function __construct()
     {
         $this->middleware('auth');

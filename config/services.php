@@ -30,7 +30,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => bsquared\User::class,
+        'model' => Bsquared\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],

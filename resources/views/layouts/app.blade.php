@@ -1,3 +1,39 @@
+<!--
+  Aaron Young, Megan Palmer, Lucas Mathis, Peter Atwater, Sherri Miller
+  Bob Fisher, Kathy Pratt, James Gibbs, Tanya Ulrich, Kyle Cleven, Jason Kessler-Holt
+  Source for Navigation: http://cssmenumaker.com/
+  Source for Hashing Algorithm: http://pajhome.org.uk/crypt/md5/sha512.html
+  Source for Back-End(Tutorial):http://www.wikihow.com/Create-a-Secure-Login-Script-in-PHP-and-MySQL
+  Source for Login Page: http://www.24psd.com/css3-login-form-template/
+  Inspired by: http://www.noahglushien.com/
+  FAQ Source: http://www.snyderplace.com/demos/collapsible.html
+
+  CREATIVE COMMONS- All social media link and images used fall under CC
+  http://creativecommons.org/licenses/by/3.0/legalcode
+
+
+  The MIT License (MIT)
+
+  Copyright (c) 2016-Present b[squared]
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,OUT OF OR
+  IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,78 +41,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>b[squared] | @yield('PageTitle') </title>
 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
+    <!-- Stylesheets -->
+    <link href="{{ asset('favicon.ico') }}"  rel="icon" type="image/ico">
+    <link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{elixir('css/bootstrap.css')}}">
+    <link href="{{ elixir('css/app.css') }}"  rel="stylesheet" type="text/css">
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+    <!-- JavaScript -->
+    <script src="{{elixir('js/jquery.js')}}" type="text/javascript"></script>
+    <script src="{{elixir('js/bootstrap.js')}}"></script>
+    <script src="{{elixir('js/all.js')}}"></script>
 
-    <style>
-        body {
-            font-family: 'Lato';
-        }
+    @yield('uniqueHeaderInformation')
 
-        .fa-btn {
-            margin-right: 6px;
-        }
-    </style>
 </head>
-<body id="app-layout">
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
+<body content="container">
+    @yield('Navigation')
 
-                <!-- Collapsed Hamburger -->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+    @yield('BodyContent')
 
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
-                </a>
-            </div>
+            <!--Footer-->
+    <footer class="container navbar-fixed-bottom">
+        <p id="socialMediaFooter">
+            <a target ="_blank" title="follow me on facebook" href="https://www.facebook.com/groups/641262162679997/">
+                <img src="{{ asset('img/icons/FB2.png')}}"
+                     width="20" height="20" alt="follow bsquared on facebook"  border=0>
+            </a>
+            <a target ="_blank" href="https://www.linkedin.com/pub/binary-beasts/112/994/819" >
+                <img src="{{ asset('img/icons/linkedin-square-social-media2.png') }}"
+                     width="20" height="20" alt="View Binary Beasts's LinkedIn profile"  border="0">
+            </a>
+            <a target="_blank" href="https://github.com/basis14/basis2016-bsquared">
+                <img src="{{ asset('img/icons/github-square-social-media2.jpg') }}"
+                     width="20" height="20" alt="View this site with github" border="0">
+            </a>
+        </p>
+        <p><a href="{{url('/faq')}}">b<span>[</span>squared<span>]</span></a>  &nbsp; <span>&#9672;</span> &nbsp;
+            &copy; 2014<script>document.write("-" + year);</script> &nbsp; <span>&#9672;</span>&nbsp;
+            <a target="_blank " href="{{url('#')}}">Privacy Policy</a>
+        </p>
+    </footer>
 
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                </ul>
-
-                <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
-                    @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                            </ul>
-                        </li>
-                    @endif
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    @yield('content')
-
-    <!-- JavaScripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    @yield('ExtraJavaScript')
 </body>
 </html>

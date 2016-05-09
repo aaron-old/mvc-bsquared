@@ -1,6 +1,6 @@
 <?php
 
-namespace bsquared\Exceptions;
+namespace Bsquared\Exceptions;
 
 use Exception;
 use Illuminate\Validation\ValidationException;
