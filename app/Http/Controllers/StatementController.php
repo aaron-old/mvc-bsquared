@@ -1,6 +1,12 @@
-<?php namespace Bsquared\Http\Controllers;
+<?php 
 
+namespace Bsquared\Http\Controllers;
+
+use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+
+use Bsquared\User;
+use Bsquared\Statement;
 
 class StatementController extends Controller {
 
@@ -41,12 +47,14 @@ class StatementController extends Controller {
 	 * Display the specified resource.
 	 * GET /statement/{id}
 	 *
-	 * @param  int  $id
+	 * @param $username
 	 * @return Response
+	 * @internal param int $id
 	 */
 	public function show($username)
 	{
-		return view('members.statement');
+		$user = User::where('username', $username)->first();
+		return view('members.statement', compact('username', 'user'));
 	}
 
 	/**

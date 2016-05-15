@@ -34,8 +34,10 @@ Route::get('/portfolio/{username}', 'MainController@show');
  */
 
 Route::get('/profile/{username}', 'ProfileController@show');
+Route::post('/profile/{username}', 'ProfileController@store');
 
 Route::get('/about/{username}', 'AboutController@show');
+Route::post('/about/{username}', 'AboutController@post');
 
 Route::get('/skills/{username}', 'SkillsController@show');
 

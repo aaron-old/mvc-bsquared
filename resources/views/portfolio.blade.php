@@ -28,6 +28,8 @@ This will be plugged to resource portfolio_backgrounds (will accept path to the 
         width: 100%;
         max-width: 940px;
     }
+
+
 </style>
 @stop
 
@@ -40,7 +42,7 @@ This will be plugged to resource portfolio_backgrounds (will accept path to the 
 
     <div id="portImgHolder" class="container">
         <div class="row">
-            <img class="memberPhoto" src="{{asset('img/member_uploads/default_profile.png')}}"
+            <img height="150" width="150" class="memberPhoto" src="{{asset('img/member_uploads/default_profile.png')}}"
             alt="First Name Last Name">
         </div>
     </div>

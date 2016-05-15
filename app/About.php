@@ -10,5 +10,4 @@ class About extends Model {
     public function User() {
         return $this->belongsTo(User::class, 'user_id', 'user_id');
     }
-
 }

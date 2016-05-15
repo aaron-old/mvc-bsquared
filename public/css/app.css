@@ -790,7 +790,7 @@ FOOTER
 
 /* Login button */
 .login-form .footer .button {
-  float: right;
+  margin: 0 0 5px 50px;
   padding: 11px 25px;
   font-family: 'Bree Serif', serif;
   font-weight: 300;
@@ -841,6 +841,10 @@ FOOTER
 .login-form .footer .register:focus {
   position: relative;
   bottom: -1px; }
+
+#passwordReset {
+  text-align: center;
+  padding-top: 5px; }
 
 /* CSS Document */
 * {
@@ -940,7 +944,6 @@ nav {
 
 .memberPhoto {
   margin: auto;
-  width: 100%;
   height: auto;
   box-shadow: 8px 8px 4px #777;
   border: .5px solid #777; }

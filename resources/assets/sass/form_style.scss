@@ -46,7 +46,7 @@ body {
 	height: 400px;
 	position: absolute;
 	left: 50%;
-	top: 30%;
+	top: 50%;
 	margin-left: -150px;
 	margin-top: -256px;
 }
@@ -223,7 +223,7 @@ FOOTER
 
 /* Login button */
 .login-form .footer .button {
-	float:right;
+	margin: 0 0 5px 50px;
 	padding: 11px 25px;
 	
 	font-family: 'Bree Serif', serif;
@@ -287,4 +287,9 @@ FOOTER
 .login-form .footer .register:focus {
 	position: relative;
 	bottom: -1px;
+}
+
+#passwordReset {
+  text-align: center;
+  padding-top: 5px;
 }

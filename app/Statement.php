@@ -10,7 +10,7 @@ class Statement extends Model {
      * Generated
      */
 
-    protected $table = 'statement';
+    protected $table = 'portfolio_statement';
     protected $fillable = ['user_id', 'statement'];
     protected $primaryKey = 'user_id';
 

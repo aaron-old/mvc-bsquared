@@ -1,6 +1,14 @@
 <?php namespace Bsquared\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Bsquared\User;
+use Bsquared\Label;
+use Bsquared\Column;
+use Bsquared\Path;
+use Bsquared\Destination;
+
 
 class SkillsController extends Controller {
 
@@ -26,27 +34,30 @@ class SkillsController extends Controller {
 		//
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /skills
-	 *
-	 * @return Response
-	 */
-	public function store()
+    /**
+     * Store a newly created resource in storage.
+     * POST /skills
+     *
+     * @param Request $request
+     * @return Response
+     */
+	public function store(Request $request)
 	{
 		//
 	}
 
-	/**
-	 * Display the specified resource.
-	 * GET /skills/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+    /**
+     * Display the specified resource.
+     * GET /skills/{id}
+     *
+     * @param $username
+     * @return Response
+     * @internal param int $id
+     */
 	public function show($username)
 	{
-		return view('members.skills');
+        $user = User::where('username', $username)->first();
+		return view('members.skills', compact('username', 'user'));
 	}
 
 	/**

@@ -4,6 +4,9 @@ namespace Bsquared;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property mixed firstName
+ */
 class Profile extends Model {
 
     /**

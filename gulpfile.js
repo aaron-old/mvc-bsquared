@@ -1,4 +1,25 @@
  var elixir = require('laravel-elixir');
+
+ var gulp = require('gulp');
+ var livereload = require('gulp-livereload');
+
+
+ gulp.task('default', ['live-monitor']);
+
+ gulp.task('laravel-views', function(){
+
+     gulp.src('resources/views/**/*.blade.php')
+         .pipe(livereload());
+ });
+
+ 
+ gulp.task('live-monitor', function(){
+    livereload.listen();
+     gulp.watch('resources/views/**/*.blade.php', ['laravel-views']);
+ });
+
+
+
  
  /*
   |--------------------------------------------------------------------------

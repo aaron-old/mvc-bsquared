@@ -53,7 +53,7 @@
                 </label>
                 <button type="submit" class="button">Login</button>
 
-                <a href="{{ url('/password/reset') }}">Forgot Your Password</a>
+                <a id="passwordReset" href="{{ url('/password/reset') }}">Forgot Your Password</a>
             </div>
         </form>
 

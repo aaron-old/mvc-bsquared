@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('PageTitle')
-    {{$username}}
+    Edit Profile
 @stop
 
 @section('Navigation')

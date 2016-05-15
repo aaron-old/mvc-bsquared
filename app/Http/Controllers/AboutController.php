@@ -1,6 +1,13 @@
 <?php namespace Bsquared\Http\Controllers;
 
+use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Bsquared\User;
+use Bsquared\About;
+use Bsquared\Label;
+use Bsquared\Column;
+use Bsquared\Path;
+use Bsquared\Destination;
 
 class AboutController extends Controller {
 
@@ -41,12 +48,14 @@ class AboutController extends Controller {
 	 * Display the specified resource.
 	 * GET /about/{id}
 	 *
-	 * @param  int  $id
+	 * @param $username
 	 * @return Response
+	 * @internal param int $id
 	 */
 	public function show($username)
 	{
-		return view('members.about');
+		$user = User::where('username', $username)->first();
+		return view('members.about', compact('username','user'));
 	}
 
 	/**

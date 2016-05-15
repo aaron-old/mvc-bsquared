@@ -5,10 +5,9 @@
         <span class="userPhotosCaption"><a href="#">Edit Photos</a></span>
     </span>
 </legend>
-<form id="userProfileForm" method="POST" action="">
+<form id="userProfileForm" method="POST" action="/profile/{{ $user->username }}" role="form">
+    {!! csrf_field() !!}
     <fieldset id="box">
-
-
         <div class="userProfileFirstNameInput">
             <label for="firstname">First Name</label>
             <input type="text" name="firstname" id="firstname" value="{{$user->profile->firstName}}">
