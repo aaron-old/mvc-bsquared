@@ -254,282 +254,7 @@ footer p a:hover {
   border: 1px solid #fff;
 }
 
-///* Portfolio Page Styles start here
-//************************************
-//*/
-//
-///* Profile Pic Style */
-//#portProfilePic {
-//  margin: 0 auto !important;
-//  text-align: center;
-//}
-//#portProfilePic div img{
-//  width: 260px;
-//  height: 186px;
-//  position: relative;
-//  margin-top: 80px;
-//  max-width: 940px;
-//}
-//
-//
-///* Slider Styles */
-//.slider {
-//  width: 800px;
-//  height: auto;
-//  min-height: 500px;
-//  overflow: hidden;
-//  /* border: 1px solid black; */
-//  margin: 0 auto;
-//}
-//.sliderNav {
-//  margin-top: 80px;
-//  margin-bottom: 16px;
-//  float: left;
-//  margin-left: 0;
-//}
-//.sliderNav a {
-//  text-decoration: none;
-//  font-weight: bold;
-//}
-//.sliderNav a:hover {
-//  color: #cc9933;
-//  -webkit-transition: all 0.7s ease;
-//  transition: all 0.7s ease;
-//}
-//.slider > ul {
-//  /* styled by JS to match the added width and height of all <li>’s */
-//  position: relative;
-//  -webkit-transition: 0.5s left;
-//  -moz-transition: 0.5s left;
-//  -ms-transition: 0.5s left;
-//  -o-transition: 0.5s left;
-//  list-style: none;
-//  margin: 0; padding: 0;
-//}
-//.slider > ul > li {
-//  float: left;
-//  width: 800px; height: 300px;
-//}
-///* Slider Arrow buttons (Left & Right) */
-//#leftArrow {
-//  position: absolute;
-//  top: 380px;
-//  left: 0;
-//  z-index: 5;
-//  width: 128px;
-//  height: 128px;
-//  background-image: url('../graphics/leftArrow.png');
-//  margin-left: 100px;
-//  opacity: 0.3;
-//}
-//#leftArrow:hover {
-//  background-image: url('../graphics/leftArrowHov.png');
-//  opacity: 1.0
-//}
-//#rightArrow {
-//  position: absolute;
-//  top: 380px;
-//  right: 0;
-//  z-index: 5;
-//  width: 128px;
-//  height: 128px;
-//  background-image: url('../graphics/rightArrow.png');
-//  margin-right: 100px;
-//  opacity: 0.3;
-//}
-//#rightArrow:hover {
-//  background-image: url('../graphics/rightArrowHov.png');
-//  opacity: 1.0;
-//}
-//.activeSlide {
-//  color: #cc9933;
-//}
-///* Statement Section (in Slider) Styles */
-//.stmtSlide {
-//  min-height: 500px;
-//  max-height: 500px;
-//  overflow: hidden;
-//}
-//.stmtPar {
-//  text-align: center;
-//  padding: 6% 2%;
-//  font-size: 260%;
-//  min-height: 460px;
-//  overflow: hidden;
-//  color: #fff;
-//}
-//#stmtOverlay {
-//  width: 100%;
-//  height: 100%;
-//  background-color: rgba(0,0,0,0.5);
-//  padding: 0;
-//}
-//
-///* About Section (in Slider) Styles */
-//.aboutDiv {
-//  width: 33%;
-//  text-align: center;
-//  float: left;
-//}
-//.aboutDiv img {
-//  border: 1px solid black;
-//}
-//.aboutPar {
-//  text-align: center;
-//  font-size: 106%;
-//  margin: -4px 0 30px 0;
-//}
-//.bigFont {
-//  font-size: 130%;
-//  text-transform: uppercase;
-//}
-//.aboutColPar {
-//  font-size: 106%;
-//  margin: 1% 4%;
-//  word-wrap: break-word;
-//  max-width: 260px;
-//}
-//
-///* Skill Section (in Slider) Styles */
-//#skillsSlide p {
-//  text-align: center;
-//  margin-top: 4%;
-//}
-//.skillsDiv {
-//  width: 33%;
-//  text-align: center;
-//  float: left;
-//}
-//.skillsDiv h3 {
-//  margin: 10px 0;
-//  color: #aaa;
-//  text-decoration: none;
-//}
-//.skillsDiv p {
-//  font-size: 110%;
-//  margin: 0% 6%;
-//}
-//.iconClass {
-//  margin-top: 2%;
-//}
-//.hrWidth {
-//  width: 230px;
-//  text-align: center;
-//  margin: 0 auto;
-//}
-///* My Work Section (in Slider) Styles */
-//.workLeftDiv {
-//  width: 60%;
-//  float: left;
-//}
-//.workRightDiv {
-//  width: 40%;
-//  float: left;
-//}
-//.thirds img {
-//  margin: 2%;
-//  width: 130px;
-//  height: 130px;
-//  -webkit-box-sizing:border-box;
-//  -moz-box-sizing:border-box;
-//  -ms-box-sizing:border-box;
-//  box-sizing:border-box;
-//}
-//.thirds img:hover {
-//  border: 4px solid #cc9933;
-//  cursor: pointer;
-//}
-//#worksHoverTitle {
-//  text-align: center;
-//  margin: 80px 60px 4px 0px;
-//  font-size: 160%;
-//  -webkit-transition: all 0.4s ease;
-//}
-//#worksHoverText {
-//  text-align: center;
-//  margin: 20px 60px 4px 0px;
-//  max-width: 316px;
-//  word-wrap: break-word;
-//  -webkit-transition: all 0.4s ease;
-//}
-//
-///* Contact Section (in Slider) Styles */
-//#contactSlide h2 {
-//  text-align: center;
-//  margin-top: -2px;
-//}
-//#contactSlide form {
-//  margin: 40px 190px;
-//
-//}
-//#contactSlide form input {
-//  width: 400px;
-//  padding: 10px;
-//  font-size: 110%;
-//  margin-bottom: 20px;
-//  -moz-border-radius: 3px;
-//  -webkit-border-radius: 3px;
-//  border-radius: 3px;
-//  outline: 0;
-//  border: 1px solid #aaa;
-//}
-//#contactSlide form input:focus {
-//  border: 1px solid #cc9933;
-//  box-shadow: 0 0 10px #cc9933;
-//  -webkit-transition: all 0.5s ease;
-//  transition: all 0.5s ease;
-//}
-//#contactSlide form textarea:focus {
-//  border: 1px solid #cc9933;
-//  box-shadow: 0 0 10px #cc9933;
-//  -webkit-transition: all 0.5s ease;
-//  transition: all 0.5s ease;
-//}
-//#contactSlide form textarea {
-//  width: 400px;
-//  padding: 10px;
-//  font-size: 110%;
-//  margin-bottom: 20px;
-//  -moz-border-radius: 3px;
-//  -webkit-border-radius: 3px;
-//  border-radius: 3px;
-//  outline: 0;
-//  border: 1px solid #aaa;
-//  height: 120px;
-//}
-//#contactSlide form input[type='submit'] {
-//  text-align: center;
-//  margin-top: -26px;
-//  margin-left: 166px;
-//  font-size: 110%;
-//  padding: 10px;
-//  width: 100px;
-//
-//  -moz-border-radius: 6px;
-//  -webkit-border-radius: 6px;
-//  border-radius: 6px;
-//  outline: 0;
-//  border: 2px solid #cc9933;
-//  background-color: #fff;
-//  color: #cc9933;
-//  box-shadow: none;
-//}
-//#contactSlide form input[type='submit']:hover {
-//  background: #000;
-//  background: -moz-linear-gradient(top, #333333 0%, #141414 100%);
-//  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #333333), color-stop(100%, #141414));
-//  background: -webkit-linear-gradient(top, #333333 0%, #141414 100%);
-//  background: -o-linear-gradient(top, #333333 0%, #141414 100%);
-//  background: -ms-linear-gradient(top, #333333 0%, #141414 100%);
-//  background: linear-gradient(to bottom, #333333 0%, #141414 100%);
-//  color: #cc9933;
-//  -webkit-transition: all 0.5s ease;
-//  transition: all 0.5s ease;
-//  cursor: pointer;
-//  box-shadow: none;
-//  border: 2px solid #cc9933;
-//}
-//
+
 ///*********************************/
 .memberPhoto {
   margin: 0 50px 10px 130px;
@@ -720,4 +445,132 @@ footer p a:hover {
   font-weight: 700;
   src: local('Maven Pro Bold'), local('MavenProBold'), url(http://fonts.gstatic.com/s/mavenpro/v7/uDssvmXgp7Nj3i336k_dSugdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+
+/**
+ * MEMBER FORMS
+ */
+
+div#main {
+  margin: 100px;
+  overflow: auto;
+}
+
+#box legend{
+  text-align:center;
+}
+
+#profileFNameLName {
+  display:inline;
+  margin:0 0 0 15%;
+}
+
+.userProfileFirstNameInput {
+  float:left;
+  margin-left:100px;
+}
+.userProfileFirstNameInput label{
+  text-align:center;
+}
+
+.userProfileLastNameInput {
+  float:left;
+  margin-left: 60px;
+}
+
+.userProfileLastNameInput label {
+  text-align:center;
+}
+
+.userProfileAbout {
+  display:block;
+  padding-left: 100px;
+  float:left;
+}
+
+.userProfileAbout label {
+  text-align: center;
+}
+
+
+.userProfileSubmit{
+  float:left;
+  margin-left: 260px;
+}
+
+.userProfileSubmit label {
+  text-align: center;
+}
+
+#profileFNameLName label {
+  display:block;
+  vertical-align:top;
+  text-decoration: underline;
+}
+
+#box input  {
+  width:250px;
+  height: 30px;
+  border-bottom: solid #fff;
+  border-radius: 4px;
+  font-size: 15px;
+  box-shadow: 0 2px 1px 1px #cc9933;
+  margin-bottom: 50px;
+  text-align: center;
+
+}
+
+#box textarea {
+  width: 500px;
+  height: 100px;
+  border-bottom: solid #fff;
+  border-radius: 4px;
+  font-size: 15px;
+  box-shadow: 0 2px 1px 1px #cc9933;
+  margin-bottom: 50px;
+  display:block;
+  margin-left:50px;
+}
+
+
+#box input:focus {
+  color: #cc9933;
+  transition: all 0.8s ease-in-out;
+}
+
+#box textarea:focus {
+  color: #cc9933;
+  transition: all 0.8s ease-in-out;
+}
+
+#box input:not(:focus) {
+  color: black;
+  transition: all 0.8s ease-in-out;
+}
+#box textarea:not(:focus) {
+  color: black;
+  transition: all 0.8s ease-in-out;
+}
+#box {
+  left: 33%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.userPhotos {
+  float:right;
+}
+
+.userPhotosCaption{
+  display:block;
+}
+#box label {
+  display:block;
+  color: black;
+  font-weight:normal;
+}
+*:focus {
+  outline: 0;
 }

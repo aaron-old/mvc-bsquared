@@ -57,7 +57,7 @@
     @yield('uniqueHeaderInformation')
 
 </head>
-<body content="container">
+<body class="container">
     @yield('Navigation')
 
     @yield('BodyContent')

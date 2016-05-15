@@ -55,10 +55,7 @@ class MainController extends Controller {
      */
 	public function show($username)
 	{
-        $profiles = Profile::all();
-        $members = User::all();
-
-		return view('portfolio', compact('profiles', 'members'));
+		return view('portfolio');
 	}
 
 	/**

@@ -332,6 +332,111 @@ footer p a:hover {
   src: local("Maven Pro Bold"), local("MavenProBold"), url(http://fonts.gstatic.com/s/mavenpro/v7/uDssvmXgp7Nj3i336k_dSugdm0LZdjqr5-oayXSOefg.woff2) format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; }
 
+/**
+ * MEMBER FORMS
+ */
+div#main {
+  margin: 100px;
+  overflow: auto; }
+
+#box legend {
+  text-align: center; }
+
+#profileFNameLName {
+  display: inline;
+  margin: 0 0 0 15%; }
+
+.userProfileFirstNameInput {
+  float: left;
+  margin-left: 100px; }
+
+.userProfileFirstNameInput label {
+  text-align: center; }
+
+.userProfileLastNameInput {
+  float: left;
+  margin-left: 60px; }
+
+.userProfileLastNameInput label {
+  text-align: center; }
+
+.userProfileAbout {
+  display: block;
+  padding-left: 100px;
+  float: left; }
+
+.userProfileAbout label {
+  text-align: center; }
+
+.userProfileSubmit {
+  float: left;
+  margin-left: 260px; }
+
+.userProfileSubmit label {
+  text-align: center; }
+
+#profileFNameLName label {
+  display: block;
+  vertical-align: top;
+  text-decoration: underline; }
+
+#box input {
+  width: 250px;
+  height: 30px;
+  border-bottom: solid #fff;
+  border-radius: 4px;
+  font-size: 15px;
+  box-shadow: 0 2px 1px 1px #cc9933;
+  margin-bottom: 50px;
+  text-align: center; }
+
+#box textarea {
+  width: 500px;
+  height: 100px;
+  border-bottom: solid #fff;
+  border-radius: 4px;
+  font-size: 15px;
+  box-shadow: 0 2px 1px 1px #cc9933;
+  margin-bottom: 50px;
+  display: block;
+  margin-left: 50px; }
+
+#box input:focus {
+  color: #cc9933;
+  transition: all 0.8s ease-in-out; }
+
+#box textarea:focus {
+  color: #cc9933;
+  transition: all 0.8s ease-in-out; }
+
+#box input:not(:focus) {
+  color: black;
+  transition: all 0.8s ease-in-out; }
+
+#box textarea:not(:focus) {
+  color: black;
+  transition: all 0.8s ease-in-out; }
+
+#box {
+  left: 33%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: auto; }
+
+.userPhotos {
+  float: right; }
+
+.userPhotosCaption {
+  display: block; }
+
+#box label {
+  display: block;
+  color: black;
+  font-weight: normal; }
+
+*:focus {
+  outline: 0; }
+
 /* Box colors */
 .bg-1 {
   background: #ECEFF1;
@@ -507,7 +612,7 @@ www.amitjakhu.com
 /*******************
 FONTS
 *******************/
-@import url(http://fonts.googleapis.com/css?family=Bree+Serif);
+@import url(//fonts.googleapis.com/css?family=Bree+Serif);
 /*******************
 SELECTION STYLING
 *******************/
@@ -547,25 +652,7 @@ body {
   left: 50%;
   top: 50%;
   margin-left: -150px;
-  margin-top: -200px; }
-
-.gradient {
-  /* Center Positioning */
-  width: 600px;
-  height: 600px;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  margin-left: -300px;
-  margin-top: -300px;
-  /* Fallback */
-  background-repeat: no-repeat;
-  /* CSS3 Gradient */
-  /*noinspection CssInvalidFunction*/
-  /*noinspection CssInvalidFunction*/
-  /*noinspection CssInvalidFunction*/
-  /*noinspection CssInvalidFunction*/
-  background-image: -o-radial-gradient(50% 50%, 50% 50%, #d5f6ff, rgba(213, 246, 255, 0)); }
+  margin-top: -256px; }
 
 /*******************
 LOGIN FORM
@@ -805,6 +892,35 @@ nav {
 
 #navList li a {
   color: #fff; }
+
+/* Slider Arrow buttons (Left & Right) */
+#leftArrow {
+  position: absolute;
+  top: 380px;
+  left: 0;
+  z-index: 5;
+  width: 128px;
+  height: 128px;
+  background-image: url("/public\build//img/graphics/leftArrow-536eb03cd6.png"); }
+
+#leftArrow:hover {
+  background-image: url("../graphics/leftArrowHov.png");
+  opacity: 1.0; }
+
+#rightArrow {
+  position: absolute;
+  top: 380px;
+  right: 0;
+  z-index: 5;
+  width: 128px;
+  height: 128px;
+  background-image: url("../graphics/rightArrow.png");
+  margin-right: 100px;
+  opacity: 0.3; }
+
+#rightArrow:hover {
+  background-image: url("../graphics/rightArrowHov.png");
+  opacity: 1.0; }
 
 .dropdown ul {
   background-color: #ccc; }

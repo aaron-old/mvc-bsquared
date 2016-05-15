@@ -462,4 +462,16 @@ var client = new Keen({
     // host: "api.keen.io/3.0",   // String (optional)
     // requestType: "jsonp"       // String (optional: jsonp, xhr, beacon)
 });
+/**
+ * Created by Aaron Young on 5/14/2016.
+ */
+
+UserForms = function UserForms() {
+
+    // Properties
+
+    this.setButtons = function (formID) {
+        $("#" + formID + " button").button();
+    };
+};
 //# sourceMappingURL=all.js.map

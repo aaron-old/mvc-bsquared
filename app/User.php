@@ -26,39 +26,39 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function filePathLookups() {
-        return $this->belongsToMany('Bsquared\FilePathLookup', 'portfolio_paths', 'user_id', 'destination_id');
+    public function destination() {
+        return $this->belongsToMany(Destination::class, 'portfolio_paths', 'user_id', 'destination_id');
     }
 
-    public function portfolioColumns() {
-        return $this->hasMany('Bsquared\Column', 'user_id', 'user_id');
+    public function columns() {
+        return $this->hasMany(Column::class, 'user_id', 'user_id');
     }
 
-    public function portfolioLabels() {
-        return $this->hasMany('Bsquared\Label', 'user_id', 'user_id');
+    public function labels() {
+        return $this->hasMany(Label::class, 'user_id', 'user_id');
     }
 
-    public function portfolioPaths() {
-        return $this->hasMany('Bsquared\Path', 'user_id', 'user_id');
+    public function paths() {
+        return $this->hasMany(Path::class, 'user_id', 'user_id');
     }
 
-    public function portfolioWorks() {
-        return $this->hasMany('Bsquared\Work', 'user_id', 'user_id');
+    public function works() {
+        return $this->hasMany(Works::class, 'user_id', 'user_id');
     }
 
     public function loginAttempt() {
-        return $this->hasOne('Bsquared\LoginAttempt', 'user_id', 'user_id');
+        return $this->hasOne(LoginAttempt::class, 'user_id', 'user_id');
     }
 
-    public function portfolioProfile() {
-        return $this->hasOne('Bsquared\Profile', 'user_id', 'user_id');
+    public function profile() {
+        return $this->hasOne(Profile::class, 'user_id', 'user_id');
     }
 
-    public function portfoliosAbout() {
-        return $this->hasOne('Bsquared\About', 'user_id', 'user_id');
+    public function about() {
+        return $this->hasOne(About::class, 'user_id', 'user_id');
     }
 
-    public function portfoliosStatement() {
-        return $this->hasOne('Bsquared\Statement', 'user_id', 'user_id');
+    public function Statement() {
+        return $this->hasOne(Statement::class, 'user_id', 'user_id');
     }
 }

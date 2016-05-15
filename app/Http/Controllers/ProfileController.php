@@ -2,7 +2,13 @@
 
 Bsquared\Http\Controllers;
 
+
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+
+use Bsquared\User;
+use Bsquared\Profile;
 
 class ProfileController extends Controller {
 
@@ -32,23 +38,26 @@ class ProfileController extends Controller {
 	 * Store a newly created resource in storage.
 	 * POST /profile
 	 *
+	 * @param Request $request
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		return $request->all();
 	}
 
-	/**
-	 * Display the specified resource.
-	 * GET /profile/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+    /**
+     * Display the specified resource.
+     * GET /profile/{id}
+     * @param User $username
+     * @return Response
+     * @internal param \Bsquared\Http\Controllers\User|User $username
+     * @internal param int $id
+     */
 	public function show($username)
 	{
-		return view ('members.profile');
+        $user = User::where('username', $username)->first();
+		return view ('members.profile', compact('username', 'user'));
 	}
 
 	/**

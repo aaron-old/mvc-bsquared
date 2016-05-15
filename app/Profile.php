@@ -15,7 +15,7 @@ class Profile extends Model {
     protected $primaryKey = 'user_id';
 
 
-    public function portfolioMember() {
-        return $this->belongsTo(PortfolioProfile::class, 'user_id', 'user_id');
+    public function User() {
+        return $this->belongsTo(User::class, 'user_id', 'user_id');
     }
 }

@@ -67,6 +67,37 @@ nav {
     color: #fff;
 }
 
+
+/* Slider Arrow buttons (Left & Right) */
+#leftArrow {
+  position: absolute;
+  top: 380px;
+  left: 0;
+  z-index: 5;
+  width: 128px;
+  height: 128px;
+  background-image: url('/public/img/graphics/leftArrow.png');
+}
+#leftArrow:hover {
+  background-image: url('../graphics/leftArrowHov.png');
+  opacity: 1.0
+}
+#rightArrow {
+  position: absolute;
+  top: 380px;
+  right: 0;
+  z-index: 5;
+  width: 128px;
+  height: 128px;
+  background-image: url('../graphics/rightArrow.png');
+  margin-right: 100px;
+  opacity: 0.3;
+}
+#rightArrow:hover {
+  background-image: url('../graphics/rightArrowHov.png');
+  opacity: 1.0;
+}
+
 .dropdown ul {
    background-color: #ccc;
 }

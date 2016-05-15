@@ -3,12 +3,12 @@
 use Illuminate\Database\Eloquent\Model;
 
 
-class FilePathLookup extends Model {
+class Destination extends Model {
 
 	/*
 	 * Configure custom database configurations.
 	 */
-    protected  $table = 'file_path_lookup';
+    protected  $table = 'destinations';
     protected $primaryKey = 'destination_id';
 
 }

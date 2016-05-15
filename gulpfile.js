@@ -44,7 +44,8 @@ elixir(function(mix) {
         'sha512.min.js',
         'forms.js',
         'keen.js',
-        'keen.data.js'
+        'keen.data.js',
+        'Common.js'
     ]);
     
     mix.version([
