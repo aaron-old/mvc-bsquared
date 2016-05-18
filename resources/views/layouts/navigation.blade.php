@@ -60,7 +60,7 @@ $profileCount = count($profiles);
                             </a>
 
                             <ul class="dropdown-menu" role="menu" id="navList">
-                                <li><a href="#">ACCOUNT SETTINGS</a> </li>
+                                <li><a href="{{url('/settings/'.Auth::user()->username)}}">ACCOUNT SETTINGS</a> </li>
                                 <li><a href="{{ url('/logout') }}">LOGOUT</a></li>
                             </ul>
                         </li>

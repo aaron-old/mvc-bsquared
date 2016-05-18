@@ -1,7 +1,6 @@
 <form id="about" action="/about/{{$user->username}}" method="post">
     {!! csrf_field() !!}
     <fieldset id="box">
-
         <legend>Overview Section</legend>
         <label for="overview">Overview: </label>
 
@@ -18,9 +17,9 @@
                     <option value="3">About Me #3</option>
             </select>
 
-
             <label for="aboutImage">Upload an Image:(PNG or JPG Only) Dimensions:140X140</label>
             <input type="file" name="aboutImage" id="aboutImage">
+
             <label for="label">Label Name</label>
             <input type="text" name="label" id="label">
 

@@ -14,41 +14,52 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
+
+Route::group(['middleware'=> ['web']], function(){
+    /*
  * Main Routes
  */
 
-Route::get('/', 'MainController@index');
+    Route::get('/', 'MainController@index');
 
-Route::auth();
+    Route::auth();
 
-Route::get('/home', 'HomeController@index');
+    Route::get('/home', 'HomeController@index');
 
-Route::get('/faq', 'FAQController@index');
+    Route::get('/faq', 'FAQController@index');
 
-Route::get('/portfolio/{username}', 'MainController@show');
-
-
-/*
- * Member Routes
- */
-
-Route::get('/profile/{username}', 'ProfileController@show');
-Route::post('/profile/{username}', 'ProfileController@store');
-
-Route::get('/about/{username}', 'AboutController@show');
-Route::post('/about/{username}', 'AboutController@post');
-
-Route::get('/skills/{username}', 'SkillsController@show');
-
-Route::get('/works/{username}', 'WorksController@show');
-
-Route::get('/statement/{username}', 'StatementController@show');
+    Route::get('/portfolio/{username}', 'MainController@show');
 
 
+    /*
+     * Member Routes
+     */
 
-/*
- * Admin Routes
- */
+    Route::get('/profile/{username}', 'ProfileController@edit');
+    Route::post('/profile/{username}', 'ProfileController@store');
+
+    Route::get('/statement/{username}', 'StatementController@edit');
+    Route::post('/statement/{username}', 'StatementController@store');
+
+    Route::get('/about/{username}', 'AboutController@show');
+    Route::post('/about/{username}', 'AboutController@store');
+
+    Route::get('/skills/{username}', 'SkillsController@show');
+    Route::post('/skills/{username}', 'SkillsController@store');
+
+    Route::get('/works/{username}', 'WorksController@show');
+    Route::post('/works/{username}', 'WorksController@store');
+
+
+
+    Route::get('/settings/{username}', 'SettingsController@show');
+
+    /*
+     * Admin Routes
+     */
+});
+
+
+
 
 

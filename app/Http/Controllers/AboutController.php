@@ -58,16 +58,18 @@ class AboutController extends Controller {
 		return view('members.about', compact('username','user'));
 	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /about/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
+    /**
+     * Show the form for editing the specified resource.
+     * GET /about/{id}/edit
+     *
+     * @param $username
+     * @return Response
+     * @internal param int $id
+     */
+	public function edit($username)
 	{
-		//
+        $user = User::where('username', $username)->first();
+        return view('members.about', compact('username','user'));
 	}
 
 	/**

@@ -2,72 +2,73 @@
 
 namespace Bsquared\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 
 use Bsquared\User;
 use Bsquared\Statement;
+use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Auth;
+
 
 class StatementController extends Controller {
 
-	/**
-	 * Display a listing of the resource.
-	 * GET /statement
-	 *
-	 * @return Response
-	 */
-	public function index()
+
+
+	
+    /**
+     * Show the form for creating a new resource.
+     * GET /statement/create
+     *
+     * @param Request $request
+     * @return Response
+     * @internal param $statement
+     */
+	public function create(Request $request)
 	{
-		//
+		$statement = new Statement($request->all());
+        $statement->user_id = Auth::id();
+
+        return $request;
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /statement/create
-	 *
-	 * @return Response
-	 */
-	public function create()
+    /**
+     * Store a newly created resource in storage.
+     * POST /statement
+     *
+     * @param Request $request
+     * @return Response
+     */
+	public function store(Request $request)
 	{
-		//
+
+        $statement = Statement::where('user_id', Auth::id())->first();
+
+        if($statement !== null){
+
+            $statement->statement = $request->statement;
+        }
+        else {
+
+            return $request;
+        }
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /statement
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
 
-	/**
-	 * Display the specified resource.
-	 * GET /statement/{id}
-	 *
-	 * @param $username
-	 * @return Response
-	 * @internal param int $id
-	 */
-	public function show($username)
+    /**
+     * Show the form for editing the specified resource.
+     * GET /statement/{id}/edit
+     *
+     * @param $username
+     * @return Response
+     * @internal param int $id
+     */
+	public function edit($username)
 	{
-		$user = User::where('username', $username)->first();
-		return view('members.statement', compact('username', 'user'));
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /statement/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
+        $user = User::where('username', $username)->first();
+        return view('members.statement', compact('username', 'user'));
+    }
 
 	/**
 	 * Update the specified resource in storage.

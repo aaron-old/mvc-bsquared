@@ -60,16 +60,18 @@ class SkillsController extends Controller {
 		return view('members.skills', compact('username', 'user'));
 	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /skills/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
+    /**
+     * Show the form for editing the specified resource.
+     * GET /skills/{id}/edit
+     *
+     * @param $username
+     * @return Response
+     * @internal param int $id
+     */
+	public function edit($username)
 	{
-		//
+        $user = User::where('username', $username)->first();
+        return view('members.skills', compact('username', 'user'));
 	}
 
 	/**

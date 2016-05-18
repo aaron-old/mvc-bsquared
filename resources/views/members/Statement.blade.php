@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('PageTitle') @stop
+@section('PageTitle') Edit Statement @stop
 
 @section('Navigation')
     @include('layouts.navigation')

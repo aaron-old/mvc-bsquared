@@ -1,6 +1,8 @@
 <?php namespace Bsquared\Http\Controllers;
 
+use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Bsquared\User;
 
 class ContactController extends Controller {
 
