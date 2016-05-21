@@ -4,8 +4,19 @@ namespace Bsquared\Http\Controllers;
 
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+
+
 use Bsquared\Profile;
 use Bsquared\User;
+use Bsquared\About;
+use Bsquared\Label;
+use Bsquared\Path;
+use Bsquared\Column;
+use Bsquared\Skill;
+use Bsquared\Statement;
+use Bsquared\Works;
+
+
 use Bsquared\Http\Controllers\ContactController;
 
 class MainController extends Controller {
@@ -42,10 +53,60 @@ class MainController extends Controller {
      * @return Response
      * @internal param int $id
      */
-	public function show($username)
+	public function showPortfolio($username)
 	{
-		return view('portfolio', compact('username'));
+		$member = User::where('username', $username);
+		$userID = $member->user_id;
+
+        $portfolio = Profile::getPortfolio($userID);
+
+//		$portfolio = [
+//			$profile = Profile::find($userID),
+//			$statement = Statement::find($userID),
+//			$about = About::find($userID)
+//		];
+
+		return view('portfolio', compact('portfolio'));
 	}
+
+
+    public function getPortfolio($userID){
+
+    }
+
+
+    private function getProfile($userID){
+        return Profile::find($userID);
+    }
+
+    private function getStatement($userID){
+        return Statement::find($userID);
+    }
+
+    private function getLabels($userID){
+
+    }
+
+    private function getColumns($userID){
+
+    }
+
+    private function getSkills($userID){
+
+
+    }
+
+    private function getWorks($userID){
+
+    }
+
+    private function getAbout($userID){
+
+    }
+
+
+
+
 	
 	
 

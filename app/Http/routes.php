@@ -28,7 +28,7 @@ Route::group(['middleware'=> ['web']], function(){
 
     Route::get('/faq', 'FAQController@index');
 
-    Route::get('/portfolio/{username}', 'MainController@show');
+    Route::get('/portfolio/{username}', 'MainController@showPortfolio');
 
 
     /*

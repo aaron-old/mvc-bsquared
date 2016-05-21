@@ -14,50 +14,29 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller {
 
-	/**
-	 * Display a listing of the resource.
-	 * GET /profile
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
-	}
-
-
     /**
      * Show the form for creating a new resource.
      * GET /profile/create
      *
      * @param Request $request
+     * @param $authUserID
      * @return Response
      * @internal param $user_id
      * @internal param User $user
      */
 
-    public function create(Request $request)
+    public function create(Request $request, $authUserID)
 	{
         $profile = new Profile();
-        $profile->user_id = Auth::id();
-
-        if($request->has('firstName')){
-            $profile->firstName = $request->firstName;
-        }
-        if($request->has('lastName')){
-            $profile->lastName = $request->lastName;
-        }
-        if($request->has('aboutMe')){
-            $profile->aboutMe = $request->aboutMe;
-        }
-
-        $profile->save();
-
+        $profile->user_id = $authUserID;
+        $create = $this->validateRequest($request, $profile);
+        $create->save();
         return back();
     }
 
     /**
      * Store a newly created resource in storage.
+     * Checks to see if the user has a record, regardless if complete.
      * POST /profile
      *
      * @param Request $request
@@ -66,17 +45,18 @@ class ProfileController extends Controller {
      */
 	public function store(Request $request)
 	{
-        $profile = Profile::where('user_id', Auth::id())->first();
+        $authUserID = Auth::id();
+        $profile = Profile::where('user_id', $authUserID)->first();
 
         try{
 
             if(!object_get($profile,'user_id')){
 
-                return ProfileController::create($request);
+                return ProfileController::create($request, $authUserID);
             }
             else {
 
-                return ProfileController::update($request);
+                return ProfileController::update($request, $authUserID);
             }
         }
         catch (EntityNotFoundException $error)
@@ -104,28 +84,19 @@ class ProfileController extends Controller {
      * PUT /profile/{id}
      *
      * @param $request
+     * @param $authUserID
      * @return Response
      * @internal param $profile
      * @internal param $user_id
      * @internal param int $id
      */
-	public function update($request)
+	public function update($request, $authUserID)
 	{
-        $profile = Profile::findOrFail(Auth::id());
+        $profile = Profile::findOrFail($authUserID);
+        $update  = $this->validateRequest($request, $profile);
 
-        if($request->has('firstName')){
-            $profile->firstName = $request->firstName;
-        }
-        if($request->has('lastName')){
-            $profile->lastName = $request->lastName;
-        }
-        if($request->has('aboutMe')){
-            $profile->aboutMe = $request->aboutMe;
-        }
-
-        $profile->save();
-
-        return back();
+        $update->save();
+        return back()->flash('status', 'Profile updated!');
 	}
 
 	/**
@@ -139,5 +110,20 @@ class ProfileController extends Controller {
 	{
 		//
 	}
+
+    private function validateRequest(Request $request, $profile)
+    {
+        if($request->has('firstName')){
+            $profile->firstName = $request->firstName;
+        }
+        if($request->has('lastName')){
+            $profile->lastName = $request->lastName;
+        }
+        if($request->has('aboutMe')){
+            $profile->aboutMe = $request->aboutMe;
+        }
+
+        return $profile;
+    }
 
 }

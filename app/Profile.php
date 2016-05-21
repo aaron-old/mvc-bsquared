@@ -5,6 +5,7 @@ namespace Bsquared;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
+
 /**
  * @property mixed firstName
  */
@@ -22,8 +23,6 @@ class Profile extends Model {
     public function User() {
         return $this->belongsTo(User::class, 'user_id', 'user_id');
     }
+    
 
-    public function addProfile(){
-
-    }
 }

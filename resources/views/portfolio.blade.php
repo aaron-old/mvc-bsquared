@@ -38,6 +38,12 @@ This will be plugged to resource portfolio_backgrounds (will accept path to the 
 @include('layouts.navigation')
 @stop
 
+@if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
+
 @section('BodyContent')
 
     <div id="portImgHolder" class="container">
