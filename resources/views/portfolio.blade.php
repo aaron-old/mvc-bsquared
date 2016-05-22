@@ -34,8 +34,8 @@ This will be plugged to resource portfolio_backgrounds (will accept path to the 
 @stop
 
 @section('Navigation')
-        <!-- Add Logic Here to change navigation heading. -->
-@include('layouts.navigation')
+    <!-- Add Logic Here to change navigation heading. -->
+    @include('layouts.navigation')
 @stop
 
 @if (session('status'))
@@ -49,7 +49,7 @@ This will be plugged to resource portfolio_backgrounds (will accept path to the 
     <div id="portImgHolder" class="container">
         <div class="row">
             <img height="150" width="150" class="memberPhoto" src="{{asset('img/member_uploads/default_profile.png')}}"
-            alt="First Name Last Name">
+            alt="{{$portfolio->profile->firstName. ' ' .$portfolio->profile->lastName}}">
         </div>
     </div>
 
@@ -65,7 +65,7 @@ This will be plugged to resource portfolio_backgrounds (will accept path to the 
         <div class="carousel-inner" role=listbox>
 
             <div id="slide1" class="item active addBG">
-                <p>Statement Here</p>
+                <p>{{$portfolio->statement->statement}}</p>
             </div>
 
             <div id="slide2" class="item">
@@ -178,7 +178,8 @@ This will be plugged to resource portfolio_backgrounds (will accept path to the 
                         <div class="modal-footer">
                             <button type="button"
                                     class="button button--nina button--text-thick button--text-upper button--size-l"
-                                    data-dismiss="modal">Close</button>
+                                    data-dismiss="modal">Close
+                            </button>
                         </div>
                     </div>
                 </div>

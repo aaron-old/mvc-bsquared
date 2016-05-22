@@ -61,4 +61,16 @@ class User extends Authenticatable
     public function statement() {
         return $this->hasOne(Statement::class, 'user_id', 'user_id');
     }
+
+    public static function getUserPortfolio($userID) {
+        $user =  User::find($userID);
+        $user->profile;
+        $user->about;
+        $user->columns;
+        $user->labels;
+        $user->works;
+        $user->paths;
+        
+        return $user;
+    }
 }

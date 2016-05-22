@@ -55,26 +55,15 @@ class MainController extends Controller {
      */
 	public function showPortfolio($username)
 	{
-		$member = User::where('username', $username);
-		$userID = $member->user_id;
+		$member = User::where('username', '=', $username)->first();
 
-        $portfolio = Profile::getPortfolio($userID);
+        $userID = $member->user_id;
 
-//		$portfolio = [
-//			$profile = Profile::find($userID),
-//			$statement = Statement::find($userID),
-//			$about = About::find($userID)
-//		];
+        $portfolio = User::getUserPortfolio($userID);
 
 		return view('portfolio', compact('portfolio'));
 	}
-
-
-    public function getPortfolio($userID){
-
-    }
-
-
+    
     private function getProfile($userID){
         return Profile::find($userID);
     }
@@ -83,8 +72,41 @@ class MainController extends Controller {
         return Statement::find($userID);
     }
 
-    private function getLabels($userID){
+    /**
+     * Description: Returns the labels for an queried user.
+     * @param $userID
+     * @param $setI
+     * @param $setK
+     * @return array
+     * @internal param $i
+     * @internal param $k
+     */
+    private function getLabels($userID, $setI, $setK)
+    {
+        $count = 0;
+        $labels = []; // prepare the array for return.
 
+        for($i = $setI, $k = $setK; $i < 11; $k++, $i++)
+        {
+            $label = Label::where('userID', $userID)->where('destination_id', $k)->pluck('label');
+
+            if($label === null) {
+
+                $labels[$count] = [
+                    'label'.$count => 'Coming Soon!',
+                    'destination_id' => $k
+                ];
+            }
+            else {
+
+                $labels[$count] = [
+                    'label' . $count => $label,
+                    'destination_id' => $k
+                ];
+            }
+        }
+
+        return $labels;
     }
 
     private function getColumns($userID){

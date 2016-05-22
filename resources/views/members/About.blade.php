@@ -8,6 +8,11 @@
 
 @section('BodyContent')
     <div id="main" class="container memberForm">
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
         @include('forms.AboutForm')
     </div>
 @stop

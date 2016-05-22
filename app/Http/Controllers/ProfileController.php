@@ -96,7 +96,8 @@ class ProfileController extends Controller {
         $update  = $this->validateRequest($request, $profile);
 
         $update->save();
-        return back()->flash('status', 'Profile updated!');
+        session()->flash('status', 'Profile updated!');
+        return back();
 	}
 
 	/**

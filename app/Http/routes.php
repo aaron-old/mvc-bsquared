@@ -15,11 +15,10 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::group(['middleware'=> ['web']], function(){
+Route::group(['middlewareGroups'=> ['web']], function(){
     /*
- * Main Routes
- */
-
+     * Main Routes
+     */
     Route::get('/', 'MainController@index');
 
     Route::auth();
@@ -31,28 +30,62 @@ Route::group(['middleware'=> ['web']], function(){
     Route::get('/portfolio/{username}', 'MainController@showPortfolio');
 
 
-    /*
+    /**
      * Member Routes
      */
+    Route::get('/profile/{username}', [
+        'uses' => 'ProfileController@edit',
+        'as'   => 'editProfile'
+    ]);
 
-    Route::get('/profile/{username}', 'ProfileController@edit');
-    Route::post('/profile/{username}', 'ProfileController@store');
+    Route::post('/profile/{username}', [
+        'uses' => 'ProfileController@store',
+        'as'   => 'postProfile'
+    ]);
 
-    Route::get('/statement/{username}', 'StatementController@edit');
-    Route::post('/statement/{username}', 'StatementController@store');
+    Route::get('/statement/{username}', [
+        'uses' => 'StatementController@edit',
+        'as'   => 'editStatement'
+    ]);
 
-    Route::get('/about/{username}', 'AboutController@show');
-    Route::post('/about/{username}', 'AboutController@store');
+    Route::post('/statement/{username}', [
+        'uses' => 'StatementController@store',
+        'as'   => 'postStatement'
+    ]);
 
-    Route::get('/skills/{username}', 'SkillsController@show');
-    Route::post('/skills/{username}', 'SkillsController@store');
+    Route::get('/about/{username}', [
+        'uses' => 'AboutController@edit',
+        'as'   => 'editAbout'
+    ]);
 
-    Route::get('/works/{username}', 'WorksController@show');
-    Route::post('/works/{username}', 'WorksController@store');
+    Route::post('/about/{username}', [
+        'uses' => 'AboutController@store',
+        'as'   => 'postAbout'
+    ]);
 
+    Route::get('/skills/{username}', [
+        'uses' => 'SkillsController@show',
+        'as'   => 'editSkills'
+    ]);
+    Route::post('/skills/{username}', [
+        'uses' => 'SkillsController@store',
+        'as'   => 'postSkills'
+    ]);
 
+    Route::get('/works/{username}', [
+        'uses' => 'WorksController@show',
+        'as'   => 'editWorks'
 
-    Route::get('/settings/{username}', 'SettingsController@show');
+    ]);
+    Route::post('/works/{username}', [
+        'uses' => 'WorksController@store',
+        'as'   => 'postWorks'
+    ]);
+
+    Route::get('/settings/{username}', [
+        'uses' =>'SettingsController@show',
+        'as'   => 'editSettings'
+    ]);
 
     /*
      * Admin Routes
