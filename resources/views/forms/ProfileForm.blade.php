@@ -21,7 +21,9 @@
             <textarea name="aboutMe" id="aboutMe" rows="5" cols="100">{{old('',$user->profile->aboutMe)}}</textarea>
         </div>
         <div class="userProfileSubmit">
-            <input type="submit" name="submit" value="Update Profile" />
+            {{--<button type="submit" id="btnSubmitProfile" class="submitButton" >Update Profile</button>--}}
+            <input id="btnSubmitProfile"  type="button" name="submit" value="Update Profile" />
         </div>
     </fieldset>
 </form>
+

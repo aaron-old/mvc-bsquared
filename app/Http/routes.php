@@ -29,7 +29,6 @@ Route::group(['middlewareGroups'=> ['web']], function(){
 
     Route::get('/portfolio/{username}', 'MainController@showPortfolio');
 
-
     /**
      * Member Routes
      */
@@ -64,7 +63,7 @@ Route::group(['middlewareGroups'=> ['web']], function(){
     ]);
 
     Route::get('/skills/{username}', [
-        'uses' => 'SkillsController@show',
+        'uses' => 'SkillsController@edit',
         'as'   => 'editSkills'
     ]);
     Route::post('/skills/{username}', [

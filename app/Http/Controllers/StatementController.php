@@ -2,6 +2,8 @@
 
 namespace Bsquared\Http\Controllers;
 
+use Bsquared\Profile;
+use Illuminate\Contracts\Queue\EntityNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
@@ -15,22 +17,23 @@ use Illuminate\Support\Facades\Auth;
 class StatementController extends Controller {
 
 
-
-	
     /**
      * Show the form for creating a new resource.
      * GET /statement/create
      *
      * @param Request $request
+     * @param $authUserID
      * @return Response
      * @internal param $statement
      */
-	public function create(Request $request)
+	public function create(Request $request, $authUserID)
 	{
-		$statement = new Statement($request->all());
-        $statement->user_id = Auth::id();
-
-        return $request;
+        $statement = new Statement();
+        $statement->user_id = $authUserID;
+        $validatedCreate = $this->validateRequest($request, $statement);
+        $validatedCreate->save();
+        session()->flash('status', 'Statement updated!');
+        return back();
 	}
 
     /**
@@ -42,16 +45,20 @@ class StatementController extends Controller {
      */
 	public function store(Request $request)
 	{
+        $authUserID = Auth::id();
+        $statement = Statement::find($authUserID);
 
-        $statement = Statement::where('user_id', Auth::id())->first();
-
-        if($statement !== null){
-
-            $statement->statement = $request->statement;
+        try{
+            if(!object_get($statement, 'user_id')){
+                return StatementController::create($request, $authUserID);
+            }
+            else {
+                return StatementController::update($request , $authUserID);
+            }
         }
-        else {
-
-            return $request;
+        catch(EntityNotFoundException $error)
+        {
+            return back($error);
         }
 	}
 
@@ -70,16 +77,23 @@ class StatementController extends Controller {
         return view('members.statement', compact('username', 'user'));
     }
 
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /statement/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
+    /**
+     * Update the specified resource in storage.
+     * PUT /statement/{id}
+     *
+     * @param $request
+     * @param $authUserId
+     * @return Response
+     * @internal param int $id
+     */
+	public function update($request, $authUserId)
 	{
-		//
+		$statement = Statement::findOrFail($authUserId);
+        $validatedStatement = $this->validateRequest($request, $statement);
+        
+        $validatedStatement->save();
+        session()->flash('status', 'Statement updated!');
+        return back();
 	}
 
 	/**
@@ -94,4 +108,16 @@ class StatementController extends Controller {
 		//
 	}
 
+    /**
+     * @param Request $request
+     * @param $statement
+     */
+    private function validateRequest(Request $request, $statement){
+        
+        if($request->has('statement')){
+            $statement->statement = $request->statement;
+        }
+        
+        return $statement;
+    }
 }

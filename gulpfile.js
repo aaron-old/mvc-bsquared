@@ -12,7 +12,7 @@
          .pipe(livereload());
  });
 
- 
+
  gulp.task('live-monitor', function(){
     livereload.listen();
      gulp.watch('resources/views/**/*.blade.php', ['laravel-views']);
@@ -63,11 +63,20 @@ elixir(function(mix) {
        'jquery.validate.min',
         'rollbar.js',
         'sha512.min.js',
-        'forms.js',
+        
         'keen.js',
         'keen.data.js',
         'Common.js'
     ]);
+
+    mix.babel([
+        'Bsquared.js',
+        'LoginForms.js',
+        'Skills.js',
+        'UserControls.js',
+        'Profile.js',
+        'forms.js'
+    ], 'public/js/Bsquared.js', 'resources/assets/js/');
     
     mix.version([
         'public/css/app.css',
@@ -75,6 +84,7 @@ elixir(function(mix) {
         'public/js/all.js',
         'public/css/bootstrap.css',
         'public/js/jquery.js',
-        'public/js/bootstrap.js'
+        'public/js/bootstrap.js',
+        'public/js/Bsquared.js'
     ]);
 });

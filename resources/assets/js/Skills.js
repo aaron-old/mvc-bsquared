@@ -13,23 +13,28 @@
  * http://creativecommons.org/licenses/by/3.0/legalcode
  */
 
-BSQUARED.Forms = (function(){
+BSQUARED.Skills = (function(){
+    
+    var btnSubmitSkills = $('#btnSubmitSkills');
     
     return {
+        
+        init:function(){
+            
+            btnSubmitSkills.on('click', function(event){
+                event.preventDefault();
+                
+                var url = window.location.pathname;
+                var $post = {};
+                
+                $post.portion = $('#destination_id').val();
+                $post.label = $('#label').val();
+                $post.column =$('#column_text').val();
 
-        post: function(type, url, data){
-            $.ajax({
-                type: type,
-                url: url,
-                data: data.serialize(),
-                datatype: "json",
-                cache:true,
-
-                success: function(data){
-                    return data;
-                }
+                BSQUARED.Forms.post("POST", url, $post);
             });
         }
     }
+    
     
 })();

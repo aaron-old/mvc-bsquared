@@ -13,23 +13,26 @@
  * http://creativecommons.org/licenses/by/3.0/legalcode
  */
 
-BSQUARED.Forms = (function(){
+BSQUARED.Profile = (function(){
+    
+    var btnSubmitProfile = $('#test');
     
     return {
+        init: function(){
 
-        post: function(type, url, data){
-            $.ajax({
-                type: type,
-                url: url,
-                data: data.serialize(),
-                datatype: "json",
-                cache:true,
-
-                success: function(data){
-                    return data;
-                }
+            btnSubmitProfile.on('click', function(event){
+               event.preventDefault();
+                
+                alert('post');
+                // var url = window.location.pathname;
+                // var $post = {};
+                //
+                // $post.firstName = $('#firstName').val();
+                // $post.lastName = $('#lastName').val();
+                // $post.aboutMe = $('#aboutMe').val();
+                //
+                // BSQUARED.Forms.post("POST", url, $post);
             });
         }
     }
-    
 })();

@@ -31,6 +31,7 @@ class ProfileController extends Controller {
         $profile->user_id = $authUserID;
         $create = $this->validateRequest($request, $profile);
         $create->save();
+        session()->flash('status', 'Profile updated!');
         return back();
     }
 
@@ -47,7 +48,7 @@ class ProfileController extends Controller {
 	{
         $authUserID = Auth::id();
         $profile = Profile::where('user_id', $authUserID)->first();
-
+        
         try{
 
             if(!object_get($profile,'user_id')){
@@ -112,6 +113,11 @@ class ProfileController extends Controller {
 		//
 	}
 
+    /**
+     * @param Request $request
+     * @param $profile
+     * @return mixed
+     */
     private function validateRequest(Request $request, $profile)
     {
         if($request->has('firstName')){
@@ -123,8 +129,6 @@ class ProfileController extends Controller {
         if($request->has('aboutMe')){
             $profile->aboutMe = $request->aboutMe;
         }
-
         return $profile;
     }
-
 }

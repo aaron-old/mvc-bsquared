@@ -1,4 +1,4 @@
-<form id="skills" action="/statement/{{$user->username}}" method="post" enctype="multipart/form-data">
+<form id="skills" action="/skills/{{$user->username}}" method="post" enctype="multipart/form-data">
     {!! csrf_field() !!}
     <fieldset id="box">
         <fieldset>
@@ -19,7 +19,7 @@
             <label for="column_text">Column Text</label>
             <textarea rows="4" cols="50" name="column_text" id="column_text"></textarea>
 
-            <input type="submit" name="submit_skills" id="submit_skills" value="Update Skills">
+            <input type="submit" name="submit_skills" id="btnSubmitSkills" value="Update Skills">
         </fieldset>
         <fieldset>
             <legend>Resume Upload</legend>

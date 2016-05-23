@@ -3,8 +3,9 @@
     <fieldset id="box">
         <legend>Overview Section</legend>
         <label for="overview">Overview: </label>
-
-        <textarea cols="100" rows="5" name="overview" id="overview"></textarea>
+        <textarea cols="100" rows="5" name="overview" id="overview">
+            {{old('', $user->about->overview)}}
+        </textarea>
         <input type="submit" name="submit_overview" id="submit_overview" value="Update Overview">
 
         <fieldset>

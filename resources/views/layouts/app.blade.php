@@ -79,7 +79,7 @@
             </a>
         </p>
         <p><a href="{{url('/faq')}}">b<span>[</span>squared<span>]</span></a>  &nbsp; <span>&#9672;</span> &nbsp;
-            &copy; 2014<script>document.write("-" + year);</script> &nbsp; <span>&#9672;</span>&nbsp;
+            &copy; <span id="footerYear"></span>&nbsp; <span>&#9672;</span>&nbsp;
             <a target="_blank " href="{{url('#')}}">Privacy Policy</a>
         </p>
     </footer>
