@@ -18,17 +18,25 @@ BSQUARED.Forms = (function(){
     return {
 
         post: function(type, url, data){
-            $.ajax({
-                type: type,
-                url: url,
-                data: data.serialize(),
-                datatype: "json",
-                cache:true,
-
-                success: function(data){
-                    return data;
+            $.ajaxSetup({
+                headers:{
+                    'X-CSRF-TOKEN': $('input[name="_token"]').val()
                 }
             });
+            $.ajax({
+                method: type,
+                url: url,
+                data: data,
+                datatype: "json",
+                cache:false,
+
+                success: function(response){
+                    return response;
+                }
+            }).done(function(msg){
+                console.log(msg['message']);
+            });
+        
         }
     }
     

@@ -12,6 +12,7 @@
 |Route::options($uri, $callback);
 */
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
@@ -37,10 +38,16 @@ Route::group(['middlewareGroups'=> ['web']], function(){
         'as'   => 'editProfile'
     ]);
 
+//    Route::post('/profile/{username}', function(Request $request){
+//
+//        return response()->json(['message'=> $request->lastName]);
+//    });
+
     Route::post('/profile/{username}', [
         'uses' => 'ProfileController@store',
         'as'   => 'postProfile'
     ]);
+
 
     Route::get('/statement/{username}', [
         'uses' => 'StatementController@edit',

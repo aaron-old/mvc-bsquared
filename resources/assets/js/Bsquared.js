@@ -1,35 +1,20 @@
-/**
- * Created by Aaron Young on 5/21/2016.
- */
-
 
 // Global Namespace.
 var BSQUARED = BSQUARED || {};
 
-
+/**
+ * 
+ * @type {{init}}
+ */
 BSQUARED.Main = (function () {
-
-    var year;
-    year = new Date().getFullYear();
-
-    var btnSubmitTest = $('#test');
-
-    // // A private function which logs any arguments
-    // alertYear = function(  ) {
-    //     alert(currentYear);
-    // };
-
+    
+    var year = new Date().getFullYear();
+    
     return {
         
         // A public function utilizing privates
         init: function() {
-
             var footerYear = $('#footerYear').html('2014-' + year);
-            BSQUARED.Profile.init();
-
-            btnSubmitTest.on('click', function(){
-               alert('here');
-            });
         }
     };
 
@@ -37,4 +22,5 @@ BSQUARED.Main = (function () {
 
 $(document).ready(function(){
     BSQUARED.Main.init();
+    BSQUARED.Profile.init();
 });

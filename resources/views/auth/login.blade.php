@@ -2,6 +2,10 @@
 
 @section('PageTitle')Login @stop
 
+@section('uniqueHeaderInformation')
+    <link href="{{elixir('css/loginStyles.css')}}" type="text/css">
+@stop
+
 @section('Navigation')
         <!-- Add Logic Here to change navigation heading. -->
 @include('layouts.navigation')
@@ -11,7 +15,6 @@
 @section('BodyContent')
 
 <div class="container" style="padding-top: 150px;">
-
 
     <div id="wrapper">
         <!-- SLIDE-IN ICONS-->

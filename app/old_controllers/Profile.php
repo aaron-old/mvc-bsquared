@@ -1,20 +1,13 @@
-<?php namespace
+<?php
 
-Bsquared\Http\Controllers;
-
-
-use Illuminate\Contracts\Queue\EntityNotFoundException;
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
-
-use Bsquared\User;
-use Bsquared\Profile;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Response;
-
-class ProfileController extends Controller {
-
+/**
+ * Created by PhpStorm.
+ * User: Aaron Young
+ * Date: 5/22/2016
+ * Time: 5:49 PM
+ */
+class Profile
+{
     /**
      * Show the form for creating a new resource.
      * GET /profile/create
@@ -27,7 +20,7 @@ class ProfileController extends Controller {
      */
 
     public function create(Request $request, $authUserID)
-	{
+    {
         $profile = new Profile();
         $profile->user_id = $authUserID;
         $create = $this->validateRequest($request, $profile);
@@ -45,38 +38,28 @@ class ProfileController extends Controller {
      * @return Response
      * @internal param $username
      */
-	public function store(Request $request)
+    public function store(Request $request)
     {
         $authUserID = Auth::id();
         $profile = Profile::where('user_id', $authUserID)->first();
-
-        $data = [
-            'firstName' => $request->firstName,
-            'lastName' => $request->lastName,
-            'aboutMe' => $request->aboutMe,
-            'user_id' => $authUserID
-        ];
 
         try{
 
             if(!object_get($profile,'user_id')){
 
-                return ProfileController::create($data);
+                return ProfileController::create($request, $authUserID);
             }
             else {
 
-                return ProfileController::update($data);
+                return ProfileController::update($request, $authUserID);
             }
         }
         catch (EntityNotFoundException $error)
         {
             return back($error);
         }
+    }
 
-       //return response()->json(['message'=>$data]);
-
-	}
-    
     /**
      * Show the form for editing the specified resource.
      * GET /profile/{id}/edit
@@ -85,59 +68,61 @@ class ProfileController extends Controller {
      * @return Response
      * @internal param int $id
      */
-	public function edit($username)
-	{
+    public function edit($username)
+    {
         $user = User::where('username', $username)->first();
         return view ('members.profile', compact('username', 'user'));
-	}
+    }
 
     /**
      * Update the specified resource in storage.
      * PUT /profile/{id}
      *
-     * @param $data
+     * @param $request
+     * @param $authUserID
      * @return Response
-     * @internal param $request
-     * @internal param $authUserID
      * @internal param $profile
      * @internal param $user_id
      * @internal param int $id
      */
-	public function update($data)
-	{
-        $profile = Profile::findOrFail($data['user_id']);
-        $update  = $this->validateRequest($data, $profile);
+    public function update($request, $authUserID)
+    {
+        $profile = Profile::findOrFail($authUserID);
+        $update  = $this->validateRequest($request, $profile);
 
         $update->save();
         session()->flash('status', 'Profile updated!');
         return back();
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /profile/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
+    }
 
     /**
-     * @param $data
+     * Remove the specified resource from storage.
+     * DELETE /profile/{id}
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+
+    /**
+     * @param Request $request
      * @param $profile
      * @return mixed
-     * @internal param Request $request
      */
-    private function validateRequest($data, $profile)
+    private function validateRequest(Request $request, $profile)
     {
-
-        $profile->firstName = $data['firstName'];
-        $profile->lastName = $data['lastName'];
-        $profile->aboutMe = $data['aboutMe'];
-
+        if($request->has('firstName')){
+            $profile->firstName = $request->firstName;
+        }
+        if($request->has('lastName')){
+            $profile->lastName = $request->lastName;
+        }
+        if($request->has('aboutMe')){
+            $profile->aboutMe = $request->aboutMe;
+        }
         return $profile;
     }
 }

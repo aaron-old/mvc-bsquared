@@ -36,20 +36,28 @@
 
 elixir(function(mix) {
     
-    mix.copy('resources/assets/img/**', 'public/img');
+    mix.copy('resources/assets/img/**', 'public/images');
     mix.copy('resources/assets/fonts/**', 'public/fonts');
+    mix.copy('node_modules/jquery-ui/themes/ui-lightness/images/**', 'public/images');
     
     mix.sass([
         'app.scss',
         'buttons.scss',
-        'form_style.scss',
         'portfolio_styles.scss'
     ]);
+    
+    mix.styles([
+        'form_style.scss'
+    ], 'public/css/loginStyles.css', 'resources/assets/sass/');
 
     mix.styles([
         'bootstrap.min.css',
         'bootstrap-theme.min.css'
     ], 'public/css/bootstrap.css', 'node_modules/bootstrap/dist/css/');
+    
+    mix.styles([
+        'jquery-ui.min.css'
+    ], 'public/css/jquery-ui.css', 'node_modules/jquery-ui/themes/ui-lightness/');
 
     mix.babel([
        'jquery.min.js'
@@ -58,15 +66,13 @@ elixir(function(mix) {
     mix.babel([
         'bootstrap.min.js'
     ], 'public/js/bootstrap.js', 'node_modules/bootstrap/dist/js/');
-    
+
     mix.babel([
-       'jquery.validate.min',
+        'jquery.validate.min.js',
         'rollbar.js',
         'sha512.min.js',
-        
         'keen.js',
-        'keen.data.js',
-        'Common.js'
+        'keen.data.js'
     ]);
 
     mix.babel([
@@ -75,7 +81,7 @@ elixir(function(mix) {
         'Skills.js',
         'UserControls.js',
         'Profile.js',
-        'forms.js'
+        'Forms.js'
     ], 'public/js/Bsquared.js', 'resources/assets/js/');
     
     mix.version([
@@ -85,6 +91,8 @@ elixir(function(mix) {
         'public/css/bootstrap.css',
         'public/js/jquery.js',
         'public/js/bootstrap.js',
-        'public/js/Bsquared.js'
+        'public/js/Bsquared.js',
+        'public/css/loginStyles.css',
+        'public/css/jquery-ui.css'
     ]);
 });
