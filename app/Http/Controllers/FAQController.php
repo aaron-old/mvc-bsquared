@@ -1,5 +1,6 @@
 <?php namespace Bsquared\Http\Controllers;
 
+use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 
 class FAQController extends Controller {
@@ -15,8 +16,6 @@ class FAQController extends Controller {
 	 */
 	public function index()
 	{
-		//
-
 		return view('/faq');
 	}
 
@@ -26,7 +25,7 @@ class FAQController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function createFAQMail()
 	{
 		//
 	}

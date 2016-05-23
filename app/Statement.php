@@ -4,18 +4,19 @@ namespace Bsquared;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PortfoliosStatement extends Model {
+class Statement extends Model {
 
     /**
      * Generated
      */
 
-    protected $table = 'statement';
+    protected $table = 'portfolio_statement';
     protected $fillable = ['user_id', 'statement'];
+    protected $primaryKey = 'user_id';
 
 
-    public function portfolioMember() {
-        return $this->belongsTo('Bsquared\PortfolioMember', 'user_id', 'user_id');
+    public function User() {
+        return $this->belongsTo(User::class, 'user_id', 'user_id');
     }
 
 

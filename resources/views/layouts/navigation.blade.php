@@ -18,7 +18,7 @@ $profileCount = count($profiles);
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="{{url('/')}}"><img id="logo" src="{{asset('img/graphics/logo4.png')}}" alt="b[squared]"></a>
+                <a href="{{url('/')}}"><img id="logo" src="{{asset('images/graphics/logo4.png')}}" alt="b[squared]"></a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
@@ -56,11 +56,11 @@ $profileCount = count($profiles);
                         </li>
                         <li class="dropdown-toggle">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->username }} <span class="caret"></span>
+                                {{ strtoupper(Auth::user()->username) }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu" id="navList">
-                                <li><a href="#">ACCOUNT SETTINGS</a> </li>
+                                <li><a href="{{url('/settings/'.Auth::user()->username)}}">ACCOUNT SETTINGS</a> </li>
                                 <li><a href="{{ url('/logout') }}">LOGOUT</a></li>
                             </ul>
                         </li>

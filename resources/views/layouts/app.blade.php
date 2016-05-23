@@ -52,12 +52,14 @@
     <!-- JavaScript -->
     <script src="{{elixir('js/jquery.js')}}" type="text/javascript"></script>
     <script src="{{elixir('js/bootstrap.js')}}"></script>
+
     <script src="{{elixir('js/all.js')}}"></script>
+    <script src="{{elixir('js/Bsquared.js')}}"></script>
 
     @yield('uniqueHeaderInformation')
 
 </head>
-<body content="container">
+<body class="container">
     @yield('Navigation')
 
     @yield('BodyContent')
@@ -66,20 +68,20 @@
     <footer class="container navbar-fixed-bottom">
         <p id="socialMediaFooter">
             <a target ="_blank" title="follow me on facebook" href="https://www.facebook.com/groups/641262162679997/">
-                <img src="{{ asset('img/icons/FB2.png')}}"
+                <img src="{{ asset('images/icons/FB2.png')}}"
                      width="20" height="20" alt="follow bsquared on facebook"  border=0>
             </a>
             <a target ="_blank" href="https://www.linkedin.com/in/aaron-young-48a359b2?trk=hp-identity-name" >
-                <img src="{{ asset('img/icons/linkedin-square-social-media2.png') }}"
+                <img src="{{ asset('images/icons/linkedin-square-social-media2.png') }}"
                      width="20" height="20" alt="View Binary Beasts's LinkedIn profile"  border="0">
             </a>
             <a target="_blank" href="https://github.com/mustardmandevelopments/mvc-bsquared">
-                <img src="{{ asset('img/icons/github-square-social-media2.jpg') }}"
+                <img src="{{ asset('images/icons/github-square-social-media2.jpg') }}"
                      width="20" height="20" alt="View this site with github" border="0">
             </a>
         </p>
         <p><a href="{{url('/faq')}}">b<span>[</span>squared<span>]</span></a>  &nbsp; <span>&#9672;</span> &nbsp;
-            &copy; 2014<script>document.write("-" + year);</script> &nbsp; <span>&#9672;</span>&nbsp;
+            &copy; <span id="footerYear"></span>&nbsp; <span>&#9672;</span>&nbsp;
             <a target="_blank " href="{{url('#')}}">Privacy Policy</a>
         </p>
     </footer>

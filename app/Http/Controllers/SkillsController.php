@@ -1,88 +1,56 @@
 <?php namespace Bsquared\Http\Controllers;
 
+use Illuminate\Contracts\Queue\EntityNotFoundException;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Bsquared\User;
+use Bsquared\Destination;
+
 
 class SkillsController extends Controller {
 
-	/**
-	 * Display a listing of the resource.
-	 * GET /skills
-	 *
-	 * @return Response
-	 */
-	public function index()
+    
+    /**
+     * Store a newly created resource in storage.
+     * POST /skills
+     *
+     * @param Request $request
+     * @return Response
+     */
+	public function store(Request $request)
 	{
-		//
+		$authUserID = Auth::id();
+        $portionSelected = $request->destination_id;
+        $this->createUpdate($request, $portionSelected, $authUserID);
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /skills/create
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /skills
-	 *
-	 * @return Response
-	 */
-	public function store()
+    /**
+     * Show the form for editing the specified resource.
+     * GET /skills/{id}/edit
+     *
+     * @param $username
+     * @return Response
+     * @internal param int $id
+     */
+	public function edit($username)
 	{
-		//
-	}
+        $user = User::where('username', $username)->first();
+        $destinations  = Destination::all();
 
-	/**
-	 * Display the specified resource.
-	 * GET /skills/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($username)
-	{
-		return view('members.skills');
+        return view('members.skills', compact('username', 'user', 'destinations'));
 	}
+    
 
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /skills/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /skills/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /skills/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
+    private function createUpdate(Request $request, $portionSelected, $userID){
+		
+        /*
+         * Check to see what portion is selected, 
+         */
+		LabelController::setLabel($request, $portionSelected, $userID);
+		ColumnController::setColumn($request, $portionSelected, $userID);
+		PathController::setPath($request, $portionSelected, $userID);
+    }
 
 }

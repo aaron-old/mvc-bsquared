@@ -1,6 +1,12 @@
 <?php namespace Bsquared\Http\Controllers;
 
+use Bsquared\Http\Requests\Request;
+use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Bsquared\User;
+use Bsquared\Works;
+use Bsquared\Path;
+use Bsquared\Destination;
 
 class WorksController extends Controller {
 
@@ -26,15 +32,17 @@ class WorksController extends Controller {
 		//
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /works
-	 *
-	 * @return Response
-	 */
-	public function store()
+    /**
+     * Store a newly created resource in storage.
+     * POST /works
+     *
+     * @param Request $request
+     * @return Response
+     */
+	public function store(Request $request)
 	{
 		//
+        return $request->all();
 	}
 
 	/**
@@ -47,7 +55,8 @@ class WorksController extends Controller {
 	 */
 	public function show($username)
 	{
-		return view('members.works');
+        $user = User::where('username', $username)->first();
+		return view('members.works', compact('username', 'user'));
 	}
 
 	/**

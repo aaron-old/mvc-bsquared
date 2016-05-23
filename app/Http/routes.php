@@ -4,43 +4,101 @@
 |--------------------------------------------------------------------------
 | Application Routes
 |--------------------------------------------------------------------------
-|
+|Route::get($uri, $callback);
+|Route::post($uri, $callback);
+|Route::put($uri, $callback);
+|Route::patch($uri, $callback);
+|Route::delete($uri, $callback);
+|Route::options($uri, $callback);
 */
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/*
- * Main Routes
- */
 
-Route::get('/', 'MainController@index');
+Route::group(['middlewareGroups'=> ['web']], function(){
+    /*
+     * Main Routes
+     */
+    Route::get('/', 'MainController@index');
 
-Route::auth();
+    Route::auth();
 
-Route::get('/home', 'HomeController@index');
+    Route::get('/home', 'HomeController@index');
 
-Route::get('/faq', 'FAQController@index');
+    Route::get('/faq', 'FAQController@index');
 
-Route::get('/portfolio/{username}', 'MainController@show');
+    Route::get('/portfolio/{username}', 'MainController@showPortfolio');
+
+    /**
+     * Member Routes
+     */
+    Route::get('/profile/{username}', [
+        'uses' => 'ProfileController@edit',
+        'as'   => 'editProfile'
+    ]);
+
+//    Route::post('/profile/{username}', function(Request $request){
+//
+//        return response()->json(['message'=> $request->lastName]);
+//    });
+
+    Route::post('/profile/{username}', [
+        'uses' => 'ProfileController@store',
+        'as'   => 'postProfile'
+    ]);
 
 
-/*
- * Member Routes
- */
+    Route::get('/statement/{username}', [
+        'uses' => 'StatementController@edit',
+        'as'   => 'editStatement'
+    ]);
 
-Route::get('/profile/{username}', 'ProfileController@show');
+    Route::post('/statement/{username}', [
+        'uses' => 'StatementController@store',
+        'as'   => 'postStatement'
+    ]);
 
-Route::get('/about/{username}', 'AboutController@show');
+    Route::get('/about/{username}', [
+        'uses' => 'AboutController@edit',
+        'as'   => 'editAbout'
+    ]);
 
-Route::get('/skills/{username}', 'SkillsController@show');
+    Route::post('/about/{username}', [
+        'uses' => 'AboutController@store',
+        'as'   => 'postAbout'
+    ]);
 
-Route::get('/works/{username}', 'WorksController@show');
+    Route::get('/skills/{username}', [
+        'uses' => 'SkillsController@edit',
+        'as'   => 'editSkills'
+    ]);
+    Route::post('/skills/{username}', [
+        'uses' => 'SkillsController@store',
+        'as'   => 'postSkills'
+    ]);
 
-Route::get('/statement/{username}', 'StatementController@show');
+    Route::get('/works/{username}', [
+        'uses' => 'WorksController@show',
+        'as'   => 'editWorks'
+
+    ]);
+    Route::post('/works/{username}', [
+        'uses' => 'WorksController@store',
+        'as'   => 'postWorks'
+    ]);
+
+    Route::get('/settings/{username}', [
+        'uses' =>'SettingsController@show',
+        'as'   => 'editSettings'
+    ]);
+
+    /*
+     * Admin Routes
+     */
+});
 
 
-/*
- * Admin Routes
- */
+
 
 

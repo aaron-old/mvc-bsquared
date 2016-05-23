@@ -8,7 +8,7 @@ www.amitjakhu.com
 FONTS
 *******************/
 
-@import url(http://fonts.googleapis.com/css?family=Bree+Serif);
+@import url(//fonts.googleapis.com/css?family=Bree+Serif);
 
 /*******************
 SELECTION STYLING
@@ -48,35 +48,9 @@ body {
 	left: 50%;
 	top: 50%;
 	margin-left: -150px;
-	margin-top: -200px;
+	margin-top: -256px;
 }
 
-
-.gradient {
-	/* Center Positioning */
-	width: 600px;
-	height: 600px;
-	position: fixed;
-	left: 50%;
-	top: 50%;
-	margin-left: -300px;
-	margin-top: -300px;
-	
-	/* Fallback */ 
-
-	background-repeat: no-repeat; 
-	
-	/* CSS3 Gradient */
-	background-image: -webkit-gradient(radial, 0% 0%, 0% 100%, from(rgba(213,246,255,1)), to(rgba(213,246,255,0)));
-	/*noinspection CssInvalidFunction*/
-	background-image: -webkit-radial-gradient(50% 50%, 40% 40%, rgba(213,246,255,1), rgba(213,246,255,0));
-	/*noinspection CssInvalidFunction*/
-	background-image: -moz-radial-gradient(50% 50%, 50% 50%, rgba(213,246,255,1), rgba(213,246,255,0));
-	/*noinspection CssInvalidFunction*/
-	background-image: -ms-radial-gradient(50% 50%, 50% 50%, rgba(213,246,255,1), rgba(213,246,255,0));
-	/*noinspection CssInvalidFunction*/
-	background-image: -o-radial-gradient(50% 50%, 50% 50%, rgba(213,246,255,1), rgba(213,246,255,0));
-}
 
 /*******************
 LOGIN FORM
@@ -249,7 +223,7 @@ FOOTER
 
 /* Login button */
 .login-form .footer .button {
-	float:right;
+	margin: 0 0 5px 50px;
 	padding: 11px 25px;
 	
 	font-family: 'Bree Serif', serif;
@@ -313,4 +287,9 @@ FOOTER
 .login-form .footer .register:focus {
 	position: relative;
 	bottom: -1px;
+}
+
+#passwordReset {
+  text-align: center;
+  padding-top: 5px;
 }

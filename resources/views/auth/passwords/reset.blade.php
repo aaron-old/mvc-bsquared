@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
-@section('content')
+@section('Navigation')
+    @include('layouts.navigation')
+@stop
+
+@section('BodyContent')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">

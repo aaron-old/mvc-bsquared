@@ -3,7 +3,12 @@
 namespace Bsquared;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
+
+/**
+ * @property mixed firstName
+ */
 class Profile extends Model {
 
     /**
@@ -15,7 +20,9 @@ class Profile extends Model {
     protected $primaryKey = 'user_id';
 
 
-    public function portfolioMember() {
-        return $this->belongsTo(PortfolioProfile::class, 'user_id', 'user_id');
+    public function User() {
+        return $this->belongsTo(User::class, 'user_id', 'user_id');
     }
+    
+
 }
