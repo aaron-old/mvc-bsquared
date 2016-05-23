@@ -10,7 +10,6 @@ use Illuminate\Routing\Controller;
 use Bsquared\User;
 use Bsquared\Profile;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
 
 class ProfileController extends Controller {
@@ -88,7 +87,7 @@ class ProfileController extends Controller {
 	public function edit($username)
 	{
         $user = User::where('username', $username)->first();
-        return view ('members.profile', compact('username', 'user'));
+        return view ('members.Profile', compact('username', 'user'));
 	}
 
     /**
