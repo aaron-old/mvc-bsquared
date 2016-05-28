@@ -36,7 +36,7 @@ nav {
     background: -o-linear-gradient(top, #262626 0%, #070707 100%);
     background: -ms-linear-gradient(top, #262626 0%, #070707 100%);
     background: linear-gradient(to bottom, #262626 0%, #070707 100%);
-    border: 0px solid #fff;
+    border: 0 solid #fff;
 }
 
 #navList{
@@ -58,15 +58,18 @@ nav {
    margin: 0;
    padding: 0;
    color: #fff;
-   border-bottom-style: solid;
-   border-color: #000;
-   border-width: 1px;
+  border: 1px #000;
+  border-bottom-style: solid;
 
 }
 #navList li a {
     color: #fff;
 }
 
+$leftArrow: '{{asset("../images/graphics/leftArrow.png")}}';
+$leftArrowHov: '{{asset("../images/graphics/leftArrow.png")}}';
+$rightArrow: '{{asset("../images/graphics/rightArrow.png")}}';
+$rightArrowHov: '{{asset("../images/graphics/rightArrowHov.png")}}';
 
 /* Slider Arrow buttons (Left & Right) */
 #leftArrow {
@@ -76,10 +79,10 @@ nav {
   z-index: 5;
   width: 128px;
   height: 128px;
-  background-image: url('/public/images/graphics/leftArrow.png');
+  background-image: url('../../images/graphics/leftArrow.png');
 }
 #leftArrow:hover {
-  background-image: url('../graphics/leftArrowHov.png');
+  background-image: url('../../images/graphics/leftArrowHov.png');
   opacity: 1.0
 }
 #rightArrow {
@@ -89,12 +92,13 @@ nav {
   z-index: 5;
   width: 128px;
   height: 128px;
-  background-image: url('../graphics/rightArrow.png');
+  background-image: url('../../images/graphics/rightArrow.png');
   margin-right: 100px;
   opacity: 0.3;
+
 }
 #rightArrow:hover {
-  background-image: url('../graphics/rightArrowHov.png');
+  background-image: url('../../images/graphics/rightArrowHov.png');
   opacity: 1.0;
 }
 
@@ -129,13 +133,18 @@ nav {
    box-shadow: 8px 8px 4px #777;
    border: .5px solid #777;
 }
+/*/images/member_uploads/member_backgrounds/member_background_default.jpg*/
+.addBG {
+  background: #eee url('../../images/member_uploads/member_backgrounds/member_background_default.jpg') no-repeat center center;
+  width: 100%;
+  max-width: 940px;
+}
 
 #myCarousel {
    max-width: 940px;
    width: 100%;
    height: auto;
-   margin: 0 auto;
-   margin-bottom: 30%;
+  margin: 0 auto 30%;
 }
 
 .carousel-indicators {
@@ -299,13 +308,12 @@ hr {
     width: 94%;
     padding: 10px;
     font-size: 110%;
-    margin-bottom: 20px;
-    -moz-border-radius: 3px;
+  -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
     outline: 0;
     border: 1px solid #aaa;
-    margin: 0 2% 2% 2%;
+  margin: 0 2% 2%;
 }
 #contact input:focus {
     border: 1px solid #cc9933;
@@ -462,7 +470,7 @@ footer p a:hover {
 
 
 #socialMediaFooter{
-    margin: 8px 0px 2px 0px;
+    margin: 8px 0 2px 0;
 }
 
 #socialMediaFooter a {

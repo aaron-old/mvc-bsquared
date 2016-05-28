@@ -25,11 +25,11 @@ class ProfileController extends Controller {
      * @internal param User $user
      */
 
-    public function create(Request $request, $authUserID)
+    public function create($data)
 	{
         $profile = new Profile();
-        $profile->user_id = $authUserID;
-        $create = $this->validateRequest($request, $profile);
+        $profile->user_id = $data['user_id'];
+        $create = $this->validateRequest($data, $profile);
         $create->save();
         session()->flash('status', 'Profile updated!');
         return back();
@@ -72,7 +72,7 @@ class ProfileController extends Controller {
             return back($error);
         }
 
-       //return response()->json(['message'=>$data]);
+
 
 	}
     
@@ -107,9 +107,13 @@ class ProfileController extends Controller {
         $profile = Profile::findOrFail($data['user_id']);
         $update  = $this->validateRequest($data, $profile);
 
+        //return response()->json(['message'=>$data]);
+
+
         $update->save();
+        response()->json(['message'=>'Complete']);
         session()->flash('status', 'Profile updated!');
-        return back();
+        return back()->with('status', 'Profile updated!');
 	}
 
 	/**

@@ -39,7 +39,7 @@ class SkillsController extends Controller {
         $user = User::where('username', $username)->first();
         $destinations  = Destination::all();
 
-        return view('members.skills', compact('username', 'user', 'destinations'));
+        return view('members.Skills', compact('username', 'user', 'destinations'));
 	}
     
 

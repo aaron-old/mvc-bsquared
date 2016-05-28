@@ -56,7 +56,7 @@ class WorksController extends Controller {
 	public function show($username)
 	{
         $user = User::where('username', $username)->first();
-		return view('members.works', compact('username', 'user'));
+		return view('members.Works', compact('username', 'user'));
 	}
 
 	/**

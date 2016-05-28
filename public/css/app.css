@@ -182,11 +182,6 @@ footer p a:hover {
 #socialMediaFooter a img:hover {
   border: 1px solid #fff; }
 
-.memberPhoto {
-  margin: 0 50px 10px 130px;
-  box-shadow: 0 0 1px 1px #CCCCCC;
-  transition: all 0.2s ease; }
-
 .memberPhoto:hover {
   /*
   -webkit-box-shadow: 0px 0px 1px 1px #cc9933;
@@ -199,7 +194,7 @@ footer p a:hover {
   margin: 0 20px 0 0;
   text-align: center;
   text-transform: uppercase;
-  text-decortation: none; }
+  text-decoration: none; }
 
 /* FAQ Styles */
 #faqDiv {
@@ -335,6 +330,9 @@ footer p a:hover {
 /**
  * MEMBER FORMS
  */
+.legend {
+  text-align: center; }
+
 div#main {
   margin: 100px;
   overflow: auto; }
@@ -437,6 +435,59 @@ div#main {
 
 *:focus {
   outline: 0; }
+
+div#profileFormFields {
+  margin: 3% 20% 0 23%;
+  display: block; }
+
+button#btnSubmitButton {
+  text-align: center;
+  margin: 10px 100px 0 200px; }
+
+div#profileFormFields label {
+  display: block;
+  text-align: center;
+  color: black; }
+
+input#txtFirstName {
+  margin: 0 55px 30px; }
+
+input#txtLastName {
+  margin: 0 15px 30px; }
+
+input#txtFirstName:focus {
+  border: 1px solid #cc9933;
+  box-shadow: 0 0 10px #cc9933;
+  transition: all 0.5s ease; }
+
+input#txtLastName:focus {
+  border: 1px solid #cc9933;
+  box-shadow: 0 0 10px #cc9933;
+  transition: all 0.5s ease; }
+
+button#btnSubmitButton:hover {
+  background: #cc9933;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+
+button#btnSubmitButton {
+  text-align: center;
+  margin: 10px 100px 0 230px;
+  color: #fff;
+  font-weight: 300;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+  background: #333333;
+  border: 1px solid #cc9933;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.75);
+  -moz-box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.75);
+  -webkit-box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.75);
+  transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -ms-transition: all 0.5s; }
 
 /* Box colors */
 .bg-1 {
@@ -633,7 +684,7 @@ nav {
   font-size: 84%;
   background: #070707;
   background: linear-gradient(to bottom, #262626 0%, #070707 100%);
-  border: 0px solid #fff; }
+  border: 0 solid #fff; }
 
 #navList {
   padding: 0;
@@ -649,9 +700,8 @@ nav {
   margin: 0;
   padding: 0;
   color: #fff;
-  border-bottom-style: solid;
-  border-color: #000;
-  border-width: 1px; }
+  border: 1px #000;
+  border-bottom-style: solid; }
 
 #navList li a {
   color: #fff; }
@@ -664,10 +714,10 @@ nav {
   z-index: 5;
   width: 128px;
   height: 128px;
-  background-image: url("/public/images/graphics/leftArrow.png"); }
+  background-image: url("../../images/graphics/leftArrow.png"); }
 
 #leftArrow:hover {
-  background-image: url("../graphics/leftArrowHov.png");
+  background-image: url("../../images/graphics/leftArrowHov.png");
   opacity: 1.0; }
 
 #rightArrow {
@@ -677,12 +727,12 @@ nav {
   z-index: 5;
   width: 128px;
   height: 128px;
-  background-image: url("../graphics/rightArrow.png");
+  background-image: url("../../images/graphics/rightArrow.png");
   margin-right: 100px;
   opacity: 0.3; }
 
 #rightArrow:hover {
-  background-image: url("../graphics/rightArrowHov.png");
+  background-image: url("../../images/graphics/rightArrowHov.png");
   opacity: 1.0; }
 
 .dropdown ul {
@@ -707,12 +757,17 @@ nav {
   box-shadow: 8px 8px 4px #777;
   border: .5px solid #777; }
 
+/*/images/member_uploads/member_backgrounds/member_background_default.jpg*/
+.addBG {
+  background: #eee url("../../images/member_uploads/member_backgrounds/member_background_default.jpg") no-repeat center center;
+  width: 100%;
+  max-width: 940px; }
+
 #myCarousel {
   max-width: 940px;
   width: 100%;
   height: auto;
-  margin: 0 auto;
-  margin-bottom: 30%; }
+  margin: 0 auto 30%; }
 
 .carousel-indicators {
   display: none; }
@@ -840,11 +895,10 @@ hr {
   width: 94%;
   padding: 10px;
   font-size: 110%;
-  margin-bottom: 20px;
   border-radius: 3px;
   outline: 0;
   border: 1px solid #aaa;
-  margin: 0 2% 2% 2%; }
+  margin: 0 2% 2%; }
 
 #contact input:focus {
   border: 1px solid #cc9933;
@@ -964,12 +1018,240 @@ footer p a:hover {
   text-decoration: none; }
 
 #socialMediaFooter {
-  margin: 8px 0px 2px 0px; }
+  margin: 8px 0 2px 0; }
 
 #socialMediaFooter a {
   margin: 0 4px; }
 
 #socialMediaFooter a img:hover {
   border: 1px solid #fff; }
+
+/*******************
+SELECTION STYLING
+*******************/
+::-moz-selection {
+  color: #fff;
+  background: #f676b2;
+  /* Safari */ }
+::selection {
+  color: #fff;
+  background: #f676b2;
+  /* Safari */ }
+
+::-moz-selection {
+  color: #fff;
+  background: #f676b2;
+  /* Firefox */ }
+
+/*******************
+BODY STYLING
+*******************/
+body {
+  font-family: inherit;
+  font-weight: 300;
+  text-align: left;
+  text-decoration: none; }
+
+#wrapper {
+  /* Center wrapper perfectly */
+  width: 300px;
+  height: 400px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -150px;
+  margin-top: -256px; }
+
+/*******************
+LOGIN FORM
+*******************/
+.login-form {
+  width: 300px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 5;
+  background: #ffffff;
+  border: 2px solid #cc9933;
+  border-radius: 5px;
+  box-shadow: 10px 1px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); }
+
+/*******************
+HEADER
+*******************/
+.login-form .header {
+  padding: 40px 30px 30px 30px; }
+
+.login-form .header h1 {
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 34px;
+  color: #414848;
+  text-shadow: 1px 1px 0 white;
+  margin-bottom: 10px;
+  text-align: center; }
+
+.login-form .header span {
+  font-size: 11px;
+  line-height: 16px;
+  color: #678889;
+  text-shadow: 1px 1px 0 white; }
+
+/*******************
+CONTENT
+*******************/
+.login-form .content {
+  padding: 0 30px 25px 30px; }
+
+/* Input field */
+.login-form .content .input {
+  width: 240px;
+  padding: 15px 25px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #9d9e9e;
+  text-shadow: 1px 1px 0 white;
+  background: #fff;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+
+/* Second input field */
+.login-form .content .password, .login-form .content .pass-icon {
+  margin-top: 25px; }
+
+.login-form .content .input:hover {
+  background: #cc9933;
+  color: #070707; }
+
+.login-form .content .input:focus {
+  background: #dfe9ec;
+  color: #414848;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25); }
+
+.user-icon, .pass-icon {
+  width: 46px;
+  height: 47px;
+  display: block;
+  position: absolute;
+  left: 0;
+  padding-right: 2px;
+  z-index: 3;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px; }
+
+.user-icon-forgot {
+  width: 46px;
+  height: 47px;
+  display: block;
+  position: absolute;
+  left: 0;
+  padding-right: 2px;
+  z-index: 3;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px; }
+
+.user-icon {
+  top: 170px;
+  /* Positioning fix for slide-in, got lazy to think up of simpler method. */
+  background: rgba(65, 72, 72, 0.75) url("../../graphics/user-icon.png") no-repeat center; }
+
+.user-icon-forgot {
+  top: 235px;
+  /* Positioning fix for slide-in, got lazy to think up of simpler method. */
+  background: rgba(65, 72, 72, 0.75) url("../../graphics/user-icon.png") no-repeat center; }
+
+.pass-icon {
+  top: 250px;
+  background: rgba(65, 72, 72, 0.75) url("../../graphics/pass-icon.png") no-repeat center; }
+
+/* Animation */
+.input, .user-icon, .pass-icon, .button, .register, .user-icon-forgot {
+  transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -ms-transition: all 0.5s; }
+
+/*******************
+FOOTER
+*******************/
+.login-form .footer {
+  padding: 25px 30px 40px 30px;
+  overflow: auto;
+  background: #414848;
+  border-top: 1px solid #fff;
+  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.15); }
+
+/* Login button */
+.login-form .footer .button {
+  margin: 10px 42px 10px;
+  padding: 11px 25px;
+  font-weight: 300;
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+  background: #333333;
+  border: 1px solid #cc9933;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.75);
+  -moz-box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.75);
+  -webkit-box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.75); }
+
+.login-form .footer .button:hover {
+  background: #cc9933;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+
+.login-form .footer .button:focus {
+  position: relative;
+  bottom: -1px;
+  background: #cc9933;
+  box-shadow: inset 0 1px 6px rgba(255, 255, 255, 0.75);
+  -moz-box-shadow: inset 0 1px 6px rgba(255, 255, 255, 0.75);
+  -webkit-box-shadow: inset 0 1px 6px rgba(255, 255, 255, 0.75); }
+
+/* Register button */
+.login-form .footer .register {
+  display: block;
+  float: right;
+  padding: 10px;
+  margin-right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Bree Serif', serif;
+  font-weight: 300;
+  font-size: 18px;
+  color: #414848;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); }
+
+.login-form .footer .register:hover {
+  color: #cc9933; }
+
+.login-form .footer .register:focus {
+  position: relative;
+  bottom: -1px; }
+
+#passwordReset {
+  text-align: center;
+  margin: 5px 50px; }
+
+.login-form .footer .button {
+  margin: 10px 42px 10px;
+  padding: 11px 25px; }
 
 /*# sourceMappingURL=app.css.map */

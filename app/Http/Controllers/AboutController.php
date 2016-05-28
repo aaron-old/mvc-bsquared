@@ -98,7 +98,7 @@ class AboutController extends Controller {
 	public function edit($username)
 	{
         $user = User::where('username', $username)->first();
-        return view('members.about', compact('username','user'));
+        return view('members.About', compact('username','user'));
 	}
 
     /**

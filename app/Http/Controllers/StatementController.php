@@ -74,7 +74,7 @@ class StatementController extends Controller {
 	public function edit($username)
 	{
         $user = User::where('username', $username)->first();
-        return view('members.statement', compact('username', 'user'));
+        return view('members.Statement', compact('username', 'user'));
     }
 
     /**

@@ -1,7 +1,11 @@
-/**
- * Created by Aaron Young on 5/21/2016.
- */
+/*--------------------------------
 
+ File Name: Bsquared.js
+
+ Date:
+ Modified:
+ Notes:
+ -----------------------------------*/
 /**
  * 
  * @type {{init}}

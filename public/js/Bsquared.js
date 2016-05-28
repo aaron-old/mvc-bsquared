@@ -1,5 +1,14 @@
 'use strict';
 
+/*--------------------------------
+
+File Name: Bsquared.js
+
+Date:
+Modified:
+Notes:
+-----------------------------------*/
+
 // Global Namespace.
 var BSQUARED = BSQUARED || {};
 
@@ -24,6 +33,15 @@ $(document).ready(function () {
     BSQUARED.Main.init();
     BSQUARED.Profile.init();
 });
+
+/*--------------------------------
+
+ File Name: Bsquared.js
+
+ Date:
+ Modified:
+ Notes:
+ -----------------------------------*/
 
 /**
  * 
@@ -55,20 +73,14 @@ BSQUARED.LoginForms = function () {
         }
     };
 }();
-/**
- *
- * Aaron Young, Megan Palmer, Lucas Mathis, Peter Atwater, Sherri Miller
- * Bob Fisher, Kathy Pratt, James Gibbs, Tanya Ulrich, Kyle Cleven, Jason Kessler-Holt
- * Source for Navigation: http://cssmenumaker.com/
- * Source for Hashing Algorithm: http://pajhome.org.uk/crypt/md5/sha512.html
- * Source for Back-End(Tutorial):http://www.wikihow.com/Create-a-Secure-Login-Script-in-PHP-and-MySQL
- * Source for Login Page: http://www.24psd.com/css3-login-form-template/
- * Inspired by: http://www.noahglushien.com/
- * FAQ Source: http://www.snyderplace.com/demos/collapsible.html
- *
- * CREATIVE COMMONS- All social media link and images used fall under CC
- * http://creativecommons.org/licenses/by/3.0/legalcode
- */
+/*--------------------------------
+
+ File Name: Bsquared.js
+
+ Date:
+ Modified:
+ Notes:
+ -----------------------------------*/
 
 BSQUARED.Skills = function () {
 
@@ -94,10 +106,14 @@ BSQUARED.Skills = function () {
     };
 }();
 
-/**
- * Created by Aaron Young on 5/21/2016.
- */
+/*--------------------------------
 
+ File Name: Bsquared.js
+
+ Date:
+ Modified:
+ Notes:
+ -----------------------------------*/
 /**
  * 
  * @type {{init}}
@@ -108,6 +124,15 @@ BSQUARED.UserControls = function () {
         init: function init() {}
     };
 }();
+/*--------------------------------
+
+ File Name: Bsquared.js
+
+ Date:
+ Modified:
+ Notes:
+ -----------------------------------*/
+
 /**
  * 
  * @type {{init}}
@@ -115,11 +140,12 @@ BSQUARED.UserControls = function () {
 BSQUARED.Profile = function () {
 
     var url = window.location.pathname;
-    var submitProfile = $('#userProfileForm');
     var $post = {};
 
     return {
         init: function init() {
+
+            $('#txtFirstName').focus();
 
             $('#userProfileForm').submit(function (event) {
 
@@ -136,44 +162,14 @@ BSQUARED.Profile = function () {
     };
 }();
 
-// $('#userProfileForm').submit(function(event){
-//
-//     var url = url;
-//     $post.firstName = $('#txtFirstName').val();
-//     $post.lastName = $('#txtLastName').val();
-//     $post.aboutMe = $('#txtAreaAboutMe').val();
-//     $post.token = $('input[name="_token"]').val();
-//     BSQUARED.Forms.post("POST", url, $post);
-// });
+/*--------------------------------
 
-//
-// btnSubmitProfile.on('click', function(event){
-//    event.preventDefault();
-//  
-//     alert('post');
-//     var url = window.location.pathname;
-//     var $post = {};
-//   
-//     $post.firstName = $('#firstName').val();
-//     $post.lastName = $('#lastName').val();
-//     $post.aboutMe = $('#aboutMe').val();
-//   
-//     BSQUARED.Forms.post("POST", url, $post);
-// });
-/**
- *
- * Aaron Young, Megan Palmer, Lucas Mathis, Peter Atwater, Sherri Miller
- * Bob Fisher, Kathy Pratt, James Gibbs, Tanya Ulrich, Kyle Cleven, Jason Kessler-Holt
- * Source for Navigation: http://cssmenumaker.com/
- * Source for Hashing Algorithm: http://pajhome.org.uk/crypt/md5/sha512.html
- * Source for Back-End(Tutorial):http://www.wikihow.com/Create-a-Secure-Login-Script-in-PHP-and-MySQL
- * Source for Login Page: http://www.24psd.com/css3-login-form-template/
- * Inspired by: http://www.noahglushien.com/
- * FAQ Source: http://www.snyderplace.com/demos/collapsible.html
- *
- * CREATIVE COMMONS- All social media link and images used fall under CC
- * http://creativecommons.org/licenses/by/3.0/legalcode
- */
+ File Name: Bsquared.js
+
+ Date:
+ Modified:
+ Notes:
+ -----------------------------------*/
 
 BSQUARED.Forms = function () {
 
@@ -192,13 +188,69 @@ BSQUARED.Forms = function () {
                 datatype: "json",
                 cache: false,
 
-                success: function success(response) {
-                    return response;
+                success: function success(message) {
+                    BSQUARED.Notifications.sendSuccessNotification();
                 }
-            }).done(function (msg) {
-                console.log(msg['message']);
+            }).done(function (message) {
+                console.log(message['message']);
             });
         }
+    };
+}();
+
+/*--------------------------------
+
+ File Name: Bsquared.js
+
+ Date:
+ Modified:
+ Notes:
+ -----------------------------------*/
+
+BSQUARED.Notifications = function () {
+
+    var successNotificationPortfolio;
+
+    successNotificationPortfolio = function successNotificationPortfolio() {
+        $('.result').html('<div class="alert alert-success" role="alert">' + '<button type="button" class="close">x</button>Portfolio Updated!</div>');
+
+        window.setTimeout(function () {
+            $('.alert-success').fadeTo(500, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, 5000);
+
+        $('.alert-success .close').on('click', function (e) {
+            $(this).parent().fadeTo(500, 0).slideUp(500);
+        });
+    };
+
+    var errorNotificationPortfolio = function errorNotificationPortfolio() {
+
+        $('.result').html('<div class="alert alert-danger" role="alert">' + '<button type="button" class="close">x</button>Seems to have been an error</div>');
+
+        window.setTimeout(function () {
+            $('.alert-danger').fadeTo(500, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, 5000);
+
+        $('.alert-danger .close').on('click', function (e) {
+            $(this).parent().fadeTo(500, 0).slideUp(500);
+        });
+    };
+
+    return {
+
+        sendSuccessNotification: function sendSuccessNotification() {
+            return successNotificationPortfolio();
+        },
+
+        sendErrorNotification: function sendErrorNotification() {
+            return errorNotificationPortfolio();
+        },
+
+        sendConfirmationNotification: function sendConfirmationNotification(properties) {}
     };
 }();
 //# sourceMappingURL=Bsquared.js.map

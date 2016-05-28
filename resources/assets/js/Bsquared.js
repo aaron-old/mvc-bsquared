@@ -1,3 +1,12 @@
+/*--------------------------------
+
+File Name: Bsquared.js
+
+Date:
+Modified:
+Notes:
+-----------------------------------*/
+
 
 // Global Namespace.
 var BSQUARED = BSQUARED || {};
@@ -15,6 +24,8 @@ BSQUARED.Main = (function () {
         // A public function utilizing privates
         init: function() {
             var footerYear = $('#footerYear').html('2014-' + year);
+
+
         }
     };
 

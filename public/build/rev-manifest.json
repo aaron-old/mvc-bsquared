@@ -1,10 +1,20 @@
 {
-  "css/app.css": "css/app-0f663c7ae7.css",
+  "css/app.css": "css/app-52209e6de0.css",
   "css/bootstrap.css": "css/bootstrap-e095036bcd.css",
   "css/jquery-ui.css": "css/jquery-ui-bd461584f5.css",
-  "css/loginStyles.css": "css/loginStyles-78d98705c2.css",
-  "js/Bsquared.js": "js/Bsquared-becc062151.js",
-  "js/all.js": "js/all-710c5d2342.js",
+  "css/loginStyles.css": "css/loginStyles-d0b61bda4c.css",
+  "css/portfolio.css": "css/portfolio-d74b4daacc.css",
+  "fonts/Bree_Serif/BreeSerif-Regular.ttf": "fonts/Bree_Serif/BreeSerif-Regular-9fcf3a62fd.ttf",
+  "fonts/Bree_Serif/OFL.gdoc": "fonts/Bree_Serif/OFL-29c516f1ee.gdoc",
+  "fonts/glyphicons-halflings-regular.eot": "fonts/glyphicons-halflings-regular-f4769f9bdb.eot",
+  "fonts/glyphicons-halflings-regular.svg": "fonts/glyphicons-halflings-regular-8988968814.svg",
+  "fonts/glyphicons-halflings-regular.ttf": "fonts/glyphicons-halflings-regular-e18bbf611f.ttf",
+  "fonts/glyphicons-halflings-regular.woff": "fonts/glyphicons-halflings-regular-fa2772327f.woff",
+  "fonts/glyphicons-halflings-regular.woff2": "fonts/glyphicons-halflings-regular-448c34a56d.woff2",
+  "js/Bsquared.js": "js/Bsquared-d3a50549ee.js",
+  "js/Portfolio.js": "js/Portfolio-4f15f5500f.js",
+  "js/all.js": "js/all-3b39735052.js",
   "js/bootstrap.js": "js/bootstrap-de375b5141.js",
-  "js/jquery.js": "js/jquery-f823c81986.js"
+  "js/jquery.js": "js/jquery-f823c81986.js",
+  "js/noty.js": "js/noty-2f2c1ece2d.js"
 }

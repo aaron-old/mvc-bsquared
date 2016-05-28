@@ -1,55 +1,24 @@
 @extends('layouts.app')
 
-@section('PageTitle')Name Portfolio @stop
-
-@section('uniqueHeaderInformation')
-<!-- Stops carousel from automatically changing slides ---- Move Script to JS file in future -- LM -->
-<script>
-    $(document).ready(function() {
-        $('.carousel').carousel('pause');
-
-        $("form").valid();
-
-        $(".nav ul li a").each(function(){
-            $(".active").removeClass("active");
-        })
-    });
-</script>
-
-<!--
-This will be plugged to resource portfolio_backgrounds (will accept path to the resource)
--->
-<style>
-    .addBG {
-        background-color: #eee;
-        background: url('{{asset('img/member_uploads/member_backgrounds/member_background_default.jpg')}}');
-        background-repeat: no-repeat;
-        background-position: center center;
-        width: 100%;
-        max-width: 940px;
-    }
-
-
-</style>
+@section('ExtraJavaScript')
+    <script src="{{elixir('js/Portfolio.js')}}"></script>
 @stop
 
+
+@section('PageTitle'){{$portfolio->profile->firstName. 's Portfolio'}} Portfolio @stop
 @section('Navigation')
     <!-- Add Logic Here to change navigation heading. -->
     @include('layouts.navigation')
 @stop
 
-@if (session('status'))
-    <div class="alert alert-success">
-        {{ session('status') }}
-    </div>
-@endif
+
 
 @section('BodyContent')
 
     <div id="portImgHolder" class="container">
         <div class="row">
-            <img height="150" width="150" class="memberPhoto" src="{{asset('img/member_uploads/default_profile.png')}}"
-            alt="{{$portfolio->profile->firstName. ' ' .$portfolio->profile->lastName}}">
+            <img class="memberPhoto" src="{{asset('images/member_uploads/default_profile.png')}}"
+                 alt="{{$portfolio->profile->firstName.' '.$portfolio->profile->lastName}}">
         </div>
     </div>
 
@@ -73,7 +42,7 @@ This will be plugged to resource portfolio_backgrounds (will accept path to the 
 
                 @for($i = 7, $k=22; $i < 10; $i++, $k++)
                     <div class="col-sm-4">
-                        <img src="{{asset('img/member_uploads/about/default_profile.png')}}" alt="About Me">
+                        <img src="{{asset('images/member_uploads/about/default_profile.png')}}" alt="About Me">
                         <h3>About Label</h3>
                         <p>About Column</p>
                     </div>
@@ -84,7 +53,7 @@ This will be plugged to resource portfolio_backgrounds (will accept path to the 
                 <div class="row skillsColumns">
                     @for($i = 1, $k=4; $i<4; $i++, $k++)
                         <div class="col-sm-4">
-                            <img src="{{asset('img/member_uploads/skills/default_icon.png')}}" alt="my skill">
+                            <img src="{{asset('images/member_uploads/skills/default_icon.png')}}" alt="my skill">
                             <h3 class="skillHeader">Skill Label</h3>
                             <p>Skill Column</p>
                         </div>
@@ -108,7 +77,7 @@ This will be plugged to resource portfolio_backgrounds (will accept path to the 
                     <div class="row">
                         @for($column = 1; $column<4; $column++)
                             <div class="col-sm-4">
-                                <img src="{{asset('img/member_uploads/works/default_works.png')}}"
+                                <img src="{{asset('images/member_uploads/works/default_works.png')}}"
                                      type="button"
                                      data-toggle="modal"
                                      data-target="#modal{{$count}}"
@@ -171,15 +140,14 @@ This will be plugged to resource portfolio_backgrounds (will accept path to the 
                         </div>
                         <div id="myModal{{$i}}" class="modal-body">
                             <img id="modImage{{$i}}"
-                                 src="{{asset('img/member_uploads/project_uploads/project_preview_default.png')}}"
+                                 src="{{asset('images/member_uploads/project_uploads/project_preview_default.png')}}"
                                  alt="Project Preview">
                             <p>Works Description</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button"
                                     class="button button--nina button--text-thick button--text-upper button--size-l"
-                                    data-dismiss="modal">Close
-                            </button>
+                                    data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>

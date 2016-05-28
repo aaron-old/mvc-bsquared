@@ -31,7 +31,7 @@ $profileCount = count($profiles);
                             @for($i = 0; $i<$profileCount; $i++)
                                 <li>
                                     <a href="/portfolio/{{$members[$i]->username}}">
-                                        {{$profiles[$i]->firstName. ' ' . $profiles[$i]->lastName}}
+                                        {{strtoupper($profiles[$i]->firstName. ' ' . $profiles[$i]->lastName)}}
                                     </a>
                                 </li>
                             @endfor

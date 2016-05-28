@@ -1,16 +1,4 @@
 /*******************
-LOGIN FORM STYLESHEET
-by: Amit Jakhu
-www.amitjakhu.com
-*******************/
-
-/*******************
-FONTS
-*******************/
-
-@import url(//fonts.googleapis.com/css?family=Bree+Serif);
-
-/*******************
 SELECTION STYLING
 *******************/
 
@@ -27,14 +15,8 @@ SELECTION STYLING
 BODY STYLING
 *******************/
 
-* {
-	margin: 0;
-	padding: 0;
-	border: 0;
-}
-
 body {
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-family: inherit;
 	font-weight:300;
 	text-align: left;
 	text-decoration: none;
@@ -80,7 +62,6 @@ HEADER
 }
 
 .login-form .header h1 {
-	font-family: 'Bree Serif', serif;
 	font-weight: 300;
 	font-size: 28px;
 	line-height:34px;
@@ -110,7 +91,6 @@ CONTENT
 	width: 240px;
 	padding: 15px 25px;
 	
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-weight: 400;
 	font-size: 14px;
 	color: #9d9e9e;
@@ -179,17 +159,17 @@ CONTENT
 
 .user-icon {
 	top:170px; /* Positioning fix for slide-in, got lazy to think up of simpler method. */
-	background: rgba(65,72,72,0.75) url(../graphics/user-icon.png) no-repeat center;
+	background: rgba(65,72,72,0.75) url('../../graphics/user-icon.png') no-repeat center;
 }
 
 .user-icon-forgot {
 	top:235px; /* Positioning fix for slide-in, got lazy to think up of simpler method. */
-	background: rgba(65,72,72,0.75) url(../graphics/user-icon.png) no-repeat center;
+	background: rgba(65,72,72,0.75) url('../../graphics/user-icon.png') no-repeat center;
 }
 
 .pass-icon {
 	top:250px;
-	background: rgba(65,72,72,0.75) url(../graphics/pass-icon.png) no-repeat center;
+	background: rgba(65,72,72,0.75) url('../../graphics/pass-icon.png') no-repeat center;
 }
 
 /* Animation */
@@ -223,12 +203,10 @@ FOOTER
 
 /* Login button */
 .login-form .footer .button {
-	margin: 0 0 5px 50px;
+	margin: 10px 42px 10px;
 	padding: 11px 25px;
-	
-	font-family: 'Bree Serif', serif;
+
 	font-weight: 300;
-	font-size: 18px;
 	color: #fff;
 	text-shadow: 0 1px 0 rgba(0,0,0,0.25);
 	
@@ -264,20 +242,20 @@ FOOTER
 
 /* Register button */
 .login-form .footer .register {
-	display: block;
-	float: right;
-	padding: 10px;
-	margin-right: 20px;
+  display: block;
+  float: right;
+  padding: 10px;
+  margin-right: 20px;
 	
-	background: none;
-	border: none;
-	cursor: pointer;
+  background: none;
+  border: none;
+  cursor: pointer;
 	
-	font-family: 'Bree Serif', serif;
-	font-weight: 300;
-	font-size: 18px;
-	color: #414848;
-	text-shadow: 0 1px 0 rgba(256,256,256,0.5);
+  font-family: 'Bree Serif', serif;
+  font-weight: 300;
+  font-size: 18px;
+  color: #414848;
+  text-shadow: 0 1px 0 rgba(256,256,256,0.5);
 }
 
 .login-form .footer .register:hover {
@@ -285,11 +263,17 @@ FOOTER
 }
 
 .login-form .footer .register:focus {
-	position: relative;
-	bottom: -1px;
+  position: relative;
+  bottom: -1px;
 }
 
 #passwordReset {
   text-align: center;
-  padding-top: 5px;
+  margin: 5px 50px;
 }
+
+.login-form .footer .button {
+  margin: 10px 42px 10px;
+  padding: 11px 25px;
+}
+

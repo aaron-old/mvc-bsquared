@@ -3,7 +3,6 @@
  var gulp = require('gulp');
  var livereload = require('gulp-livereload');
 
-
  gulp.task('default', ['live-monitor']);
 
  gulp.task('laravel-views', function(){
@@ -38,17 +37,20 @@ elixir(function(mix) {
     
     mix.copy('resources/assets/img/**', 'public/images');
     mix.copy('resources/assets/fonts/**', 'public/fonts');
+    mix.copy('node_modules/bootstrap/fonts/**', 'public/fonts');
     mix.copy('node_modules/jquery-ui/themes/ui-lightness/images/**', 'public/images');
     
     mix.sass([
         'app.scss',
         'buttons.scss',
-        'portfolio_styles.scss'
-    ]);
-    
-    mix.styles([
+        'portfolio_styles.scss',
         'form_style.scss'
-    ], 'public/css/loginStyles.css', 'resources/assets/sass/');
+    ]);
+
+    mix.sass([
+        'buttons.scss',
+        'portfolio_styles.scss'
+    ], 'public/css/portfolio.css', 'resources/assets/sass/');
 
     mix.styles([
         'bootstrap.min.css',
@@ -66,13 +68,11 @@ elixir(function(mix) {
     mix.babel([
         'bootstrap.min.js'
     ], 'public/js/bootstrap.js', 'node_modules/bootstrap/dist/js/');
-
+    
     mix.babel([
         'jquery.validate.min.js',
         'rollbar.js',
-        'sha512.min.js',
-        'keen.js',
-        'keen.data.js'
+        'sha512.min.js'
     ]);
 
     mix.babel([
@@ -81,18 +81,27 @@ elixir(function(mix) {
         'Skills.js',
         'UserControls.js',
         'Profile.js',
-        'Forms.js'
+        'Forms.js',
+        'Notifications.js'
     ], 'public/js/Bsquared.js', 'resources/assets/js/');
-    
+
+    mix.babel([
+        'Portfolio.js'
+    ], 'public/js/Portfolio.js', 'resources/assets/js');
+
     mix.version([
         'public/css/app.css',
         'public/img/**',
         'public/js/all.js',
         'public/css/bootstrap.css',
+        'public/css/portfolio.css',
         'public/js/jquery.js',
         'public/js/bootstrap.js',
         'public/js/Bsquared.js',
+        'public/js/Portfolio.js',
+        'public/js/noty.js',
         'public/css/loginStyles.css',
-        'public/css/jquery-ui.css'
+        'public/css/jquery-ui.css',
+        'public/fonts/**'
     ]);
 });

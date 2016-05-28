@@ -12,8 +12,6 @@
     @include('layouts.navigation')
 @stop
 
-
-
 @section('BodyContent')
     <div id="main">
         @if (session('status'))
@@ -21,7 +19,7 @@
                 {{ session('status') }}
             </div>
         @endif
-            @if (count($errors) > 0)
+            @if (count($errors) > 0)fa
                 <div class="alert alert-danger">
                     <ul>
                         @foreach ($errors->all() as $error)
