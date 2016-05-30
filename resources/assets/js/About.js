@@ -130,7 +130,7 @@ BSQUARED.About = (function(){
                 var $postColumn = {};
                 var $postImage = {};
                 
-                var token = $('input[name="_token"]')
+                var token = $('input[name="_token"]');
                 
                 $postLabel.label = $('#txtAboutLabel').val();
                 $postColumn.column = $('#txtAreaAboutColumn').val();
