@@ -19,9 +19,9 @@ BSQUARED.About = (function(){
      */
 
     var overviewURL = window.location.pathname;
-    var labelURL = '/label/';
-    var columnURL = '/column/';
-    var imageURL = '/path/';
+    var labelURL = '/label';
+    var columnURL = '/column';
+    var imageURL = '/path';
     var destination_id;
     
     var destinations = {
@@ -46,7 +46,8 @@ BSQUARED.About = (function(){
     };
     
     var loadValues = function(url, destination_id){
-        url = url+destination_id;
+        url = url+'/'+destination_id;
+        alert(url);
         $.ajaxSetup({
             headers:{'X-CSRF-TOKEN': $('input[name="_token"]').val()}
         });
