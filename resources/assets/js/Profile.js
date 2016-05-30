@@ -1,9 +1,10 @@
 /*--------------------------------
 
- File Name: Bsquared.js
-
- Date:
- Modified:
+ File Name: Profile.js
+ Date: 2016 28 2016
+ Author: Aaron Young
+ Modified By:
+ Modified Date:
  Notes:
  -----------------------------------*/
 
@@ -20,6 +21,7 @@ BSQUARED.Profile = (function(){
         init: function(){
 
             $('#txtFirstName').focus();
+            $('#fileProfilePhoto').hide();
             
             $('#userProfileForm').submit(function(event) {
 
@@ -32,6 +34,11 @@ BSQUARED.Profile = (function(){
                 
                 BSQUARED.Forms.post('POST', url, $post);
             });
+            
+            $('#btnAddProfilePhoto').on('click', function(event){
+                event.preventDefault();
+                $('#fileProfilePhoto').click();
+            })
         }
     }
 })();

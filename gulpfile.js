@@ -77,17 +77,19 @@ elixir(function(mix) {
 
     mix.babel([
         'Bsquared.js',
+        'Portfolio.js',
         'LoginForms.js',
         'Skills.js',
         'UserControls.js',
         'Profile.js',
         'Forms.js',
-        'Notifications.js'
+        'Notifications.js',
+        'Statement.js',
+        'About.js',
+        'Overview.js',
+        'Works.js'
     ], 'public/js/Bsquared.js', 'resources/assets/js/');
 
-    mix.babel([
-        'Portfolio.js'
-    ], 'public/js/Portfolio.js', 'resources/assets/js');
 
     mix.version([
         'public/css/app.css',
@@ -98,8 +100,6 @@ elixir(function(mix) {
         'public/js/jquery.js',
         'public/js/bootstrap.js',
         'public/js/Bsquared.js',
-        'public/js/Portfolio.js',
-        'public/js/noty.js',
         'public/css/loginStyles.css',
         'public/css/jquery-ui.css',
         'public/fonts/**'

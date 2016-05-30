@@ -1,11 +1,12 @@
 /*--------------------------------
 
-File Name: Bsquared.js
-
-Date:
-Modified:
-Notes:
------------------------------------*/
+ File Name: Bsquared.js
+ Date: 2016 28 2016
+ Author: Aaron Young
+ Modified By:
+ Modified Date:
+ Notes:
+ -----------------------------------*/
 
 
 // Global Namespace.
@@ -24,8 +25,6 @@ BSQUARED.Main = (function () {
         // A public function utilizing privates
         init: function() {
             var footerYear = $('#footerYear').html('2014-' + year);
-
-
         }
     };
 
@@ -33,5 +32,10 @@ BSQUARED.Main = (function () {
 
 $(document).ready(function(){
     BSQUARED.Main.init();
+    BSQUARED.Portfolio.init();
     BSQUARED.Profile.init();
+    BSQUARED.Statement.init();
+    BSQUARED.About.init();
+    BSQUARED.Skills.init();
+    BSQUARED.Works.init();
 });

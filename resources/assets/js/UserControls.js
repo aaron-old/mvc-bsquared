@@ -11,10 +11,4 @@
  * @type {{init}}
  */
 BSQUARED.UserControls = (function (){
-    
-    return {
-        init:function(){
-            
-        }
-    };
 })();

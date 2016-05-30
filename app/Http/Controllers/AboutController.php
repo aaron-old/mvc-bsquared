@@ -1,57 +1,37 @@
 <?php namespace Bsquared\Http\Controllers;
 
-use Bsquared\Http\Requests\Request;
-use Illuminate\Contracts\Queue\EntityNotFoundException;
-use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Contracts\Queue\EntityNotFoundException;
+
 use Bsquared\User;
 use Bsquared\About;
-use Bsquared\Label;
-use Bsquared\Column;
-use Bsquared\Path;
-use Bsquared\Destination;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Validator;
 
 class AboutController extends Controller {
-
-	/**
-	 * Display a listing of the resource.
-	 * GET /about
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
-	}
+    
 
     /**
      * Show the form for creating a new resource.
      * GET /about/create
      *
-     * @param Request $request
-     * @param $authUserID
+     * @param $data
      * @return Response
+     * @internal param Request $request
+     * @internal param $authUserID
      */
-	public function create(Request $request, $authUserID)
+	public function create($data)
 	{
-		$about = About::findOrFail($authUserID);
-
-        if(count($about) > 0){
-            $overview = $this->validateRequest($request, $about);
-            $overview->save();
-            return back();
-        }
-        else {
-            $about = new About;
-            $about->user_id = $authUserID;
-            $create = $this->validateRequest($request, $about);
-            $create->save();
-            return back();
-        }
+		$about = new About();
+        $about->user_id = $data['user_id'];
+        $validatedCreate  = $this->validateRequest($data, $about);
+        $validatedCreate->save();
+        return response()->json(['message'=>'create']);
 	}
-
+    
+    
     /**
      * Store a newly created resource in storage.
      * POST /about
@@ -61,29 +41,33 @@ class AboutController extends Controller {
      */
 	public function store(Request $request)
 	{
-        
-		$authUserID = Auth::id();
-        $portionSelected = $request->destination_id;
-        $this->createUpdate($request, $portionSelected, $authUserID);
-        
-        if($request->has('overview'))
+        if($request->ajax())
         {
-            $aboutOverview = DB::table('portfolio_about')
-                ->where('user_id', $authUserID)
-                ->whereNotNull('overview');
+          $authUserID = Auth::id();
+          $overview = About::where('user_id', $authUserID)->first();
 
+            $overviewData = [
+               'overview' => $request->input('overview'),
+                'user_id' => $authUserID
+            ];
+            
             try{
-                if(count($aboutOverview) === 0){
-                    return AboutController::create($request, $authUserID);
+                if(!object_get($overview, 'user_id')){
+                    return AboutController::create($overviewData);
                 }
                 else {
-                    return AboutController::update($request, $authUserID);
+                    return AboutController::update($overviewData);
                 }
             }
-            catch(EntityNotFoundException $error)
+            catch (EntityNotFoundException $error)
             {
                 return back($error);
             }
+
+        }
+        else {
+            
+            return response()->json(['message'=>'no good']);
         }
 	}
     
@@ -105,17 +89,18 @@ class AboutController extends Controller {
      * Update the specified resource in storage.
      * PUT /about/{id}
      *
-     * @param $request
-     * @param $authUserID
+     * @param $data
      * @return Response
+     * @internal param $request
+     * @internal param $authUserID
      * @internal param int $id
      */
-	public function update($request, $authUserID)
+	public function update($data)
 	{
-		$about = About::findOrFail($authUserID);
-        $update = $this->validateRequest($request, $about);
-        $update->save();
-        return back();
+        $overview = About::where('user_id', $data['user_id'])->first();
+        $validatedOverviewUpdate = $this->validateRequest($data, $overview);
+        $validatedOverviewUpdate->save();
+        return response()->json(['message'=>'updated']);
 	}
 
 	/**
@@ -130,23 +115,24 @@ class AboutController extends Controller {
 		//
 	}
 
-	private function createUpdate($request, $portionSelected, $userID)
-	{
-        if($request->has('label')){
-            LabelController::setLabel($request, $portionSelected, $userID);
-        }
-        if($request->has('column_text')){
-            ColumnController::setColumn($request, $portionSelected, $userID);
-        }
-        if($request->has('path')){
-            PathController::setPath($request, $portionSelected, $userID);
-        }
-	}
 
-    private function validateRequest(Request $request, $overview)
+    /**
+     * @param $data
+     * @param $overview
+     * @return $this
+     */
+    private function validateRequest($data, $overview)
     {
-        $overview->overview = $request->overview;
-        return $overview;
-    }
+        $validator = Validator::make($data, [
+           $data['overview'] => 'max:500'
+        ]);
 
+        if($validator->fails()){
+            return back()->withErrors($validator)->withInput();
+        }
+        else {
+            $overview->overview = $data['overview'];
+            return $overview;
+        }
+    }
 }

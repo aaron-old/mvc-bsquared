@@ -1,39 +1,42 @@
-<form id="skills" action="/skills/{{$user->username}}" method="post" enctype="multipart/form-data">
-    {!! csrf_field() !!}
-    <fieldset id="box">
-        <fieldset>
-            <legend>My Skills Segments</legend>
-            <label for="destination_id">Skills Number: </label>
-            <select name="destination_id" id="destination_id">
-                    <option value="1" selected="selected">Skill #1</option>
-                    <option value="2">Skill #2</option>
-                    <option value="3">Skill #3</option>
-                </select>
+<div class="result"></div>
+<form id="userSkillsForm" class="form-inline"
+      method="post"
+      action="/skills/{{$user->username}}"
+      enctype="multipart/form-data">
 
-            <label for="label">Label One</label>
-            <input type="text" name="label" id="label">
-
-            <label for="iconImg">Upload an Icon:(PNG or JPG Only) Dimensions:48X48 </label>
-            <input type="file" name="iconImg" id="iconImg">
-
-            <label for="column_text">Column Text</label>
-            <textarea rows="4" cols="50" name="column_text" id="column_text"></textarea>
-
-            <input type="submit" name="submit_skills" id="btnSubmitSkills" value="Update Skills">
-        </fieldset>
-        <fieldset>
-            <legend>Resume Upload</legend>
-            <label for="">Resume: (PDF only!)</label>
-
-            <input type="file" name="resume" id="resume">
-            <input type="submit" name="submit_resume" id="submit_resume" value="Submit Resume">
-
-            <!--Maybe add a resume preview here on the bottom based of the users previous input ( keeps design similar.)
-               if(get the path of the resume is not not null then)
-                    display the page
-               else
-                    display not yet uploaded.
-             -->
-        </fieldset>
-    </fieldset>
+    <legend class="legend">My Skills Segments</legend>
+    <div id="skills_Label_Column_ImageForm" class="form-group portfolioUpdateForm">
+        <div class="form-group">
+            <label for="skills_DestinationID">Skills Number: </label>
+            <select id="skills_DestinationID" class="form-control memberFocus">
+                <option value="1" selected="selected">Skill #1</option>
+                <option value="2">Skill #2</option>
+                <option value="3">Skill #3</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="txtSkillLabel">Skill Name</label>
+            <input id="txtSkillLabel"  class="form-control memberFocus" type="text">
+            <input id="skillColumnDestinationID" type="hidden">
+        </div>
+        <div class="form-group-lg">
+            <label for="txtAreaSkillsColumn">Skill Description</label>
+            <textarea id="txtAreaSkillsColumn" class="form-control memberFocus" rows="4" cols="50"></textarea>
+        </div>
+        <div class="form-group">
+            <button id="btnAddSkillsImage" class="btn btn-default memberSubmitButton">Upload Skill Icon</button>
+            <input id="fileSkillsIcon" type="file">
+            <input id="fileSkillsDestinationID" type="hidden">
+        </div>
+        <button id="btnSubmitSkill_Column_Label_Image" class="btn btn-default memberSubmitButton">Save</button>
+    </div>
+    <legend class="legend">Resume Upload</legend>
+    <div id="skills_resumeForm" class="form-group portfolioUpdateForm">
+        <div class="form-group">
+            <label for="fileResume">Resume: (PDF only!)</label>
+            <input  id="fileResume" class="form-control memberFocus" type="file">
+        </div>
+        <hr>
+        <button id="btnAddResume" class="btn btn-default memberSubmitButton">Upload Resume</button>
+    </div>
 </form>

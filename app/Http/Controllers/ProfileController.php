@@ -1,38 +1,44 @@
-<?php namespace
+<?php 
 
-Bsquared\Http\Controllers;
+namespace Bsquared\Http\Controllers;
 
 
 use Illuminate\Contracts\Queue\EntityNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
+use Illuminate\Support\Facades\Storage;
 use Bsquared\User;
 use Bsquared\Profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Validator;
 
+
+/**
+ * Class ProfileController
+ * @package Bsquared\Http\Controllers
+ */
 class ProfileController extends Controller {
 
     /**
      * Show the form for creating a new resource.
      * GET /profile/create
      *
-     * @param Request $request
-     * @param $authUserID
+     * @param $data
      * @return Response
+     * @internal param Request $request
+     * @internal param $authUserID
      * @internal param $user_id
      * @internal param User $user
      */
-
     public function create($data)
 	{
         $profile = new Profile();
         $profile->user_id = $data['user_id'];
-        $create = $this->validateRequest($data, $profile);
-        $create->save();
-        session()->flash('status', 'Profile updated!');
-        return back();
+        $validatedCreate = $this->validateRequest($data, $profile);
+        $validatedCreate->save();
+        return response()->json(['message'=>'create']);
     }
 
     /**
@@ -71,9 +77,6 @@ class ProfileController extends Controller {
         {
             return back($error);
         }
-
-
-
 	}
     
     /**
@@ -105,25 +108,20 @@ class ProfileController extends Controller {
 	public function update($data)
 	{
         $profile = Profile::findOrFail($data['user_id']);
-        $update  = $this->validateRequest($data, $profile);
-
-        //return response()->json(['message'=>$data]);
-
-
-        $update->save();
-        response()->json(['message'=>'Complete']);
-        session()->flash('status', 'Profile updated!');
-        return back()->with('status', 'Profile updated!');
+        $validatedUpdate  = $this->validateRequest($data, $profile);
+        $validatedUpdate->save();
+        return response()->json(['message'=>'Complete']);
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /profile/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
+    /**
+     * Remove the specified resource from storage.
+     * DELETE /profile/{id}
+     *
+     * @param $user_id
+     * @return Response
+     * @internal param int $id
+     */
+	public function destroy($user_id)
 	{
 		//
 	}
@@ -136,11 +134,23 @@ class ProfileController extends Controller {
      */
     private function validateRequest($data, $profile)
     {
+        
+        $validator = Validator::make($data, [
+           $data['firstName'] => 'max:30',
+            $data['lastName'] => 'max:30',
+            $data['aboutMe'] => 'min:10|max:1000'
+        ]);
 
-        $profile->firstName = $data['firstName'];
-        $profile->lastName = $data['lastName'];
-        $profile->aboutMe = $data['aboutMe'];
+        if($validator->fails()){
+            return back()->withErrors($validator)->withInput();
+        }
+        else {
 
-        return $profile;
+            $profile->firstName = $data['firstName'];
+            $profile->lastName = $data['lastName'];
+            $profile->aboutMe = $data['aboutMe'];
+
+            return $profile;
+        }
     }
 }

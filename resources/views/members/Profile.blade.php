@@ -13,7 +13,7 @@
 @stop
 
 @section('BodyContent')
-    <div id="main">
+    <div id="main" class="">
         @if (session('status'))
             <div class="alert alert-success">
                 {{ session('status') }}

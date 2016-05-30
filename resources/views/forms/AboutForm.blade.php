@@ -1,35 +1,46 @@
-<form id="about" action="/about/{{$user->username}}" method="post">
-    {!! csrf_field() !!}
-    <fieldset id="box">
-        <legend>Overview Section</legend>
-        <label for="overview">Overview: </label>
-        <textarea cols="100" rows="5" name="overview" id="overview">
-            {{old('', $user->about->overview)}}
-        </textarea>
-        <input type="submit" name="submit_overview" id="submit_overview" value="Update Overview">
+<div class="result"></div>
+<form id="userAboutForm" class="form-inline"
+      method="post"
+      action="/about/{{$user->username}}"
+      enctype="multipart/form-data">
+     {{csrf_field()}}
 
-        <fieldset>
-            <legend>About Me Segments</legend>
-
-            <label for="destination_id">About Me Number:</label>
-            <select name="destination_id" id="destination_id">
-                    <option value="1" selected="selected">About Me #1</option>
-                    <option value="2">About Me #2</option>
-                    <option value="3">About Me #3</option>
+    <legend class="legend">Overview Section</legend>
+    <div id="about_OverviewFormFields" class="form-group portfolioUpdateForm">
+        <div class="form-group">
+            <label for="txtAbout_Overview">Overview: </label>
+            <textarea id="txtAbout_Overview" class="form-control memberFocus" rows="5" cols="50">{{old('', $user->about->overview)}}</textarea>
+        </div>
+        <button id="btnSubmitAbout_Overview" type="submit" class="btn btn-default memberSubmitButton">Save</button>
+    </div>
+    <legend class="legend">About Me Segments</legend>
+    <div id="about_Label_Column_ImageForm" class="form-group portfolioUpdateForm">
+        <div class="form-group">
+            <label for="about_DestinationID">About Me Number:</label>
+            <select id="about_DestinationID" class="form-control memberFocus" >
+                <option value="1" selected="selected">About Me #1</option>
+                <option value="2">About Me #2</option>
+                <option value="3">About Me #3</option>
             </select>
-
-            <label for="aboutImage">Upload an Image:(PNG or JPG Only) Dimensions:140X140</label>
-            <input type="file" name="aboutImage" id="aboutImage">
-
-            <label for="label">Label Name</label>
-            <input type="text" name="label" id="label">
-
-            <label for="column_text">Column Text</label>
-            <textarea rows="4" cols="50" name="column_text" id="column_text"></textarea>
-
-            <input type="submit" name="submit_about" id="submit_about" value="Update About Me Segment">
-        </fieldset>
-    </fieldset>
+        </div>
+        <div class="form-group">
+            <label for="txtAboutLabel">About Me Title</label>
+            <input id="txtAboutLabel" class="form-control memberFocus" type="text">
+            <input id="aboutLabelDestinationID" type="hidden">
+        </div>
+        <div class="form-group">
+            <label for="txtAreaAboutColumn">About Me Description</label>
+            <textarea id="txtAreaAboutColumn" class="form-control memberFocus" rows="4" cols="50"></textarea>
+            <input id="aboutColumnDestinationID" type="hidden">
+        </div>
+        <div class="form-group">
+            {{--<label for="btnAddAboutImage">Upload an Image:(PNG or JPG Only) Dimensions:140X140</label>--}}
+            <button id="btnAddAboutImage" class="btn btn-default memberSubmitButton">Upload About Image</button>
+            <input id="fileAboutImage" type="file">
+            <input id="fileAboutDestinationID" type="hidden">
+        </div>
+        <button id="btnSubmitAbout_Column_Label_Image" class="btn btn-default memberSubmitButton">Save</button>
+    </div>
 </form>
 
 

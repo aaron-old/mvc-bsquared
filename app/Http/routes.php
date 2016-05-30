@@ -33,21 +33,24 @@ Route::group(['middlewareGroups'=> ['web']], function(){
     /**
      * Member Routes
      */
+    
+    
+    /*-----------------
+           PROFILE
+     ---------------*/
     Route::get('/profile/{username}', [
         'uses' => 'ProfileController@edit',
         'as'   => 'editProfile'
     ]);
-
-//    Route::post('/profile/{username}', function(Request $request){
-//
-//        return response()->json(['message'=> $request->lastName]);
-//    });
 
     Route::post('/profile/{username}', [
         'uses' => 'ProfileController@store',
         'as'   => 'postProfile'
     ]);
 
+    /*----------------------
+            STATEMENT
+     -------------------*/
 
     Route::get('/statement/{username}', [
         'uses' => 'StatementController@edit',
@@ -58,6 +61,10 @@ Route::group(['middlewareGroups'=> ['web']], function(){
         'uses' => 'StatementController@store',
         'as'   => 'postStatement'
     ]);
+    
+    /*-------------------------
+                ABOUT
+     --------------------------*/
 
     Route::get('/about/{username}', [
         'uses' => 'AboutController@edit',
@@ -68,6 +75,10 @@ Route::group(['middlewareGroups'=> ['web']], function(){
         'uses' => 'AboutController@store',
         'as'   => 'postAbout'
     ]);
+    
+    /*---------------------------
+                SKILLS
+     ----------------------------*/
 
     Route::get('/skills/{username}', [
         'uses' => 'SkillsController@edit',
@@ -77,6 +88,10 @@ Route::group(['middlewareGroups'=> ['web']], function(){
         'uses' => 'SkillsController@store',
         'as'   => 'postSkills'
     ]);
+    
+    /*-------------------------------
+                 WORKS
+     -----------------------------*/
 
     Route::get('/works/{username}', [
         'uses' => 'WorksController@show',
@@ -87,10 +102,61 @@ Route::group(['middlewareGroups'=> ['web']], function(){
         'uses' => 'WorksController@store',
         'as'   => 'postWorks'
     ]);
+    
+    /*---------------------------
+            SETTINGS
+     ----------------------------*/
 
     Route::get('/settings/{username}', [
         'uses' =>'SettingsController@show',
         'as'   => 'editSettings'
+    ]);
+    
+    Route::post('/settings/{username}', [
+        'uses' => 'SettingsController@store',
+        'as' => 'postSettings'
+    ]);
+
+    /*----------------------
+            LABELS
+     -----------------------*/
+    
+    Route::get('/label', [
+        'uses' => 'LabelController@edit',
+        'as' => 'editLabel'
+    ]);
+    
+    Route::post('/label', [
+        'uses' => 'LabelController@store',
+        'as' => 'postLabel'
+    ]);
+    
+    /*-----------------------
+            COLUMNS
+     ------------------------*/
+    
+    Route::get('/column', [
+       'uses' => 'ColumnController@edit',
+        'as' => 'editColumn'
+    ]);
+    
+    Route::post('/column', [
+        'uses' => 'ColumnController@store',
+        'as' => 'postColumn'
+    ]);
+    
+    /*-----------------------
+            PATHS
+     -----------------------*/
+    
+    Route::get('/path', [
+       'uses' => 'PathController@edit',
+        'as' => 'editColumn'
+    ]);
+    
+    Route::post('/path', [
+        'uses' => 'PathController@store',
+        'as' => 'postPath'
     ]);
 
     /*

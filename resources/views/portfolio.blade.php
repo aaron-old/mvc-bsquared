@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('ExtraJavaScript')
-    <script src="{{elixir('js/Portfolio.js')}}"></script>
+
 @stop
 
 
@@ -38,7 +38,7 @@
             </div>
 
             <div id="slide2" class="item">
-                <p id="aboutPortfolio">About Overview</p>
+                <p id="aboutPortfolio">{{$portfolio->profile->aboutMe}}</p>
 
                 @for($i = 7, $k=22; $i < 10; $i++, $k++)
                     <div class="col-sm-4">
@@ -91,13 +91,19 @@
             </div>
 
             <div id="slide5" class="item">
+
                 <div class="row">
                     <div class="col-sm-12">
+
                         <h2>Get in Touch</h2>
                         <div id="faqForm" class="container">
                             <p>If you would like to contact me, please complete the form below with your name,
                                 email address, subject, and a brief message. I will contact you within 24 hours. Thank you.</p>
-                            <form id="contact" method="post" action="{{url('/')}}">
+                            <div class="result"></div>
+                            <form id="contactMember"
+                                  method="post"
+                                  action="{{url('/')}}">
+
                                 <input type="text" id="name" name="name" placeholder="Name" required="required">
                                 <br>
                                 <input type="email" id="email" name="email" placeholder="Email" required="required">
@@ -107,10 +113,9 @@
                                 <input type="text" name="userID" value="1" style="display: none">
                                 <textarea name="content" placeholder="Your Message" required="required"></textarea>
                                 <br><br>
-                                <button class="button button--nina button--text-thick button--text-upper button--size-l"
-                                        data-text="Send Mail"
-                                        name="submit"
-                                        onclick="this.form.submit()">
+                                <button id="btnSendMemberMail"  type="button"
+                                        class="button button--nina button--text-thick button--text-upper button--size-l"
+                                        data-text="Send Mail">
                                     <span>S</span><span>e</span><span>n</span><span>d</span>
                                     <span>M</span><span>a</span><span>i</span><span>l</span>
                                 </button>

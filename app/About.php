@@ -3,7 +3,6 @@
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property  user_id
  */
 class About extends Model {
 

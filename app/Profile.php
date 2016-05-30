@@ -3,7 +3,7 @@
 namespace Bsquared;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
+
 
 
 /**
