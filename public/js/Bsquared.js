@@ -589,10 +589,14 @@ BSQUARED.About = function () {
                 var $postColumn = {};
                 var $postImage = {};
 
+                var token = $('input[name="_token"]');
+
                 $postLabel.label = $('#txtAboutLabel').val();
                 $postColumn.column = $('#txtAreaAboutColumn').val();
                 $postLabel.labelDestinationID = $('#aboutLabelDestinationID').val();
                 $postColumn.columnDestinationID = $('#aboutColumnDestinationID').val();
+                $postColumn.token = token.val();
+                $postLabel.token = token.val();
 
                 BSQUARED.Forms.post("POST", labelURL, $postLabel);
                 BSQUARED.Forms.post("POST", columnURL, $postColumn);
