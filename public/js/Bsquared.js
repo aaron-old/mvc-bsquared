@@ -502,17 +502,13 @@ BSQUARED.About = function () {
         $('#fileAboutDestinationID').val(destinations.imageDestinationID);
 
         loadValues(labelURL, label);
+        loadValues(columnURL, column);
+
         console.log(destinations);
     };
 
     var loadValues = function loadValues(url, destination_id) {
-
-        var labelDestinationID = $('#aboutLabelDestinationID').val();
-        var columnDestinationID = $('#aboutColumnDestinationID').val();
-
         url = url + destination_id;
-        //$('#fileAboutDestinationID').val();
-
         $.ajaxSetup({
             headers: { 'X-CSRF-TOKEN': $('input[name="_token"]').val() }
         });
@@ -523,7 +519,7 @@ BSQUARED.About = function () {
             cache: false,
             success: function success(data) {
                 console.log('made');
-                console.log('data');
+                console.log(data);
             },
             error: function error(data) {
                 console.log(data);
@@ -531,8 +527,13 @@ BSQUARED.About = function () {
             }
         }).done(function (data) {
             console.log('done');
-            $('#txtAboutLabel').val(data.label.label);
-            //$('#txtAreaAboutColumn').val(data.column);
+            console.log(data);
+
+            if (data.hasOwnProperty('label')) {
+                $('#txtAboutLabel').val(data.label.label);
+            } else {
+                $('#txtAreaAboutColumn').val(data.column.column_text);
+            }
         });
     };
 
@@ -559,19 +560,24 @@ BSQUARED.About = function () {
     return {
 
         init: function init() {
-            var labelDestination = $('#aboutLabelDestinationID');
+            var firstFieldFocus = $('#txtAbout_Overview');
+            var fileInput = $('#fileAboutImage');
+            var aboutLabelDestinationID = $('#aboutLabelDestinationID');
+            var fileDestination = $('#fileAboutDestinationID');
+            var aboutColumnDestinationID = $('#aboutColumnDestinationID');
+            var formSelectDestination = $('#about_DestinationID');
 
-            $('#fileAboutImage').hide();
-            $('#txtAbout_Overview').focus();
-            labelDestination.val(22);
-            $('#aboutColumnDestinationID').val(7);
-            $('#fileAboutDestinationID').val(22);
+            fileInput.hide();
+            firstFieldFocus.focus();
+            aboutLabelDestinationID.val(22);
+            aboutColumnDestinationID.val(7);
+            fileDestination.val(22);
 
-            //loadValues(url, destination_id);
-            loadValues(labelURL, labelDestination.val());
+            loadValues(labelURL, aboutLabelDestinationID.val());
+            loadValues(columnURL, aboutColumnDestinationID.val());
+            //load images
 
-            $('#about_DestinationID').on('change', function () {
-
+            formSelectDestination.on('change', function () {
                 destination_id = $('#about_DestinationID').find('option:selected').val();
                 getDestinations(destination_id);
             });
@@ -586,10 +592,10 @@ BSQUARED.About = function () {
                 $postLabel.label = $('#txtAboutLabel').val();
                 $postColumn.column = $('#txtAreaAboutColumn').val();
                 $postLabel.labelDestinationID = $('#aboutLabelDestinationID').val();
-                $postLabel.columnDestinationID = $('#aboutColumnDestinationID').val();
+                $postColumn.columnDestinationID = $('#aboutColumnDestinationID').val();
 
                 BSQUARED.Forms.post("POST", labelURL, $postLabel);
-                //BSQUARED.Forms.post("POST", columnURL, $postColumn);
+                BSQUARED.Forms.post("POST", columnURL, $postColumn);
             });
 
             $('#btnSubmitAbout_Overview').on('click', function (event) {

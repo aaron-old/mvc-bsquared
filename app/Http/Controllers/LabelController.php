@@ -29,7 +29,10 @@ class LabelController extends Controller
         return response()->json(['message'=>'created']);
     }
 
-    
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         $authUserID = Auth::id();
@@ -40,8 +43,6 @@ class LabelController extends Controller
             'destination_id' => $request->input('labelDestinationID'),
             'user_id' => $authUserID
         ];
-        
-        //return response()->json(['message'=>'store']);
 
         try {
             if($label===null){
@@ -65,7 +66,15 @@ class LabelController extends Controller
     public function edit($destinationID)
     {
         $label = Label::where('destination_id', $destinationID)->where('user_id', Auth::id())->first();
-        return response()->json(['label'=>$label]);
+
+        if($label !== null)
+        {
+            return response()->json(['label'=>$label]);
+        }
+        else {
+            return response()->json(['label'=>'']);
+        }
+
     }
 
     /**

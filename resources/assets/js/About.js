@@ -40,6 +40,8 @@ BSQUARED.About = (function(){
         $('#fileAboutDestinationID').val(destinations.imageDestinationID);
 
         loadValues(labelURL, label);
+        loadValues(columnURL, column);
+        
         console.log(destinations);
     };
     
@@ -55,7 +57,7 @@ BSQUARED.About = (function(){
             cache:false,
             success: function(data){
                 console.log('made');
-                console.log('data');
+                console.log(data);
 
             },
             error: function(data){
@@ -64,8 +66,14 @@ BSQUARED.About = (function(){
             }
         }).done(function(data){
             console.log('done');
-            $('#txtAboutLabel').val(data.label.label);
-            //$('#txtAreaAboutColumn').val(data.column);
+            console.log(data);
+            
+            if(data.hasOwnProperty('label')){
+                $('#txtAboutLabel').val(data.label.label);
+            }
+            else {
+                $('#txtAreaAboutColumn').val(data.column.column_text);
+            }
         });
         
     };
@@ -93,22 +101,21 @@ BSQUARED.About = (function(){
     return {
 
         init:function(){
-            var labelDestination = $('#aboutLabelDestinationID');
             var firstFieldFocus = $('#txtAbout_Overview');
             var fileInput = $('#fileAboutImage');
-            var columnDestination = $('#aboutColumnDestinationID');
+            var aboutLabelDestinationID = $('#aboutLabelDestinationID');
             var fileDestination = $('#fileAboutDestinationID');
-
+            var aboutColumnDestinationID = $('#aboutColumnDestinationID');
             var formSelectDestination = $('#about_DestinationID');
 
             fileInput.hide();
             firstFieldFocus.focus();
-            labelDestination.val(22);
-            columnDestination.val(7);
+            aboutLabelDestinationID.val(22);
+            aboutColumnDestinationID.val(7);
             fileDestination.val(22);
 
-            loadValues(labelURL, labelDestination.val());
-            //load columns
+            loadValues(labelURL, aboutLabelDestinationID.val());
+            loadValues(columnURL, aboutColumnDestinationID.val());
             //load images
 
             formSelectDestination.on('change', function(){
@@ -126,10 +133,10 @@ BSQUARED.About = (function(){
                 $postLabel.label = $('#txtAboutLabel').val();
                 $postColumn.column = $('#txtAreaAboutColumn').val();
                 $postLabel.labelDestinationID = $('#aboutLabelDestinationID').val();
-                $postLabel.columnDestinationID = $('#aboutColumnDestinationID').val();
+                $postColumn.columnDestinationID = $('#aboutColumnDestinationID').val();
 
                 BSQUARED.Forms.post("POST", labelURL, $postLabel);
-                //BSQUARED.Forms.post("POST", columnURL, $postColumn);
+                BSQUARED.Forms.post("POST", columnURL, $postColumn);
 
             });
             

@@ -135,7 +135,7 @@ Route::group(['middlewareGroups'=> ['web']], function(){
             COLUMNS
      ------------------------*/
     
-    Route::get('/column', [
+    Route::get('/column/{destinationID}', [
        'uses' => 'ColumnController@edit',
         'as' => 'editColumn'
     ]);
