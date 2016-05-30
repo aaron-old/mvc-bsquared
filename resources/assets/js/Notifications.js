@@ -21,9 +21,10 @@ BSQUARED.Notifications = (function() {
     var errorNotification_Portfolio;
     var successNotification_Mail;
     var errorNotification_Mail;
+    var errorLoadNotification;
     
     var errorMessage = 'Seems to have been an error, want to report a bug? <a href="#">E-mail Support Team</a>';
-
+    var loadWarning = 'Seems some of your data did not load properly, want to report a bug?<a href="#">E-mail Support Team</a>';
 
     /**
      * 
@@ -57,7 +58,7 @@ BSQUARED.Notifications = (function() {
 
 
     errorNotification_Portfolio = function () {
-        properties.type='alert-error';
+        properties.type='alert-danger';
         properties.message= errorMessage;
 
         notification(properties);
@@ -71,8 +72,15 @@ BSQUARED.Notifications = (function() {
     };
     
     errorNotification_Mail = function () {
-        properties.type='alert-error';
+        properties.type='alert-danger';
         properties.message= errorMessage;
+        
+        notification(properties);
+    };
+
+    errorLoadNotification = function(){
+        properties.type= 'alert-warning';
+        properties.message = loadWarning;
         
         notification(properties);
     };
@@ -97,6 +105,10 @@ BSQUARED.Notifications = (function() {
         
         error_MemberMail_Notification : function () {
             return errorNotification_Mail();
+        },
+        
+        error_Loading_Notification : function(){
+            return errorLoadNotification();
         }
     }
 

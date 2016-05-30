@@ -277,29 +277,6 @@ BSQUARED.Forms = function () {
             });
         },
 
-        postLabelColumn: function postLabelColumn(type, url, data) {
-            $.ajaxSetup({
-                headers: { 'X-CSRF-TOKEN': $('input[name="_token"]').val() }
-            });
-            $.ajax({
-                method: type,
-                url: url,
-                data: data,
-                datatype: "json",
-                cache: false,
-                success: function success(data) {
-                    console.log(data);
-                },
-                error: function error(data) {
-                    console.log(data);
-                    BSQUARED.Notifications.sendErrorNotification();
-                }
-
-            }).done(function (data) {
-                console.log(data);
-            });
-        },
-
         postFiles: function postFiles(type, url, data) {
             $.ajaxSetup({
                 headers: { 'X-CSRF-TOKEN': $('input[name="_token"]').val() }
@@ -350,8 +327,10 @@ BSQUARED.Notifications = function () {
     var errorNotification_Portfolio;
     var successNotification_Mail;
     var errorNotification_Mail;
+    var errorLoadNotification;
 
     var errorMessage = 'Seems to have been an error, want to report a bug? <a href="#">E-mail Support Team</a>';
+    var loadWarning = 'Seems some of your data did not load properly, want to report a bug?<a href="#">E-mail Support Team</a>';
 
     /**
      * 
@@ -380,7 +359,7 @@ BSQUARED.Notifications = function () {
     };
 
     errorNotification_Portfolio = function errorNotification_Portfolio() {
-        properties.type = 'alert-error';
+        properties.type = 'alert-danger';
         properties.message = errorMessage;
 
         notification(properties);
@@ -394,8 +373,15 @@ BSQUARED.Notifications = function () {
     };
 
     errorNotification_Mail = function errorNotification_Mail() {
-        properties.type = 'alert-error';
+        properties.type = 'alert-danger';
         properties.message = errorMessage;
+
+        notification(properties);
+    };
+
+    errorLoadNotification = function errorLoadNotification() {
+        properties.type = 'alert-warning';
+        properties.message = loadWarning;
 
         notification(properties);
     };
@@ -419,6 +405,10 @@ BSQUARED.Notifications = function () {
 
         error_MemberMail_Notification: function error_MemberMail_Notification() {
             return errorNotification_Mail();
+        },
+
+        error_Loading_Notification: function error_Loading_Notification() {
+            return errorLoadNotification();
         }
     };
 }();
@@ -490,7 +480,10 @@ BSQUARED.About = function () {
      * @type {string}
      */
 
-    var url = window.location.pathname;
+    var overviewURL = window.location.pathname;
+    var labelURL = '/label/';
+    var columnURL = '/column/';
+    var imageURL = '/path/';
     var destination_id;
 
     var destinations = {
@@ -508,7 +501,39 @@ BSQUARED.About = function () {
         $('#aboutColumnDestinationID').val(destinations.columnDestinationID);
         $('#fileAboutDestinationID').val(destinations.imageDestinationID);
 
+        loadValues(labelURL, label);
         console.log(destinations);
+    };
+
+    var loadValues = function loadValues(url, destination_id) {
+
+        var labelDestinationID = $('#aboutLabelDestinationID').val();
+        var columnDestinationID = $('#aboutColumnDestinationID').val();
+
+        url = url + destination_id;
+        //$('#fileAboutDestinationID').val();
+
+        $.ajaxSetup({
+            headers: { 'X-CSRF-TOKEN': $('input[name="_token"]').val() }
+        });
+        $.ajax({
+            method: "GET",
+            url: url,
+            datatype: "json",
+            cache: false,
+            success: function success(data) {
+                console.log('made');
+                console.log('data');
+            },
+            error: function error(data) {
+                console.log(data);
+                BSQUARED.Notifications.error_Loading_Notification();
+            }
+        }).done(function (data) {
+            console.log('done');
+            $('#txtAboutLabel').val(data.label.label);
+            //$('#txtAreaAboutColumn').val(data.column);
+        });
     };
 
     var getDestinations = function getDestinations(destination_id) {
@@ -534,8 +559,16 @@ BSQUARED.About = function () {
     return {
 
         init: function init() {
+            var labelDestination = $('#aboutLabelDestinationID');
+
             $('#fileAboutImage').hide();
             $('#txtAbout_Overview').focus();
+            labelDestination.val(22);
+            $('#aboutColumnDestinationID').val(7);
+            $('#fileAboutDestinationID').val(22);
+
+            //loadValues(url, destination_id);
+            loadValues(labelURL, labelDestination.val());
 
             $('#about_DestinationID').on('change', function () {
 
@@ -550,17 +583,13 @@ BSQUARED.About = function () {
                 var $postColumn = {};
                 var $postImage = {};
 
-                var labelURL = '/label';
-                var columnURL = '/column';
-                var imageURL = '/path';
-
                 $postLabel.label = $('#txtAboutLabel').val();
                 $postColumn.column = $('#txtAreaAboutColumn').val();
                 $postLabel.labelDestinationID = $('#aboutLabelDestinationID').val();
                 $postLabel.columnDestinationID = $('#aboutColumnDestinationID').val();
 
-                BSQUARED.Forms.postLabelColumn("POST", labelURL, $postLabel);
-                BSQUARED.Forms.postLabelColumn("POST", columnURL, $postColumn);
+                BSQUARED.Forms.post("POST", labelURL, $postLabel);
+                //BSQUARED.Forms.post("POST", columnURL, $postColumn);
             });
 
             $('#btnSubmitAbout_Overview').on('click', function (event) {
@@ -570,7 +599,7 @@ BSQUARED.About = function () {
 
                 $post.overview = $('#txtAbout_Overview').val();
 
-                BSQUARED.Forms.post("POST", url, $post);
+                BSQUARED.Forms.post("POST", overviewURL, $post);
             });
         }
     };

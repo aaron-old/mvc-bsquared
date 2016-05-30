@@ -26,7 +26,7 @@ BSQUARED.Forms = (function(){
      * PUBLIC METHODS
      */
     return {
-
+        
         /**
          * 
          * @param type
@@ -57,28 +57,6 @@ BSQUARED.Forms = (function(){
             });
         },
         
-        postLabelColumn : function(type, url, data){
-            $.ajaxSetup({
-                headers:{'X-CSRF-TOKEN': $('input[name="_token"]').val()}
-            });
-            $.ajax({
-                method: type,
-                url: url,
-                data: data,
-                datatype: "json",
-                cache:false,
-                success: function(data){
-                    console.log(data);
-                },
-                error: function(data){
-                    console.log(data);
-                    BSQUARED.Notifications.sendErrorNotification();
-                }
-
-            }).done(function(data){
-                console.log(data);
-            });
-        },
         
         postFiles : function(type, url, data){
             $.ajaxSetup({

@@ -121,7 +121,7 @@ Route::group(['middlewareGroups'=> ['web']], function(){
             LABELS
      -----------------------*/
     
-    Route::get('/label', [
+    Route::get('/label/{destinationID}', [
         'uses' => 'LabelController@edit',
         'as' => 'editLabel'
     ]);

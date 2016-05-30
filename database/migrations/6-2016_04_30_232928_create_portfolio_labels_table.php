@@ -14,6 +14,7 @@ class CreatePortfolioLabelsTable extends Migration {
 	{
 		Schema::create('portfolio_labels', function(Blueprint $table)
 		{
+			$table->increments('label_id');
 			$table->integer('label_id');
 			$table->integer('user_id')->unsigned()->index();
 			$table->string('label', 48)->nullable();
