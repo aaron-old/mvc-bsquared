@@ -2,32 +2,88 @@
 
 namespace Bsquared\Http\Controllers;
 
+use Bsquared\Path;
+use Illuminate\Contracts\Queue\EntityNotFoundException;
 use Illuminate\Http\Request;
 
 use Bsquared\Http\Requests;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class PathController extends Controller
 {
-    public static function setPath(Request $request, $portionSelected, $userID){
 
-    }
-
-    public function create()
+    /**
+     * @param $data
+     */
+    public function create($data)
     {
 
     }
 
-    public function update()
+    /**
+     * @param Request $request
+     */
+    public function store(Request $request)
+    {
+        
+    }
+
+    /**
+     * @param $destinationID
+     */
+    public function edit($destinationID)
+    {
+        
+    }
+
+    /**
+     * @param $data
+     */
+    public function update($data)
     {
 
     }
 
-    public function edit()
+    /**
+     * @param $data
+     * @param $path
+     * @param $type
+     * @return $this
+     */
+    private function validateRequest($data, $path, $type)
     {
 
+        if($type === 'image'){
+            $validator = Validator::make($data, [
+               $data['image'] => 'mimes:jpg,jpeg'
+            ]);
+
+            if($validator->fails()){
+                return back()->withErrors($validator)->withInput();
+            }
+            else {
+                return $path;
+            }
+        }
+        else {
+            $validator = Validator::make($data, [
+               'resume' => 'mimes:pdf'
+            ]);
+            if($validator->fails()){
+                return back()->withErrors($validator)->withInput();
+            }
+            else {
+                return $path;
+            }
+        }
     }
 
-    public function destroy()
+
+    /**
+     * @param Request $request
+     */
+    public function destroy(Request $request)
     {
 
     }

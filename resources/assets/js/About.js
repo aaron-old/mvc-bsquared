@@ -19,21 +19,32 @@ BSQUARED.About = (function(){
      */
 
     var overviewURL = window.location.pathname;
-    var labelURL = '/label';
+    var labelURL  = '/label';
     var columnURL = '/column';
-    var imageURL = '/path';
+    var imageURL  = '/path';
+    
     var destination_id;
-    
+
+    /**
+     * 
+     * @type {{labelDestinationID: number, columnDestinationID: number, imageDestinationID: number}}
+     */
     var destinations = {
-        labelDestinationID : 22,
+        labelDestinationID  : 22,
         columnDestinationID : 7,
-        imageDestinationID: 22
+        imageDestinationID  : 22
     };
-    
+
+    /**
+     * 
+     * @param label
+     * @param column
+     * @param image
+     */
     var setDestinations = function(label, column, image) {
-        destinations.labelDestinationID = label;
+        destinations.labelDestinationID  = label;
         destinations.columnDestinationID = column;
-        destinations.imageDestinationID = image;
+        destinations.imageDestinationID  = image;
         
         $('#aboutLabelDestinationID').val(destinations.labelDestinationID);
         $('#aboutColumnDestinationID').val(destinations.columnDestinationID);
@@ -41,13 +52,10 @@ BSQUARED.About = (function(){
 
         loadValues(labelURL, label);
         loadValues(columnURL, column);
-        
-        console.log(destinations);
     };
     
     var loadValues = function(url, destination_id){
-        url = url+'/'+destination_id;
-        alert(url);
+        url = url + '/' + destination_id;
         $.ajaxSetup({
             headers:{'X-CSRF-TOKEN': $('input[name="_token"]').val()}
         });
@@ -73,6 +81,7 @@ BSQUARED.About = (function(){
                 $('#txtAboutLabel').val(data.label.label);
             }
             else {
+                //noinspection JSUnresolvedVariable
                 $('#txtAreaAboutColumn').val(data.column.column_text);
             }
         });
@@ -80,8 +89,6 @@ BSQUARED.About = (function(){
     };
     
     var getDestinations = function(destination_id){
-        console.log(destination_id);
-        
        switch(destination_id){
            case '1':
                console.log(1);
@@ -96,7 +103,8 @@ BSQUARED.About = (function(){
                setDestinations(24, 9, 24);
                break;
            default:
-               console.log('default');
+               setDestinations(22, 7, 22);
+               break;
        }
     };
     return {
@@ -108,6 +116,9 @@ BSQUARED.About = (function(){
             var fileDestination = $('#fileAboutDestinationID');
             var aboutColumnDestinationID = $('#aboutColumnDestinationID');
             var formSelectDestination = $('#about_DestinationID');
+            var btnSaveAbout = $('#btnSubmitAbout_Column_Label_Image');
+            var btnSaveOverview = $('#btnSubmitAbout_Overview');
+            var btnAboutImage = $('#btnAddAboutImage');
 
             fileInput.hide();
             firstFieldFocus.focus();
@@ -124,7 +135,7 @@ BSQUARED.About = (function(){
                 getDestinations(destination_id);
             });
 
-            $('#btnSubmitAbout_Column_Label_Image').on('click', function(event){
+            btnSaveAbout.on('click', function(event){
                 event.preventDefault();
                 
                 var $postLabel = {};
@@ -145,7 +156,12 @@ BSQUARED.About = (function(){
 
             });
             
-            $('#btnSubmitAbout_Overview').on('click', function(event){
+            btnAboutImage.on('click', function(event){
+                event.preventDefault();
+                fileInput.click();
+            });
+
+            btnSaveOverview.on('click', function(event){
                 event.preventDefault();
                 
                  var $post = {};
