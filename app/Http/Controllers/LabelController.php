@@ -36,7 +36,8 @@ class LabelController extends Controller
     public function store(Request $request)
     {
         $authUserID = Auth::id();
-        $label = Label::where('user_id', $authUserID)->where('destination_id', $request->input('labelDestinationID'))->first();
+        $label = Label::where('user_id', $authUserID)
+            ->where('destination_id', $request->input('labelDestinationID'))->first();
 
         $data = [
             'label' => $request->input('label'),

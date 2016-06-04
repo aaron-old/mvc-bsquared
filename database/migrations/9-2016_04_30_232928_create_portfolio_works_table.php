@@ -16,6 +16,7 @@ class CreatePortfolioWorksTable extends Migration {
 		{
 			$table->integer('user_id')->unsigned()->index();
 			$table->integer('works_id')->default(0);
+			$table->integer('destination_id')->index('destination_id');
 			$table->string('title', 48)->nullable();
 			$table->text('project_description', 65535)->nullable();
 			$table->string('work_link', 512)->nullable();

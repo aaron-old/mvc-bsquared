@@ -6,10 +6,13 @@
     {!! csrf_field() !!}
 
     <legend class="legend">Update Portfolio Items</legend>
+
+    <input id="worksDestinationID" type="hidden">
+
     <div id="worksForms" class="form-group portfolioUpdateForm">
         <div class="form-group">
-            <label for="destination_id">Works Number:</label>
-            <select id="destination_id" class="form-control memberFocus">
+            <label for="works_DestinationID">Works Number:</label>
+            <select id="works_DestinationID" class="form-control memberFocus">
                 <option value="1" selected="selected">Works 1</option>
                 <option value="2">Works 2</option>
                 <option value="3">Works 3</option>
@@ -21,6 +24,7 @@
                 <option value="9">Works 9</option>
             </select>
         </div>
+
         <div class="form-group">
             <label  for="txtWorksTitle">Project Title</label>
             <div class="col-xs-4">

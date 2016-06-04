@@ -68,7 +68,12 @@ elixir(function(mix) {
     mix.babel([
         'bootstrap.min.js'
     ], 'public/js/bootstrap.js', 'node_modules/bootstrap/dist/js/');
-    
+
+    mix.babel([
+       'underscore-min.js'
+    ], 'public/js/underscore.js', 'node_modules/underscore/');
+
+
     mix.babel([
         'jquery.validate.min.js',
         'rollbar.js',
@@ -87,7 +92,8 @@ elixir(function(mix) {
         'Statement.js',
         'About.js',
         'Overview.js',
-        'Works.js'
+        'Works.js',
+        'Destinations.js'
     ], 'public/js/Bsquared.js', 'resources/assets/js/');
 
 
@@ -99,6 +105,7 @@ elixir(function(mix) {
         'public/css/portfolio.css',
         'public/js/jquery.js',
         'public/js/bootstrap.js',
+        'public/js/underscore.js',
         'public/js/Bsquared.js',
         'public/css/loginStyles.css',
         'public/css/jquery-ui.css',

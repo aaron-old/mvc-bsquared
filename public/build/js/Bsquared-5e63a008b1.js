@@ -121,12 +121,17 @@ BSQUARED.LoginForms = function () {
  */
 BSQUARED.Skills = function () {
 
+    var form = 'skills';
+
     var labelURL = '/label';
     var columnURL = '/column';
     var imageURL = '/path';
     var resumeURL = '/resume';
 
     var destination_id;
+
+    var label = $('#txtSkillLabel');
+    var column = $('#txtAreaSkillsColumn');
 
     /**
      *
@@ -141,63 +146,36 @@ BSQUARED.Skills = function () {
 
     /**
      *
-     * @param label
-     * @param column
-     * @param image
-     * @param resume
+     * @param optionValue
      */
-    var setDestinations = function setDestinations(label, column, image, resume) {
-        destinations.labelDestinationID = label;
-        destinations.columnDestinationID = column;
-        destinations.imageDestinationID = image;
-        destinations.resumeDestinationID = resume;
+    var setDestinations = function setDestinations(optionValue) {
+        destinations.labelDestinationID = BSQUARED.Destinations.searchLists(form, optionValue, 'labelDestination');
+        destinations.columnDestinationID = BSQUARED.Destinations.searchLists(form, optionValue, 'columnDestination');
+        destinations.imageDestinationID = BSQUARED.Destinations.searchLists(form, optionValue, 'image');
+        destinations.resumeDestinationID = BSQUARED.Destinations.searchListKeyValue('resume', 'destination_id');
 
         $('#skillLabelDestinationID').val(destinations.labelDestinationID);
         $('#skillColumnDestinationID').val(destinations.columnDestinationID);
         $('#fileSkillsDestinationID').val(destinations.imageDestinationID);
         $('#fileResumeDestinationID').val(destinations.resumeDestinationID);
 
-        loadValues(labelURL, label);
-        loadValues(columnURL, column);
-    };
-
-    var loadValues = function loadValues(url, destination_id) {
-        url = url + '/' + destination_id;
-        $.ajaxSetup({
-            headers: { 'X-CSRF-TOKEN': $('input[name="_token"]').val() }
-        });
-        $.ajax({
-            method: "GET",
-            url: url,
-            datatype: "json",
-            cache: false,
-            success: function success(data) {},
-            error: function error(data) {
-                BSQUARED.Notifications.error_Loading_Notification();
-            }
-        }).done(function (data) {
-            if (data.hasOwnProperty('label')) {
-                $('#txtSkillLabel').val(data.label.label);
-            }
-            if (data.hasOwnProperty('column')) {
-                $('#txtAreaSkillsColumn').val(data.column.column_text);
-            }
-        });
+        BSQUARED.Forms.loadValues(labelURL, destinations.labelDestinationID, 'label', label);
+        BSQUARED.Forms.loadValues(columnURL, destinations.columnDestinationID, 'column', column);
     };
 
     var getDestinations = function getDestinations(destination_id) {
         switch (destination_id) {
             case '1':
-                setDestinations(1, 4, 1, 35);
+                setDestinations(1);
                 break;
             case '2':
-                setDestinations(2, 5, 2, 35);
+                setDestinations(2);
                 break;
             case '3':
-                setDestinations(3, 6, 3, 35);
+                setDestinations(3);
                 break;
             default:
-                setDestinations(1, 4, 1, 35);
+                setDestinations(1);
         }
     };
 
@@ -207,6 +185,7 @@ BSQUARED.Skills = function () {
             var firstFieldFocus = $('#txtSkillLabel');
             var fileImageInput = $('#fileSkillsIcon');
             var fileResumeInput = $('#fileResume');
+
             var formSelectDestination = $('#skills_DestinationID');
             var btnSaveSkill = $('#btnSubmitSkill_Column_Label_Image');
 
@@ -218,17 +197,16 @@ BSQUARED.Skills = function () {
             firstFieldFocus.focus();
             fileImageInput.hide();
             fileResumeInput.hide();
-            fileResumeInput.hide();
 
             labelDestinationID.val(1);
             columnDestinationID.val(4);
             imageDestinationID.val(1);
             resumeDestinationID.val(35);
 
-            loadValues(labelURL, labelDestinationID.val());
-            loadValues(columnURL, columnDestinationID.val());
+            BSQUARED.Forms.loadValues(labelURL, labelDestinationID.val(), 'label', label);
+            BSQUARED.Forms.loadValues(columnURL, columnDestinationID.val(), 'column', column);
 
-            formSelectDestination.on('change').on('click', function () {
+            formSelectDestination.on('change', function () {
                 destination_id = $('#skills_DestinationID').find('option:selected').val();
                 getDestinations(destination_id);
             });
@@ -342,9 +320,75 @@ BSQUARED.Forms = function () {
      * PRIVATE VARIABLE & METHODS
      */
 
-    var ajaxSetup;
-    var portfolioSuccess;
-    var portfolioError;
+    var sendPortfolioSuccess = function sendPortfolioSuccess() {
+        BSQUARED.Notifications.sendSuccessNotification();
+    };
+
+    var sendPortfolioError = function sendPortfolioError() {
+        BSQUARED.Notifications.sendErrorNotification();
+    };
+
+    var sendLoadError = function sendLoadError() {
+        BSQUARED.Notifications.error_Loading_Notification();
+    };
+
+    /**
+     * 
+     * @param data
+     * @param elements
+     */
+    var worksLoad = function worksLoad(data, elements) {
+
+        var x = 0;
+
+        for (x; x < elements.length; x++) {
+            console.log('loading works');
+        }
+    };
+
+    /**
+     * 
+     * @param data
+     * @param elements
+     */
+    var pathLoad = function pathLoad(data, elements) {
+
+        var x = 0;
+
+        for (x; x < elements.length; x++) {}
+    };
+
+    /**
+     * 
+     * @param data
+     * @param element
+     */
+    var labelLoad = function labelLoad(data, element) {
+        $(element.selector).val(data.label.label);
+    };
+
+    /**
+     * 
+     * @param data
+     * @param element
+     */
+    var columnLoad = function columnLoad(data, element) {
+
+        //noinspection JSUnresolvedVariable
+        console.log(element);
+        $(element.selector).val(data.column.column_text);
+    };
+
+    /**
+     * 
+     * @param url
+     * @param destination_id
+     * @returns {string}
+     */
+    var makeRESTURL = function makeRESTURL(url, destination_id) {
+
+        return url + '/' + destination_id;
+    };
 
     /**
      * PUBLIC METHODS
@@ -361,19 +405,19 @@ BSQUARED.Forms = function () {
             $.ajaxSetup({
                 headers: { 'X-CSRF-TOKEN': $('input[name="_token"]').val() }
             });
+
             $.ajax({
+
                 method: type,
                 url: url,
                 data: data,
                 datatype: "json",
                 cache: false,
-                success: function success(data) {
-                    console.log(data);
-                    BSQUARED.Notifications.sendSuccessNotification();
+                success: function success() {
+                    sendPortfolioSuccess();
                 },
                 error: function error(data) {
-                    console.log(data);
-                    BSQUARED.Notifications.sendErrorNotification();
+                    sendPortfolioError();
                 }
 
             }).done(function (data) {
@@ -381,11 +425,19 @@ BSQUARED.Forms = function () {
             });
         },
 
+        /**
+         * 
+         * @param type
+         * @param url
+         * @param data
+         */
         postFiles: function postFiles(type, url, data) {
             $.ajaxSetup({
                 headers: { 'X-CSRF-TOKEN': $('input[name="_token"]').val() }
             });
+
             $.ajax({
+
                 method: type,
                 url: url,
                 data: data,
@@ -394,17 +446,66 @@ BSQUARED.Forms = function () {
                 processData: false,
                 contentType: false,
                 success: function success() {
-                    console.log('alert the user');
-                    BSQUARED.Notifications.sendSuccessNotification();
+                    sendPortfolioSuccess();
                 },
                 error: function error() {
-                    console.log('alert the user');
-                    BSQUARED.Notifications.sendErrorNotification();
+                    sendPortfolioError();
                 }
+            }).done(function (data) {
+                console.log(data);
             });
         },
 
-        uploadFiles: function uploadFiles(event, data) {}
+        /**
+         * 
+         * @param event
+         * @param data
+         */
+        uploadFiles: function uploadFiles(event, data) {},
+
+        /**
+         *
+         * @param url
+         * @param destination_id
+         * @param type
+         * @param elements
+         */
+        loadValues: function loadValues(url, destination_id, type, elements) {
+
+            var route = makeRESTURL(url, destination_id);
+
+            $.ajaxSetup({
+                headers: { 'X-CSRF-TOKEN': $('input[name="_token"]').val() }
+            });
+
+            $.ajax({
+                method: "GET",
+                url: route,
+                datatype: "json",
+                cache: false,
+                success: function success(data) {
+                    switch (type) {
+                        case "works":
+                            console.log(data);
+                            worksLoad(data, elements);
+                            break;
+                        case "label":
+                            console.log(data);
+                            labelLoad(data, elements);
+                            break;
+                        case "column":
+                            console.log(data);
+                            columnLoad(data, elements);
+                            break;
+                    }
+                },
+                error: function error(data) {
+                    sendLoadError(data);
+                }
+            }).done(function (data) {
+                console.log(data);
+            });
+        }
     };
 }();
 
@@ -585,11 +686,16 @@ BSQUARED.About = function () {
      */
 
     var overviewURL = window.location.pathname;
+
+    var form = 'about';
     var labelURL = '/label';
     var columnURL = '/column';
     var imageURL = '/path';
 
     var destination_id;
+
+    var column = $('#txtAreaAboutColumn');
+    var label = $('#txtAboutLabel');
 
     /**
      * 
@@ -602,77 +708,44 @@ BSQUARED.About = function () {
     };
 
     /**
-     * 
-     * @param label
-     * @param column
-     * @param image
+     *
+     * @param optionValue
      */
-    var setDestinations = function setDestinations(label, column, image) {
-        destinations.labelDestinationID = label;
-        destinations.columnDestinationID = column;
-        destinations.imageDestinationID = image;
+    var setDestinations = function setDestinations(optionValue) {
+
+        destinations.labelDestinationID = BSQUARED.Destinations.searchLists(form, optionValue, 'labelDestination');
+        destinations.columnDestinationID = BSQUARED.Destinations.searchLists(form, optionValue, 'columnDestination');
+        destinations.imageDestinationID = BSQUARED.Destinations.searchLists(form, optionValue, 'image');
 
         $('#aboutLabelDestinationID').val(destinations.labelDestinationID);
         $('#aboutColumnDestinationID').val(destinations.columnDestinationID);
         $('#fileAboutDestinationID').val(destinations.imageDestinationID);
 
-        loadValues(labelURL, label);
-        loadValues(columnURL, column);
-    };
-
-    var loadValues = function loadValues(url, destination_id) {
-        url = url + '/' + destination_id;
-        $.ajaxSetup({
-            headers: { 'X-CSRF-TOKEN': $('input[name="_token"]').val() }
-        });
-        $.ajax({
-            method: "GET",
-            url: url,
-            datatype: "json",
-            cache: false,
-            success: function success(data) {
-                console.log('made');
-                console.log(data);
-            },
-            error: function error(data) {
-                console.log(data);
-                BSQUARED.Notifications.error_Loading_Notification();
-            }
-        }).done(function (data) {
-            console.log('done');
-            console.log(data);
-
-            if (data.hasOwnProperty('label')) {
-                $('#txtAboutLabel').val(data.label.label);
-            } else {
-                //noinspection JSUnresolvedVariable
-                $('#txtAreaAboutColumn').val(data.column.column_text);
-            }
-        });
+        BSQUARED.Forms.loadValues(labelURL, destinations.labelDestinationID, 'label', label);
+        BSQUARED.Forms.loadValues(columnURL, destinations.columnDestinationID, 'column', column);
     };
 
     var getDestinations = function getDestinations(destination_id) {
         switch (destination_id) {
             case '1':
-                console.log(1);
-                setDestinations(22, 7, 22);
+                setDestinations(1);
                 break;
             case '2':
-                console.log(2);
-                setDestinations(23, 8, 23);
+                setDestinations(2);
                 break;
             case '3':
-                console.log(3);
-                setDestinations(24, 9, 24);
+                setDestinations(3);
                 break;
             default:
-                setDestinations(22, 7, 22);
+                setDestinations(1);
                 break;
         }
     };
+
     return {
 
         init: function init() {
+
             var firstFieldFocus = $('#txtAbout_Overview');
             var fileInput = $('#fileAboutImage');
             var aboutLabelDestinationID = $('#aboutLabelDestinationID');
@@ -689,9 +762,8 @@ BSQUARED.About = function () {
             aboutColumnDestinationID.val(7);
             fileDestination.val(22);
 
-            loadValues(labelURL, aboutLabelDestinationID.val());
-            loadValues(columnURL, aboutColumnDestinationID.val());
-            //load images
+            BSQUARED.Forms.loadValues(labelURL, aboutLabelDestinationID.val(), 'label', label);
+            BSQUARED.Forms.loadValues(columnURL, aboutColumnDestinationID.val(), 'column', column);
 
             formSelectDestination.on('change', function () {
                 destination_id = $('#about_DestinationID').find('option:selected').val();
@@ -704,7 +776,6 @@ BSQUARED.About = function () {
                 var $postLabel = {};
                 var $postColumn = {};
                 var $postImage = {};
-
                 var token = $('input[name="_token"]');
 
                 $postLabel.label = $('#txtAboutLabel').val();
@@ -725,11 +796,8 @@ BSQUARED.About = function () {
 
             btnSaveOverview.on('click', function (event) {
                 event.preventDefault();
-
                 var $post = {};
-
                 $post.overview = $('#txtAbout_Overview').val();
-
                 BSQUARED.Forms.post("POST", overviewURL, $post);
             });
         }
@@ -761,25 +829,113 @@ BSQUARED.Overview = function () {};
  */
 BSQUARED.Works = function () {
 
-    var url = window.location.pathname;
-    var $post = {};
-    var files = {};
+    var worksURL = window.location.pathname;
+    var form = 'works';
+    var pathURL = '/path';
+
+    var destination_id;
+
+    var title = $('#txtWorksTitle');
+    var description = $('#txtAreaProjectDescription');
+    var link = $('#txtProjectLink');
+
+    /**
+     *
+     * @type {{previewDestinationID: number, thumbnailDestinationID: number, worksDestinationID: number}}
+     */
+    var destinations = {
+        previewDestinationID: 25,
+        thumbnailDestinationID: 10,
+        worksDestinationID: 10
+    };
+
+    /**
+     *
+     * @param optionValue
+     */
+    var setDestinations = function setDestinations(optionValue) {
+        destinations.worksDestinationID = BSQUARED.Destinations.searchLists(form, optionValue, 'general');
+        destinations.thumbnailDestinationID = BSQUARED.Destinations.searchLists(form, optionValue, 'thumbDestination');
+        destinations.previewDestinationID = BSQUARED.Destinations.searchLists(form, optionValue, 'previewDestination');
+
+        $('#worksDestinationID').val(destinations.worksDestinationID);
+        $('#fileProjectThumbnailDestinationID').val(destinations.thumbnailDestinationID);
+        $('#fileProjectDescriptionImage').val(destinations.previewDestinationID);
+
+        BSQUARED.Forms.loadValues(worksURL, destinations.worksDestinationID, 'works', [title, description, link]);
+    };
+
+    var getDestinations = function getDestinations(destination_id) {
+        switch (destination_id) {
+            case '1':
+                setDestinations(1);
+                break;
+            case '2':
+                setDestinations(2);
+                break;
+            case '3':
+                setDestinations(3);
+                break;
+            case '4':
+                setDestinations(4);
+                break;
+            case '5':
+                setDestinations(5);
+                break;
+            case '6':
+                setDestinations(6);
+                break;
+            case '7':
+                setDestinations(7);
+                break;
+            case '8':
+                setDestinations(8);
+                break;
+            case '9':
+                setDestinations(9);
+                break;
+            default:
+                setDestinations(1);
+        }
+    };
 
     return {
+
         init: function init() {
+
+            var worksDestinationID = $('#worksDestinationID');
+            var descriptionImageDestinationID = $('#fileProjectDescriptionImageDestinationID');
+            var thumbnailImageDestinationID = $('#fileProjectThumbnailDestinationID');
+            var formSelectDestination = $('#works_DestinationID');
+
             $('#fileProjectThumbnail').hide();
             $('#fileProjectDescriptionImage').hide();
-
             $('#txtWorksTitle').focus();
+
+            worksDestinationID.val(10);
+            descriptionImageDestinationID.val(25);
+            thumbnailImageDestinationID.val(10);
+
+            BSQUARED.Forms.loadValues(worksURL, worksDestinationID.val(), 'works', [title, description, link]);
+
+            formSelectDestination.on('change', function () {
+                destination_id = formSelectDestination.find('option:selected').val();
+                getDestinations(destination_id);
+            });
 
             $('#userWorksForm').submit(function (event) {
                 event.preventDefault();
 
-                $post.worksTitle = $('#txtWorksTitle').val();
-                $post.description = $('#txtAreaProjectDescription').val();
-                $post.link = $('#txtProjectLink').val();
+                var $post = {};
+                var $postImages = {};
 
-                BSQUARED.Forms.post('POST', url, $post);
+                $post.workTitle = title.val();
+                $post.workDescription = description.val();
+                $post.workLink = link.val();
+                $post.worksDestinationID = worksDestinationID.val();
+                $post.token = $('input[name="_token"]').val();
+
+                BSQUARED.Forms.post('POST', worksURL, $post);
             });
 
             $('#btnAddProjectThumbnail').on('click', function () {
@@ -792,6 +948,139 @@ BSQUARED.Works = function () {
                 $('#fileProjectDescriptionImage').click();
             });
         }
+    };
+}();
+
+/**
+ * Created by Aaron Young on 6/3/2016.
+ */
+
+BSQUARED.Destinations = function () {
+
+    var destinations = {
+
+        "profile": {
+            "destination_ID": 20
+        },
+        "statement": {
+            "destination_ID": 21
+        },
+
+        "portfolioPicture": {
+            "destination_ID": 36
+        },
+
+        "about": {
+            "1": {
+                "columnDestination": 7,
+                "labelDestination": 22,
+                "image": 22
+            },
+            "2": {
+                "columnDestination": 8,
+                "labelDestination": 23,
+                "image": 23
+            },
+
+            "3": {
+                "columnDestination": 9,
+                "labelDestination": 24,
+                "image": 24
+            }
+        },
+
+        "skills": {
+
+            "1": {
+                "columnDestination": 4,
+                "labelDestination": 1,
+                "image": 1
+            },
+
+            "2": {
+                "columnDestination": 5,
+                "labelDestination": 2,
+                "image": 2
+            },
+
+            "3": {
+                "columnDestination": 6,
+                "labelDestination": 3,
+                "image": 3
+            }
+        },
+
+        "resume": {
+            "destination_ID": 35
+        },
+
+        "works": {
+
+            "1": {
+                "previewDestination": 25,
+                "thumbDestination": 10,
+                "general": 10
+            },
+
+            "2": {
+                "previewDestination": 26,
+                "thumbDestination": 11,
+                "general": 11
+            },
+
+            "3": {
+                "previewDestination": 27,
+                "thumbDestination": 12,
+                "general": 12
+            },
+
+            "4": {
+                "previewDestination": 28,
+                "thumbDestination": 13,
+                "general": 13
+            },
+
+            "5": {
+                "previewDestination": 29,
+                "thumbDestination": 14,
+                "general": 14
+            },
+
+            "6": {
+                "previewDestination": 30,
+                "thumbDestination": 15,
+                "general": 15
+            },
+
+            "7": {
+                "previewDestination": 31,
+                "thumbDestination": 16,
+                "general": 16
+            },
+
+            "8": {
+                "previewDestination": 32,
+                "thumbDestination": 17,
+                "general": 17
+            },
+
+            "9": {
+                "previewDestination": 33,
+                "thumbDestination": 18,
+                "general": 18
+            }
+        }
+    };
+
+    return {
+
+        init: function init() {},
+
+        searchLists: function searchLists(key, optionValue, value) {
+            return destinations[key][optionValue][value];
+        },
+
+        searchListKeyValue: function searchListKeyValue(key, optionValue) {}
     };
 }();
 //# sourceMappingURL=Bsquared.js.map

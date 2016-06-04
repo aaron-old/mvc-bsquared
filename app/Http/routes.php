@@ -94,7 +94,7 @@ Route::group(['middlewareGroups'=> ['web']], function(){
      -----------------------------*/
 
     Route::get('/works/{username}', [
-        'uses' => 'WorksController@show',
+        'uses' => 'WorksController@edit',
         'as'   => 'editWorks'
 
     ]);
