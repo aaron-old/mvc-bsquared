@@ -32,7 +32,8 @@ class WorksController extends Controller
 
     public function show($username, $destination_id)
     {
-        $works = Works::where('user_id', Auth::id())->where('destination_id', $destination_id)->first();
+        $user_id = User::where('username', $username)->first();
+        $works = Works::where('user_id', $user_id->user_id)->where('destination_id', $destination_id)->first();
 
         if($works !== null){
             return response()->json(['works'=> $works]);
@@ -51,13 +52,9 @@ class WorksController extends Controller
      */
 	public function store(Request $request)
 	{
-
 		if($request->ajax()) {
-
             $authUserID = Auth::id();
-
             $works = Works::where('user_id', $authUserID)->where('destination_id', $request->input('workDestinationID'))->first();
-
             $data = [
                 'title'          => $request->input('workTitle'),
                 'description'    => $request->input('workDescription'),
@@ -65,10 +62,9 @@ class WorksController extends Controller
                 'destination_id' => $request->input('workDestinationID'),
                 'user_id'        => $authUserID
             ];
-
             try {
                 if($works === null){
-                    return WorksController::create($data);
+                    return WorksController::descriptioncreate($data);
                 }
                 else {
                     return WorksController::update($data);

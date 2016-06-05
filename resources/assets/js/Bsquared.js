@@ -38,4 +38,5 @@ $(document).ready(function(){
     BSQUARED.About.init();
     BSQUARED.Skills.init();
     BSQUARED.Works.init();
+    BSQUARED.UserControls.init();
 });

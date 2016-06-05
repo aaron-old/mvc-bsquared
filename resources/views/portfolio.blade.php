@@ -43,8 +43,16 @@
                 @for($i = 7, $k=22; $i < 10; $i++, $k++)
                     <div class="col-sm-4">
                         <img src="{{asset('images/member_uploads/about/default_profile.png')}}" alt="About Me">
-                        <h3>About Label</h3>
-                        <p>About Column</p>
+                        @foreach($portfolio->labels as $label)
+                            @if($label['destination_id'] === $k)
+                                <h3>{{$label['label']}}</h3>
+                            @endif
+                        @endforeach
+                        @foreach($portfolio->columns as $column)
+                            @if($column['destination_id'] === $i)
+                                <p>{{$column['column_text']}}</p>
+                            @endif
+                        @endforeach
                     </div>
                 @endfor
             </div>
@@ -54,8 +62,17 @@
                     @for($i = 1, $k=4; $i<4; $i++, $k++)
                         <div class="col-sm-4">
                             <img src="{{asset('images/member_uploads/skills/default_icon.png')}}" alt="my skill">
-                            <h3 class="skillHeader">Skill Label</h3>
-                            <p>Skill Column</p>
+                            @foreach($portfolio->labels as $label)
+                                @if($label['destination_id'] === $i)
+                                    <h3 class="skillHeader">{{$label['label']}}</h3>
+                                @endif
+
+                            @endforeach
+                            @foreach($portfolio->columns as $column)
+                                @if($column['destination_id'] === $k)
+                                    <p>{{$column['column_text']}}</p>
+                                @endif
+                            @endforeach
                         </div>
                     @endfor
                 </div>
@@ -71,19 +88,24 @@
             </div>
 
             <div id="slide4" class="item">
+
+                <!-- Todo: Add the on hoverstate via javascript module usercontrols.-->
                 <h2 id="worksTitle">Select a Project!</h2>
                 <p id="descriptionWorks">Hover over a project to gather a brief description, or click thee image to see the specs!</p>
-                @for($row =1, $count=1; $row<4; $row++)
+                @for($row =1, $count=1, $destination_id=10; $row<4; $row++)
                     <div class="row">
-                        @for($column = 1; $column<4; $column++)
+                        @for($column = 1, $rowCount=$count; $column<4; $column++, $count++, $destination_id++)
                             <div class="col-sm-4">
+                                <!-- todo: need to add the images within a user portfolio.-->
                                 <img src="{{asset('images/member_uploads/works/default_works.png')}}"
+                                     id="worksImage{{$count}}"
+                                     class="worksImageHover"
                                      type="button"
                                      data-toggle="modal"
                                      data-target="#modal{{$count}}"
                                      height="130"
                                      width="130"
-                                     alt="Work">
+                                     alt="{{$destination_id}}">
                             </div>
                         @endfor
                     </div>
@@ -135,19 +157,37 @@
             <span class="sr-only">Next</span>
         </a>
 
-        @for($i = 1, $k=25; $i < 10; $i++, $k++)
+        @for($i = 1, $k=25, $j=10; $i < 10; $i++, $k++, $j)
             <div class="modal fade" id="modal{{$i}}" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Works Title</h4>
+                            @foreach($portfolio->works as $work)
+                                @if($work['destination_id'] === $j)
+                                    <h4 class="modal-title">{{$work['title']}}</h4>
+                                @endif
+                            @endforeach
                         </div>
                         <div id="myModal{{$i}}" class="modal-body">
+
+                            <!-- todo: After configuring file load dynamically load this resource. -->
                             <img id="modImage{{$i}}"
                                  src="{{asset('images/member_uploads/project_uploads/project_preview_default.png')}}"
                                  alt="Project Preview">
-                            <p>Works Description</p>
+
+                            @foreach($portfolio->works as $work)
+                                @unless($work['destination_id'] !== $j)
+                                @if($work['destination_id'] === $j && $work['project_description'] !== '')
+                                    <p>{{$work['project_description']}}</p>
+                                    <p>
+                                        @if($work['work_link'] !== '')
+                                            Check out the project <a href="{{$work['work_link']}}">at this website</a>
+                                        @endif
+                                    </p>
+                                @endif
+                                @endunless
+                            @endforeach
                         </div>
                         <div class="modal-footer">
                             <button type="button"

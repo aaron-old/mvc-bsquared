@@ -17,15 +17,12 @@ BSQUARED.Forms = (function(){
     /**
      * PRIVATE VARIABLE & METHODS
      */
-    
     var sendPortfolioSuccess = function (){
         BSQUARED.Notifications.sendSuccessNotification();
     };
-    
     var sendPortfolioError = function(){
         BSQUARED.Notifications.sendErrorNotification();
     };
-    
     var sendLoadError = function(){
         BSQUARED.Notifications.error_Loading_Notification();
     };
@@ -36,11 +33,8 @@ BSQUARED.Forms = (function(){
      * @param elements
      */
     var worksLoad = function (data, elements) {
-        
         var x = 0;
-
         for(x; x < elements.length; x++){
-            
             switch(x){
                 case 0:
                     if(data.works !== null){
@@ -69,11 +63,8 @@ BSQUARED.Forms = (function(){
      * @param elements
      */
     var pathLoad = function (data, elements) {
-        
         var x = 0;
-        
         for(x; x < elements.length; x++){
-            
         }
     };
 
@@ -92,9 +83,7 @@ BSQUARED.Forms = (function(){
      * @param element
      */
     var columnLoad = function (data, element) {
-
         //noinspection JSUnresolvedVariable
-        console.log(element);
         $(element.selector).val(data.column.column_text);
     };
     
@@ -191,16 +180,13 @@ BSQUARED.Forms = (function(){
          * @param elements
          */
         loadValues: function(url, destination_id, type, elements){
-            
             var route;
-            
             if(type === 'works'){
                 route = url;
             }
             else {
                 route = makeRESTURL(url, destination_id);
             }
-            
             $.ajaxSetup({
                 headers:{'X-CSRF-TOKEN': $('input[name="_token"]').val()}
             });
@@ -213,22 +199,14 @@ BSQUARED.Forms = (function(){
                 success:function(data){
                     switch(type){
                         case "works":
-                            console.log(data);
-                            console.log(url);
                             console.log(route);
                             worksLoad(data, elements);
                             break;
                         case "label":
                             labelLoad(data, elements);
-                            console.log(data);
-                            console.log(url);
-                            console.log(route);
                             break;
                         case "column":
                             columnLoad(data, elements);
-                            console.log(data);
-                            console.log(url);
-                            console.log(route);
                             break;
                     }
                 },

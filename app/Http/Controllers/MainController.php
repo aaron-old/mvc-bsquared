@@ -49,6 +49,11 @@ class MainController extends Controller
 		$member = User::where('username', '=', $username)->first();
 		$userID = $member->user_id;
 		$portfolio = User::getUserPortfolio($userID);
+
 		return view('portfolio', compact('portfolio'));
+	}
+	
+	public function showWorksHover($username, $destination_id){
+		
 	}
 }
