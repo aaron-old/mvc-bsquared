@@ -342,7 +342,26 @@ BSQUARED.Forms = function () {
         var x = 0;
 
         for (x; x < elements.length; x++) {
-            console.log('loading works');
+
+            switch (x) {
+                case 0:
+                    if (data.works !== null) {
+                        $(elements[x].selector).val(data.works.title);
+                    }
+                    break;
+                case 1:
+                    if (data.works !== null) {
+                        $(elements[x].selector).val(data.works.project_description);
+                    }
+                    break;
+                case 3:
+                    if (data.works !== null) {
+                        $(elements[x].selector).val(data.works.work_link);
+                    }
+                    break;
+                default:
+                    $(elements[x].selector).val('');
+            }
         }
     };
 
@@ -413,16 +432,16 @@ BSQUARED.Forms = function () {
                 data: data,
                 datatype: "json",
                 cache: false,
-                success: function success() {
+                success: function success(data) {
+                    console.log(data);
                     sendPortfolioSuccess();
                 },
                 error: function error(data) {
+                    console.log(JSON.stringify(data));
                     sendPortfolioError();
                 }
 
-            }).done(function (data) {
-                console.log(data);
-            });
+            }).done(function (data) {});
         },
 
         /**
@@ -451,9 +470,7 @@ BSQUARED.Forms = function () {
                 error: function error() {
                     sendPortfolioError();
                 }
-            }).done(function (data) {
-                console.log(data);
-            });
+            }).done(function (data) {});
         },
 
         /**
@@ -472,7 +489,13 @@ BSQUARED.Forms = function () {
          */
         loadValues: function loadValues(url, destination_id, type, elements) {
 
-            var route = makeRESTURL(url, destination_id);
+            var route;
+
+            if (type === 'works') {
+                route = url;
+            } else {
+                route = makeRESTURL(url, destination_id);
+            }
 
             $.ajaxSetup({
                 headers: { 'X-CSRF-TOKEN': $('input[name="_token"]').val() }
@@ -487,24 +510,28 @@ BSQUARED.Forms = function () {
                     switch (type) {
                         case "works":
                             console.log(data);
+                            console.log(url);
+                            console.log(route);
                             worksLoad(data, elements);
                             break;
                         case "label":
-                            console.log(data);
                             labelLoad(data, elements);
+                            console.log(data);
+                            console.log(url);
+                            console.log(route);
                             break;
                         case "column":
-                            console.log(data);
                             columnLoad(data, elements);
+                            console.log(data);
+                            console.log(url);
+                            console.log(route);
                             break;
                     }
                 },
                 error: function error(data) {
                     sendLoadError(data);
                 }
-            }).done(function (data) {
-                console.log(data);
-            });
+            }).done(function (data) {});
         }
     };
 }();
@@ -860,9 +887,9 @@ BSQUARED.Works = function () {
 
         $('#worksDestinationID').val(destinations.worksDestinationID);
         $('#fileProjectThumbnailDestinationID').val(destinations.thumbnailDestinationID);
-        $('#fileProjectDescriptionImage').val(destinations.previewDestinationID);
+        $('#fileProjectDescriptionImageDestinationID').val(destinations.previewDestinationID);
 
-        BSQUARED.Forms.loadValues(worksURL, destinations.worksDestinationID, 'works', [title, description, link]);
+        BSQUARED.Forms.loadValues(worksURL + '/' + $('#worksDestinationID').val(), destinations.worksDestinationID, 'works', [title, description, link]);
     };
 
     var getDestinations = function getDestinations(destination_id) {
@@ -916,7 +943,7 @@ BSQUARED.Works = function () {
             descriptionImageDestinationID.val(25);
             thumbnailImageDestinationID.val(10);
 
-            BSQUARED.Forms.loadValues(worksURL, worksDestinationID.val(), 'works', [title, description, link]);
+            BSQUARED.Forms.loadValues(worksURL + '/' + worksDestinationID.val(), worksDestinationID.val(), 'works', [title, description, link]);
 
             formSelectDestination.on('change', function () {
                 destination_id = formSelectDestination.find('option:selected').val();
@@ -929,11 +956,10 @@ BSQUARED.Works = function () {
                 var $post = {};
                 var $postImages = {};
 
-                $post.workTitle = title.val();
-                $post.workDescription = description.val();
-                $post.workLink = link.val();
-                $post.worksDestinationID = worksDestinationID.val();
-                $post.token = $('input[name="_token"]').val();
+                $post.workTitle = $('#txtWorksTitle').val();
+                $post.workDescription = $('#txtAreaProjectDescription').val();
+                $post.workLink = $('#txtProjectLink').val();
+                $post.workDestinationID = $('#worksDestinationID').val();
 
                 BSQUARED.Forms.post('POST', worksURL, $post);
             });
@@ -947,6 +973,23 @@ BSQUARED.Works = function () {
                 event.preventDefault();
                 $('#fileProjectDescriptionImage').click();
             });
+        }
+    };
+}();
+
+/**
+ * Created by Aaron Young on 6/3/2016.
+ */
+
+BSQUARED.Utilities = function () {
+
+    return {
+
+        checkPath: function checkPath(url) {
+            url = url.slice(1);
+            var slash = url.indexOf('/');
+            url = url.slice(0, slash);
+            return url;
         }
     };
 }();
@@ -1080,7 +1123,9 @@ BSQUARED.Destinations = function () {
             return destinations[key][optionValue][value];
         },
 
-        searchListKeyValue: function searchListKeyValue(key, optionValue) {}
+        searchListKeyValue: function searchListKeyValue(key, optionValue) {
+            return destinations[key][optionValue];
+        }
     };
 }();
 //# sourceMappingURL=Bsquared.js.map

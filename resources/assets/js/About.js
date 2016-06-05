@@ -94,10 +94,10 @@ BSQUARED.About = (function(){
             aboutLabelDestinationID.val(22);
             aboutColumnDestinationID.val(7);
             fileDestination.val(22);
-
+            
             BSQUARED.Forms.loadValues(labelURL, aboutLabelDestinationID.val(), 'label', label);
             BSQUARED.Forms.loadValues(columnURL, aboutColumnDestinationID.val(), 'column', column);
-
+            
             formSelectDestination.on('change', function(){
                 destination_id = $('#about_DestinationID').find('option:selected').val();
                 getDestinations(destination_id);
@@ -117,9 +117,10 @@ BSQUARED.About = (function(){
                 $postColumn.columnDestinationID = $('#aboutColumnDestinationID').val();
                 $postColumn.token = token.val();
                 $postLabel.token = token.val();
-
+                
                 BSQUARED.Forms.post("POST", labelURL, $postLabel);
                 BSQUARED.Forms.post("POST", columnURL, $postColumn);
+                
             });
             
             btnAboutImage.on('click', function(event){

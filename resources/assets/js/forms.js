@@ -40,7 +40,26 @@ BSQUARED.Forms = (function(){
         var x = 0;
 
         for(x; x < elements.length; x++){
-            console.log('loading works');
+            
+            switch(x){
+                case 0:
+                    if(data.works !== null){
+                        $(elements[x].selector).val(data.works.title);
+                    }
+                    break;
+                case 1:
+                    if(data.works !== null){
+                        $(elements[x].selector).val(data.works.project_description);
+                    }
+                    break;
+                case 3:
+                    if(data.works !== null){
+                        $(elements[x].selector).val(data.works.work_link);
+                    }
+                    break;
+                default:
+                    $(elements[x].selector).val('');
+            }
         }
     };
 
@@ -113,15 +132,16 @@ BSQUARED.Forms = (function(){
                 data: data,
                 datatype: "json",
                 cache:false,
-                success: function(){
+                success: function(data){
+                    console.log(data);
                     sendPortfolioSuccess();
                 },
                 error: function(data){
+                    console.log(JSON.stringify(data));
                     sendPortfolioError()
                 }
                 
             }).done(function(data){
-                console.log(data);
             });
         },
 
@@ -152,7 +172,6 @@ BSQUARED.Forms = (function(){
                     sendPortfolioError();
                 }
             }).done(function(data){
-                console.log(data);
             });
         },
 
@@ -173,8 +192,15 @@ BSQUARED.Forms = (function(){
          */
         loadValues: function(url, destination_id, type, elements){
             
-            var route = makeRESTURL(url, destination_id);
-
+            var route;
+            
+            if(type === 'works'){
+                route = url;
+            }
+            else {
+                route = makeRESTURL(url, destination_id);
+            }
+            
             $.ajaxSetup({
                 headers:{'X-CSRF-TOKEN': $('input[name="_token"]').val()}
             });
@@ -186,17 +212,23 @@ BSQUARED.Forms = (function(){
                 cache: false,
                 success:function(data){
                     switch(type){
-                        case "works": 
+                        case "works":
                             console.log(data);
+                            console.log(url);
+                            console.log(route);
                             worksLoad(data, elements);
                             break;
                         case "label":
-                            console.log(data);
                             labelLoad(data, elements);
+                            console.log(data);
+                            console.log(url);
+                            console.log(route);
                             break;
                         case "column":
-                            console.log(data);
                             columnLoad(data, elements);
+                            console.log(data);
+                            console.log(url);
+                            console.log(route);
                             break;
                     }
                 },
@@ -204,7 +236,6 @@ BSQUARED.Forms = (function(){
                     sendLoadError(data);
                 }
             }).done(function(data){
-                console.log(data);
             });
         }
     }

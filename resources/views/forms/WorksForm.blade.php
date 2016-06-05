@@ -10,7 +10,7 @@
     <input id="worksDestinationID" type="hidden">
 
     <div id="worksForms" class="form-group portfolioUpdateForm">
-        <div class="form-group">
+        <div id="destinationSelectDiv" class="form-group">
             <label for="works_DestinationID">Works Number:</label>
             <select id="works_DestinationID" class="form-control memberFocus">
                 <option value="1" selected="selected">Works 1</option>
@@ -26,31 +26,38 @@
         </div>
 
         <div class="form-group">
-            <label  for="txtWorksTitle">Project Title</label>
-            <div class="col-xs-4">
-                <input id="txtWorksTitle" class="form-control memberFocus" type="text">
+            <div id="worksTitleDiv" class="form-group">
+                <label  for="txtWorksTitle">Project Title</label>
+                <div class="col-xs-4">
+                    <input id="txtWorksTitle" class="form-control memberFocus" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="txtProjectLink">Project Link:(www.example.com) </label>
+                <input id="txtProjectLink" class="form-control memberFocus" type="text">
+            </div>
+            <div id="worksDescriptionDiv" class="form-group">
+                <label for="txtAreaProjectDescription">Project Description</label>
+                <textarea id="txtAreaProjectDescription" class="form-control memberFocus" rows="4" cols="50" ></textarea>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div id="worksThumbNailImageDiv" class="form-group">
+                <label for="fileProjectThumbnail">Project Thumbnail (Please Upload .PNG or .JPG) 130X130</label>
+                <input id="fileProjectThumbnail" type="file">
+                <input id="fileProjectThumbnailDestinationID" type="hidden">
+                <button id="btnAddProjectThumbnail" class="btn btn-default memberSubmitButton">Upload Project Thumbnail</button>
+            </div>
+            <div id="worksDescriptionImageDiv" class="form-group">
+                <label for="fileProjectDescriptionImage">Project Description Image (Please Upload .PNG or .JPG) 348X210 </label>
+                <input id="fileProjectDescriptionImage" type="file">
+                <input id="fileProjectDescriptionImageDestinationID" type="hidden">
+                <button id="btnAddProjectDescriptionImage" class="btn btn-default memberSubmitButton">Upload Description Image</button>
             </div>
         </div>
-        <div class="form-group">
-            <label for="fileProjectThumbnail">Project Thumbnail (Please Upload .PNG or .JPG) 130X130</label>
-            <input id="fileProjectThumbnail" type="file">
-            <input id="fileProjectThumbnailDestinationID" type="hidden">
-            <button id="btnAddProjectThumbnail" class="btn btn-default memberSubmitButton">Upload Project Thumbnail</button>
-        </div>
-        <div class="form-group">
-            <label for="txtAreaProjectDescription">Project Description</label>
-            <textarea id="txtAreaProjectDescription" class="form-control memberFocus" rows="4" cols="50" ></textarea>
-        </div>
-        <div class="form-group">
-            <label for="fileProjectDescriptionImage">Project Description Image (Please Upload .PNG or .JPG) 348X210 </label>
-            <input id="fileProjectDescriptionImage" type="file">
-            <input id="fileProjectDescriptionImageDestinationID" type="hidden">
-            <button id="btnAddProjectDescriptionImage" class="btn btn-default memberSubmitButton">Upload Description Image</button>
-        </div>
-        <div class="form-group">
-            <label for="txtProjectLink">Project Link:(www.example.com) </label>
-            <input id="txtProjectLink" class="form-control memberFocus" type="text">
-        </div>
+
         <hr>
         <button id="btnSubmitWorksItem" class="btn btn-default memberSubmitButton">Save</button>
     </div>

@@ -19,7 +19,6 @@ BSQUARED.Statement = (function(){
     var files = {};
     
     
-    
     return {
 
         /**
@@ -37,7 +36,7 @@ BSQUARED.Statement = (function(){
 
                 $post.statement = $('#txtStatement').val();
                 $post.token = $('input[name="_token"]').val();
-                
+
                 BSQUARED.Forms.post('POST', url, $post);
             });
             

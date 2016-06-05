@@ -13,7 +13,7 @@
  */
 BSQUARED.Works = (function(){
     
-    var worksURL = window.location.pathname;
+    var worksURL =  window.location.pathname;
     var form     = 'works';
     var pathURL  = '/path';
 
@@ -34,7 +34,7 @@ BSQUARED.Works = (function(){
         worksDestinationID       : 10
     };
 
-
+    
     /**
      *
      * @param optionValue
@@ -46,9 +46,9 @@ BSQUARED.Works = (function(){
         
         $('#worksDestinationID').val(destinations.worksDestinationID);
         $('#fileProjectThumbnailDestinationID').val(destinations.thumbnailDestinationID);
-        $('#fileProjectDescriptionImage').val(destinations.previewDestinationID);
+        $('#fileProjectDescriptionImageDestinationID').val(destinations.previewDestinationID);
         
-        BSQUARED.Forms.loadValues(worksURL, destinations.worksDestinationID, 'works', [title, description, link]);
+        BSQUARED.Forms.loadValues(worksURL+'/'+ $('#worksDestinationID').val(), destinations.worksDestinationID, 'works', [title, description, link]);
     };
 
     
@@ -103,7 +103,8 @@ BSQUARED.Works = (function(){
             descriptionImageDestinationID.val(25);
             thumbnailImageDestinationID.val(10);
             
-            BSQUARED.Forms.loadValues(worksURL, worksDestinationID.val(), 'works', [title, description, link]);
+            BSQUARED.Forms.loadValues(worksURL+'/'+worksDestinationID.val(), worksDestinationID.val(), 'works', [title, description, link]);
+            
             
             formSelectDestination.on('change', function(){
                 destination_id = formSelectDestination.find('option:selected').val();
@@ -117,11 +118,10 @@ BSQUARED.Works = (function(){
                 var $post = {};
                 var $postImages = {};
                 
-                $post.workTitle       = title.val();
-                $post.workDescription = description.val();
-                $post.workLink        = link.val();
-                $post.worksDestinationID = worksDestinationID.val();
-                $post.token = $('input[name="_token"]').val();
+                $post.workTitle          = $('#txtWorksTitle').val();
+                $post.workDescription    = $('#txtAreaProjectDescription').val();
+                $post.workLink           = $('#txtProjectLink').val();
+                $post.workDestinationID = $('#worksDestinationID').val();
                 
                 BSQUARED.Forms.post('POST', worksURL, $post);
             });

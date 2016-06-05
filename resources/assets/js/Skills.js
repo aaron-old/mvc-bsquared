@@ -36,6 +36,7 @@ BSQUARED.Skills = (function(){
         imageDestinationID  : 1,
         resumeDestinationID : 35
     };
+    
 
     /**
      *

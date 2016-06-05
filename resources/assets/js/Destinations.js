@@ -130,7 +130,7 @@ BSQUARED.Destinations = (function(){
         },
         
         searchListKeyValue : function (key, optionValue){
-            
+            return destinations[key][optionValue];
         }
     }
 

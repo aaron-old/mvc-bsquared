@@ -93,6 +93,7 @@ elixir(function(mix) {
         'About.js',
         'Overview.js',
         'Works.js',
+        'Utilities.js',
         'Destinations.js'
     ], 'public/js/Bsquared.js', 'resources/assets/js/');
 

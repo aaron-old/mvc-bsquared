@@ -16,7 +16,7 @@ BSQUARED.Profile = (function(){
     
     var url = window.location.pathname;
     var $post = {};
-
+    
     return {
         init: function(){
 

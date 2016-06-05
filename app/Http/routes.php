@@ -103,6 +103,11 @@ Route::group(['middlewareGroups'=> ['web']], function(){
         'as'   => 'postWorks'
     ]);
     
+    Route::get('/works/{username}/{destination_id}', [
+        'uses' => 'WorksController@show',
+        'as'   => 'getWorks'
+    ]);
+    
     /*---------------------------
             SETTINGS
      ----------------------------*/

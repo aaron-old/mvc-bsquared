@@ -1,6 +1,6 @@
 <?php namespace Bsquared\Http\Controllers;
 
-use Bsquared\Http\Requests\Request;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Contracts\Queue\EntityNotFoundException;
 
@@ -11,22 +11,36 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 
 
-class WorksController extends Controller {
+class WorksController extends Controller
+{
 
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /works/create
-	 *
-	 * @return Response
-	 */
-	public function create($data)
-	{
-		$works = new Works();
+    /**
+     * Show the form for creating a new resource.
+     * GET /works/create
+     *
+     * @param $data
+     * @return Response
+     */
+    public function create($data)
+    {
+        $works = new Works();
         $works->user_id = $data['user_id'];
-        $validatedCreate  = $this->validateRequest($data, $works);
+        $validatedCreate = $this->validateRequest($data, $works);
         $validatedCreate->save();
-        return response()->json(['message'=>'create']);
-	}
+        return response()->json(['message' => 'created']);
+    }
+
+    public function show($username, $destination_id)
+    {
+        $works = Works::where('user_id', Auth::id())->where('destination_id', $destination_id)->first();
+
+        if($works !== null){
+            return response()->json(['works'=> $works]);
+        }
+        else {
+            return response()->json(['works'=> 'null']);
+        }
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -37,17 +51,18 @@ class WorksController extends Controller {
      */
 	public function store(Request $request)
 	{
+
 		if($request->ajax()) {
 
             $authUserID = Auth::id();
 
-            $works = Works::where('user_id', $authUserID)->where('destination_id', $request->input('worksDestinationID'))->first();
+            $works = Works::where('user_id', $authUserID)->where('destination_id', $request->input('workDestinationID'))->first();
 
             $data = [
                 'title'          => $request->input('workTitle'),
                 'description'    => $request->input('workDescription'),
                 'link'           => $request->input('workLink'),
-                'destination_id' => $request->input('worksDestinationID'),
+                'destination_id' => $request->input('workDestinationID'),
                 'user_id'        => $authUserID
             ];
 
@@ -62,6 +77,9 @@ class WorksController extends Controller {
             catch (EntityNotFoundException $error){
                 return back($error);
             }
+        }
+        else {
+            return response()->json(['message'=>'not ajax']);
         }
 	}
 
@@ -97,11 +115,12 @@ class WorksController extends Controller {
 	}
 
     private function validateRequest($data, $works){
+
         $validator = Validator::make($data, [
             $data['title'] => 'max:100',
             $data['description'] => 'max:1000',
         ]);
-        
+
         if($validator->fails()){
             return back()->withErrors($validator)->withInput();
         }
@@ -110,6 +129,8 @@ class WorksController extends Controller {
             $works->destination_id      = $data['destination_id'];
             $works->project_description = $data['description'];
             $works->work_link           = $data['link'];
+
+            return $works;
         }
     }
 
