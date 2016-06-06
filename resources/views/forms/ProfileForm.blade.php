@@ -1,10 +1,9 @@
 <div class="result"></div>
+<span class="userPhotos">
+<img src="https://placehold.it/150x150" alt="userProfilePicture">
+</span>
 <legend class="legend">
     Profile
-    {{--<span class="userPhotos">--}}
-        {{--<img src="https://placehold.it/150x150" alt="userProfilePicture">--}}
-        {{--<span class="userPhotosCaption"><a href="#">Edit Photos</a></span>--}}
-    {{--</span>--}}
 </legend>
 <form id="userProfileForm" class="form-inline"
       method="POST"
@@ -20,18 +19,18 @@
             <label for="txtLastName">Last Name</label>
             <input id="txtLastName" class="form-control memberFocus" value="{{old('', $user->profile->lastName)}}">
         </div>
-        <div class="form-group-lg">
-            <label for="txtAreaAboutMe" style="display:block;">About Me</label>
+        <div id="aboutMeDiv" class="form-group">
+            <label for="txtAreaAboutMe">About Me</label>
             <textarea id="txtAreaAboutMe" class="form-control memberFocus" cols="50" rows="5">{{old('', $user->profile->aboutMe)}}</textarea>
         </div>
         <div class="form-group">
-            <button id="btnAddProfilePhoto" class="btn btn-default memberSubmitButton">Upload Profile Photo</button>
-            <input id="fileProfilePhoto" type="file">
+            {{--<button id="btnAddProfilePhoto" class="btn btn-default memberSubmitButton">Upload Profile Photo</button>--}}
+            <label for="fileProfilePhoto">Upload a Photo: Profile Photo</label>
+            <input id="fileProfilePhoto" name="profilePhoto" type="file" class="form-control">
+            <input id="fileProfilePhotoDestinationID" type="hidden" >
         </div>
-
         <button id="btnSubmitButton" type="submit" class="btn btn-default memberSubmitButton">Save</button>
     </div>
-
 </form>
 
 

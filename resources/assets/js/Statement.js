@@ -18,26 +18,25 @@ BSQUARED.Statement = (function(){
     var $post = {};
     var files = {};
     
-    
     return {
-
-        /**
-         *
-         */
+        
         init: function() {
             
             $('#fileBackgroundImage').hide();
             $('#txtStatement').focus();
             
-            $('#fileProfilePhoto').on('change')
+            $('#fileProfilePhoto').on('change');
 
             $('#userStatementForm').submit(function(event){
                 event.preventDefault();
-
                 $post.statement = $('#txtStatement').val();
                 $post.token = $('input[name="_token"]').val();
 
-                BSQUARED.Forms.post('POST', url, $post);
+                var checkedURL = BSQUARED.Utilities.checkPath(url);
+                
+                if(checkedURL === 'statement'){
+                    BSQUARED.Forms.post('POST', url, $post);
+                }
             });
             
             $('#btnBackgroundImage').on('click', function(event){

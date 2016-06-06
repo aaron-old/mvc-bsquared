@@ -437,6 +437,23 @@ div#destinationSelectDiv {
 button#btnAddProjectThumbnail {
   margin: 0; }
 
+input#txtSkillLabel {
+  margin-bottom: 20px; }
+
+div#skillDestinationSelect {
+  margin: 0 0 20px 100px; }
+
+input#txtFirstName {
+  margin: 0 25px 30px 55px; }
+
+input#txtLastName {
+  margin-bottom: 30px; }
+
+div#aboutMeDiv {
+  margin: 0px;
+  padding: 0;
+  left: 20px; }
+
 /* Box colors */
 .bg-1 {
   background: #ECEFF1;

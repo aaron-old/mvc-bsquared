@@ -33,7 +33,6 @@ BSQUARED.Works = (function(){
         thumbnailDestinationID   : 10,
         worksDestinationID       : 10
     };
-
     
     /**
      *
@@ -53,7 +52,6 @@ BSQUARED.Works = (function(){
         BSQUARED.Forms.loadValues(worksURL+'/'+ worksDestinationID.val(), 
             destinations.worksDestinationID, 'works', [title, description, link]);
     };
-
     
     var getDestinations = function(destination_id){
         switch(destination_id){
@@ -103,9 +101,14 @@ BSQUARED.Works = (function(){
             worksDestinationID.val(10);
             descriptionImageDestinationID.val(25);
             thumbnailImageDestinationID.val(10);
-            
-            BSQUARED.Forms.loadValues(worksURL+'/'+worksDestinationID.val(), worksDestinationID.val(), 'works', [title, description, link]);
-            
+
+            var checkedURL = BSQUARED.Utilities.checkPath(worksURL);
+
+            if(checkedURL === 'works'){
+                BSQUARED.Forms.loadValues(worksURL+'/'+worksDestinationID.val(),
+                    worksDestinationID.val(), 'works', [title, description, link]);
+            }
+
             formSelectDestination.on('change', function(){
                 destination_id = formSelectDestination.find('option:selected').val();
                 getDestinations(destination_id);
@@ -133,10 +136,6 @@ BSQUARED.Works = (function(){
                 event.preventDefault();
                 $('#fileProjectDescriptionImage').click();
             })
-        },
-        
-        getWorkHoverItems : function (destination_id){
-            
         }
     };
 })();

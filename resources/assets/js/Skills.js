@@ -57,6 +57,10 @@ BSQUARED.Skills = (function(){
         BSQUARED.Forms.loadValues(columnURL, destinations.columnDestinationID, 'column', column);
     };
 
+    /**
+     * 
+     * @param destination_id
+     */
     var getDestinations = function(destination_id){
         switch(destination_id){
             case '1':

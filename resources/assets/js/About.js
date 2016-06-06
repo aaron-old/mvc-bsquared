@@ -28,7 +28,7 @@ BSQUARED.About = (function(){
     var destination_id;
 
     var column = $('#txtAreaAboutColumn');
-    var label = $('#txtAboutLabel');
+    var label  = $('#txtAboutLabel');
 
     /**
      * 
@@ -57,7 +57,11 @@ BSQUARED.About = (function(){
         BSQUARED.Forms.loadValues(labelURL, destinations.labelDestinationID, 'label', label);
         BSQUARED.Forms.loadValues(columnURL, destinations.columnDestinationID, 'column', column);
     };
-    
+
+    /**
+     * 
+     * @param destination_id
+     */
     var getDestinations = function(destination_id){
         switch(destination_id) {
             case '1':

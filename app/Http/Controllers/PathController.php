@@ -23,10 +23,18 @@ class PathController extends Controller
 
     /**
      * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
-        
+        if($request->hasFile('profilePhoto')){
+            return response()->json(['message'=>'received']);
+        }
+        else {
+            return response()->json(['message'=>$request]);
+        }
+
+
     }
 
     /**
@@ -54,32 +62,8 @@ class PathController extends Controller
     private function validateRequest($data, $path, $type)
     {
 
-        if($type === 'image'){
-            $validator = Validator::make($data, [
-               $data['image'] => 'mimes:jpg,jpeg'
-            ]);
-
-            if($validator->fails()){
-                return back()->withErrors($validator)->withInput();
-            }
-            else {
-                return $path;
-            }
-        }
-        else {
-            $validator = Validator::make($data, [
-               'resume' => 'mimes:pdf'
-            ]);
-            if($validator->fails()){
-                return back()->withErrors($validator)->withInput();
-            }
-            else {
-                return $path;
-            }
-        }
     }
-
-
+    
     /**
      * @param Request $request
      */
