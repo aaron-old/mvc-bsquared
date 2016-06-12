@@ -501,6 +501,12 @@ input#txtLastName {
 
 }
 
+.memberSubmitButton:focus {
+  background: #cc9933;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
 .memberSubmitButton {
   text-align: center;
   margin: 10px 5px 20px 145px;
@@ -521,6 +527,15 @@ input#txtLastName {
   -webkit-transition: all 0.5s;
   -o-transition: all 0.5s;
   -ms-transition: all 0.5s;
+}
+
+div#uploadProfilePhoto {
+  display: inline;
+}
+
+form#userProfileForm {
+  width: 260px;
+  display: inline-block;
 }
 
 #aboutDestinationSelect {
@@ -621,6 +636,7 @@ button#btnAddProfilePhoto {
   min-width: 60px;
   word-wrap: normal;
   padding: 8px;
+  display: block;
 }
 
 textarea#txtAreaAboutMe {

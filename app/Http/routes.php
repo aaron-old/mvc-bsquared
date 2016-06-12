@@ -164,9 +164,21 @@ Route::group(['middlewareGroups'=> ['web']], function(){
         'as' => 'postPath'
     ]);
 
-    /*
-     * Admin Routes
-     */
+    Route::get('/admin/login','AdminAuth\AuthController@showLoginForm');
+    Route::post('/admin/login','AdminAuth\AuthController@login');
+
+    Route::get('admin/register', 'AdminAuth\AuthController@showRegistrationForm');
+    Route::post('admin/register', 'AdminAuth\AuthController@register');
+});
+
+Route::group(['middleware'=> ['admin']], function(){
+    /*----------------------
+        ADMIN
+  --------------------*/
+
+    Route::get('/admin/logout','AdminAuth\AuthController@logout');
+
+    Route::get('/admin', 'AdminController@index');
 });
 
 

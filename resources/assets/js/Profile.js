@@ -27,11 +27,18 @@ BSQUARED.Profile = (function(){
             
             $('#userProfileForm').submit(function(event) {
                 event.preventDefault();
+                
+                $('#userProfilePhotoForm').submit();
 
                 $post.firstName = $('#txtFirstName').val();
                 $post.lastName = $('#txtLastName').val();
                 $post.aboutMe = $('#txtAreaAboutMe').val();
                 BSQUARED.Forms.post('POST', url, $post);
+            });
+            
+            $('#btnAddProfilePhoto').on('click', function(event){
+                event.preventDefault();
+                $('#fileProfilePhoto').click();
             });
             
             $('#userProfilePhotoForm').submit(function(event){

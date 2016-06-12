@@ -5,23 +5,21 @@
 <div class="form-group">
     <form id="userProfilePhotoForm" class="form-inline  pull-left" action="" enctype="multipart/form-data">
         <span class="userPhotos">
-            <img src="" alt="userProfilePicture">
+            <img src="{{asset('/images/member_uploads/default_profile.png')}}" alt="userProfilePicture">
         </span>
         {{csrf_field()}}
-        <div class="form-group">
+        <div  id="uploadProfilePhoto" class="form-group">
             <input id="fileProfilePhoto"
                    name="profilePhoto"
                    type="file"
-                   style="display: block;"
+                   style="display: none;"
                    class="form-control">
             <button id="btnAddProfilePhoto"
-                    type="submit"
                     class="btn btn-default memberSubmitButton">Upload Profile Photo</button>
-            {{--<label for="fileProfilePhoto">Upload a Photo: Profile Photo</label>--}}
             <input id="fileProfilePhotoDestinationID" type="hidden" value="0">
         </div>
     </form>
-    <form id="userProfileForm" class="form-inline pull-right"
+    <form id="userProfileForm" class="form-inline"
           method="POST"
           action="{{url('/profile/'.$user->username)}}"
           enctype="multipart/form-data">

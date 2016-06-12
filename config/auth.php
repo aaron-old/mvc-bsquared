@@ -41,6 +41,12 @@ return [
             'provider' => 'users',
         ],
 
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins'
+        ],
+
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -69,6 +75,11 @@ return [
             'driver' => 'eloquent',
             'model' => Bsquared\User::class,
         ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => Bsquared\Admin::class,
+        ]
 
         // 'users' => [
         //     'driver' => 'database',
@@ -99,6 +110,12 @@ return [
         'users' => [
             'provider' => 'users',
             'email' => 'auth.emails.password',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'admins' => [
+            'provider' => 'admins',
+            'email' => 'admin.auth.emails.password',
             'table' => 'password_resets',
             'expire' => 60,
         ],

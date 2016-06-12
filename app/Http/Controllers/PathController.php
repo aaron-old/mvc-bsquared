@@ -61,8 +61,6 @@ class PathController extends Controller
             catch (EntityNotFoundException $error){
                 return back(['status'=>302]);
             }
-
-
         }
     }
 
