@@ -7,7 +7,7 @@
 @stop
 
 @section('BodyContent')
-    <div id="main" class="container memberForm">
+    <div id="main">
         @if (session('status'))
             <div class="alert alert-success">
                 {{ session('status') }}

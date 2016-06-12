@@ -15,8 +15,9 @@
 BSQUARED.Statement = (function(){
 
     var url = window.location.pathname;
+    var pathURL = '/path';
+    
     var $post = {};
-    var files = {};
     
     return {
         
@@ -31,20 +32,23 @@ BSQUARED.Statement = (function(){
                 event.preventDefault();
                 $post.statement = $('#txtStatement').val();
                 $post.token = $('input[name="_token"]').val();
-
                 var checkedURL = BSQUARED.Utilities.checkPath(url);
-                
                 if(checkedURL === 'statement'){
                     BSQUARED.Forms.post('POST', url, $post);
                 }
+            });
+
+            $('#userBackgroundImageForm').submit(function(event){
+               event.preventDefault();
+                var data = new FormData($('#userBackgroundImageForm')[0]);
+                data.append('destinationID', $('#fileBackgroundImageDestinationID').val());
+                BSQUARED.Forms.postFiles('POST', pathURL, data);
             });
             
             $('#btnBackgroundImage').on('click', function(event){
                event.preventDefault(); 
                 $('#fileBackgroundImage').click();
             });
-
-
         }
     }
 })();

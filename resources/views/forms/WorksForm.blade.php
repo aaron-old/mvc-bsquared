@@ -24,7 +24,6 @@
                 <option value="9">Works 9</option>
             </select>
         </div>
-
         <div class="form-group">
             <div id="worksTitleDiv" class="form-group">
                 <label  for="txtWorksTitle">Project Title</label>
@@ -40,25 +39,23 @@
                 <label for="txtAreaProjectDescription">Project Description</label>
                 <textarea id="txtAreaProjectDescription" class="form-control memberFocus" rows="4" cols="50" ></textarea>
             </div>
-
         </div>
-
-        <div class="form-group">
-            <div id="worksThumbNailImageDiv" class="form-group">
-                <label for="fileProjectThumbnail">Project Thumbnail (Please Upload .PNG or .JPG) 130X130</label>
-                <input id="fileProjectThumbnail" type="file">
-                <input id="fileProjectThumbnailDestinationID" type="hidden">
-                <button id="btnAddProjectThumbnail" class="btn btn-default memberSubmitButton">Upload Project Thumbnail</button>
-            </div>
-            <div id="worksDescriptionImageDiv" class="form-group">
-                <label for="fileProjectDescriptionImage">Project Description Image (Please Upload .PNG or .JPG) 348X210 </label>
-                <input id="fileProjectDescriptionImage" type="file">
-                <input id="fileProjectDescriptionImageDestinationID" type="hidden">
-                <button id="btnAddProjectDescriptionImage" class="btn btn-default memberSubmitButton">Upload Description Image</button>
-            </div>
-        </div>
-
-        <hr>
-        <button id="btnSubmitWorksItem" class="btn btn-default memberSubmitButton">Save</button>
     </div>
 </form>
+<form id="userWorkThumbnailForm" class="form-inline" action="" enctype="multipart/form-data">
+    <div id="worksThumbNailImageDiv" class="form-group">
+        <label for="fileProjectThumbnail">Project Thumbnail (Please Upload .PNG or .JPG) 130X130</label>
+        <input id="fileProjectThumbnail" name="works_thumbnail_image_1_user_{{$user->user_id}}" type="file">
+        <input id="fileProjectThumbnailDestinationID" type="hidden">
+        <button id="btnAddProjectThumbnail" class="btn btn-default memberSubmitButton">Upload Project Thumbnail</button>
+    </div>
+</form>
+<form id="userWorkPreviewImageForm" class="form-inline" action="" enctype="multipart/form-data">
+    <div id="worksDescriptionImageDiv" class="form-group">
+        <label for="fileProjectDescriptionImage">Project Description Image (Please Upload .PNG or .JPG) 348X210 </label>
+        <input id="fileProjectDescriptionImage" name="works_preview_image_1_user_{{$user->user_id}}" type="file">
+        <input id="fileProjectDescriptionImageDestinationID" type="hidden">
+        <button id="btnAddProjectDescriptionImage" class="btn btn-default memberSubmitButton">Upload Description Image</button>
+    </div>
+</form>
+<button id="btnSubmitWorksItem" class="btn btn-default memberSubmitButton">Save</button>

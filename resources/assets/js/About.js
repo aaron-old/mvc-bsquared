@@ -63,18 +63,26 @@ BSQUARED.About = (function(){
      * @param destination_id
      */
     var getDestinations = function(destination_id){
+        var fileAboutImage = $('#fileAboutImage');
+
+        var userIDStart = fileAboutImage.attr('name').lastIndexOf('_');
+        var userID = fileAboutImage.attr('name').substr(userIDStart+1);
         switch(destination_id) {
             case '1':
                 setDestinations(1);
+                fileAboutImage.attr('name', 'member_about_image_1_user_'+userID);
                 break;
             case '2':
                 setDestinations(2);
+                fileAboutImage.attr('name', 'member_about_image_2_user_'+userID);
                 break;
             case '3' :
                 setDestinations(3);
+                fileAboutImage.attr('name', 'member_about_image_3_user_'+userID);
                 break;
             default:
                 setDestinations(1);
+                fileAboutImage.attr('name', 'member_about_image_1_user_'+userID);
                 break;
         }
     };
@@ -112,19 +120,25 @@ BSQUARED.About = (function(){
                 
                 var $postLabel = {};
                 var $postColumn = {};
-                var $postImage = {};
-                var token = $('input[name="_token"]');
+
+                $('#userAboutImageForm').submit();
                 
                 $postLabel.label = $('#txtAboutLabel').val();
                 $postColumn.column = $('#txtAreaAboutColumn').val();
                 $postLabel.labelDestinationID = $('#aboutLabelDestinationID').val();
                 $postColumn.columnDestinationID = $('#aboutColumnDestinationID').val();
-                $postColumn.token = token.val();
-                $postLabel.token = token.val();
                 
                 BSQUARED.Forms.post("POST", labelURL, $postLabel);
                 BSQUARED.Forms.post("POST", columnURL, $postColumn);
                 
+            });
+            
+            $('#userAboutImageForm').submit(function(event){
+               event.preventDefault();
+                var data = new FormData($('#userAboutImageForm')[0]);
+                data.append('destinationID', $('#fileAboutDestinationID').val());
+                data.append('photoValue', $('#about_DestinationID option:selected').val());
+                BSQUARED.Forms.postFiles("POST", imageURL, data);
             });
             
             btnAboutImage.on('click', function(event){

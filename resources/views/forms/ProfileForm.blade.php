@@ -10,7 +10,7 @@
         {{csrf_field()}}
         <div  id="uploadProfilePhoto" class="form-group">
             <input id="fileProfilePhoto"
-                   name="profilePhoto"
+                   name="member_photo_user_{{$user->user_id}}"
                    type="file"
                    style="display: none;"
                    class="form-control">
@@ -35,7 +35,9 @@
             </div>
             <div id="aboutMeDiv" class="form-group">
                 <label for="txtAreaAboutMe">About Me</label>
-                <textarea id="txtAreaAboutMe" class="form-control memberFocus" cols="50" rows="5">{{old('', $user->profile->aboutMe)}}</textarea>
+                <textarea id="txtAreaAboutMe"
+                          class="form-control memberFocus"
+                          cols="50" rows="5">{{old('', $user->profile->aboutMe)}}</textarea>
             </div>
             <button id="btnSubmitButton" type="submit" class="btn btn-default memberSubmitButton">Save</button>
         </div>

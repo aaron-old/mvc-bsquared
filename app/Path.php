@@ -2,6 +2,9 @@
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property  user_id
+ */
 class Path extends Model {
 
     /**
