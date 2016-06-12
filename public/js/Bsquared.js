@@ -352,6 +352,7 @@ BSQUARED.Profile = function () {
 
     var url = window.location.pathname;
     var imageURL = '/path';
+
     var $post = {};
     var $postImage = {};
 
@@ -363,25 +364,34 @@ BSQUARED.Profile = function () {
             $('#fileProfilePhotoDestinationID').val(36);
 
             $('#userProfileForm').submit(function (event) {
-
-                var fileProfilePhoto = $('#fileProfilePhoto');
                 event.preventDefault();
 
                 $post.firstName = $('#txtFirstName').val();
                 $post.lastName = $('#txtLastName').val();
                 $post.aboutMe = $('#txtAreaAboutMe').val();
-                $post.token = $('input[name="_token"]').val();
-                $postImage.file = new FormData(fileProfilePhoto[0]);
-                $postImage.destinationID = $('#fileProfilePhotoDestinationID').val();
-
                 BSQUARED.Forms.post('POST', url, $post);
-                BSQUARED.Forms.post('POST', imageURL, $post);
             });
 
-            // $('#btnAddProfilePhoto').on('click', function(event){
-            //     event.preventDefault();
-            //     $('#fileProfilePhoto').click();
-            // })
+            $('#userProfilePhotoForm').submit(function (event) {
+                event.preventDefault();
+                var data = new FormData($('#userProfilePhotoForm')[0]);
+
+                data.append('destinationID', $('#fileProfilePhotoDestinationID').val());
+                console.log(imageURL);
+                console.log(data);
+                BSQUARED.Forms.postFiles("POST", imageURL, data);
+            });
+
+            //$('#fileProfilePhoto').on('change', prepareUpload);
+            // var data = new FormData();
+            //
+            // $.each(files, function(key, value){
+            //     data.append(key, value);
+            // });
+            // data.append('destination_id', $('#fileProfilePhotoDestinationID').val());
+            // console.log($postImage);
+            // console.log(imageURL);
+            // BSQUARED.Forms.postFiles('POST', imageURL, data);
         }
     };
 }();
@@ -513,7 +523,7 @@ BSQUARED.Forms = function () {
                     sendPortfolioSuccess();
                 },
                 error: function error(data) {
-                    console.log(JSON.stringify(data));
+                    console.log(data);
                     sendPortfolioError();
                 }
 
@@ -530,7 +540,6 @@ BSQUARED.Forms = function () {
             $.ajaxSetup({
                 headers: { 'X-CSRF-TOKEN': $('input[name="_token"]').val() }
             });
-
             $.ajax({
 
                 method: type,
@@ -540,10 +549,12 @@ BSQUARED.Forms = function () {
                 cache: false,
                 processData: false,
                 contentType: false,
-                success: function success() {
+                success: function success(data) {
+                    console.log(data);
                     sendPortfolioSuccess();
                 },
-                error: function error() {
+                error: function error(data) {
+                    console.log(data);
                     sendPortfolioError();
                 }
             }).done(function (data) {});

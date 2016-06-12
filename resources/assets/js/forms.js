@@ -126,7 +126,7 @@ BSQUARED.Forms = (function(){
                     sendPortfolioSuccess();
                 },
                 error: function(data){
-                    console.log(JSON.stringify(data));
+                    console.log(data);
                     sendPortfolioError()
                 }
                 
@@ -144,20 +144,21 @@ BSQUARED.Forms = (function(){
             $.ajaxSetup({
                 headers:{'X-CSRF-TOKEN': $('input[name="_token"]').val()}
             });
-            
             $.ajax({
-                
+
                 method:type,
                 url:url,
                 data: data,
                 datatype: "json",
-                cache:false,
+                cache: false,
                 processData: false,
                 contentType: false,
-                success: function(){
+                success: function(data){
+                    console.log(data);
                     sendPortfolioSuccess();
                 },
-                error: function(){
+                error: function(data){
+                    console.log(data);
                     sendPortfolioError();
                 }
             }).done(function(data){

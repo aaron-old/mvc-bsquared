@@ -154,7 +154,7 @@ Route::group(['middlewareGroups'=> ['web']], function(){
             PATHS
      -----------------------*/
     
-    Route::get('/path', [
+    Route::get('/path/{destinationID}', [
        'uses' => 'PathController@edit',
         'as' => 'editColumn'
     ]);

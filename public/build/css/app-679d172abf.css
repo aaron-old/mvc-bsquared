@@ -450,9 +450,21 @@ input#txtLastName {
   margin-bottom: 30px; }
 
 div#aboutMeDiv {
-  margin: 0px;
+  margin: 0;
   padding: 0;
   left: 20px; }
+
+button#btnSubmitButton {
+  margin: 4px 30%; }
+
+button#btnAddProfilePhoto {
+  margin: 5px 0 0 0;
+  min-width: 60px;
+  word-wrap: normal;
+  padding: 8px; }
+
+textarea#txtAreaAboutMe {
+  margin: 0 40px 4px; }
 
 /* Box colors */
 .bg-1 {
