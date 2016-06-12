@@ -5,7 +5,7 @@
 <div class="form-group">
     <form id="userProfilePhotoForm" class="form-inline  pull-left" action="" enctype="multipart/form-data">
         <span class="userPhotos">
-            <img src={{asset($user->)}} alt="userProfilePicture">
+            <img src="" alt="userProfilePicture">
         </span>
         {{csrf_field()}}
         <div class="form-group">
