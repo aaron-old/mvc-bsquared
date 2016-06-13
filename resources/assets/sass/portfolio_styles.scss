@@ -66,6 +66,12 @@ nav {
     color: #fff;
 }
 
+#profilePictureName {
+  text-align: center;
+  font-size: x-large;
+  color: #cc9933;
+}
+
 $leftArrow: '{{asset("../images/graphics/leftArrow.png")}}';
 $leftArrowHov: '{{asset("../images/graphics/leftArrow.png")}}';
 $rightArrow: '{{asset("../images/graphics/rightArrow.png")}}';
@@ -83,7 +89,7 @@ $rightArrowHov: '{{asset("../images/graphics/rightArrowHov.png")}}';
 }
 #leftArrow:hover {
   background-image: url('../../images/graphics/leftArrowHov.png');
-  opacity: 1.0
+  opacity: 1.0;
 }
 #rightArrow {
   position: absolute;
@@ -100,6 +106,7 @@ $rightArrowHov: '{{asset("../images/graphics/rightArrowHov.png")}}';
 #rightArrow:hover {
   background-image: url('../../images/graphics/rightArrowHov.png');
   opacity: 1.0;
+
 }
 
 .dropdown ul {
@@ -124,7 +131,7 @@ $rightArrowHov: '{{asset("../images/graphics/rightArrowHov.png")}}';
 #portImgHolder {
    margin-top: 80px;
    max-height: 176px;
-   max-width: 260px;
+   max-width: 180px;
 }
 
 .memberPhoto {
@@ -134,6 +141,8 @@ $rightArrowHov: '{{asset("../images/graphics/rightArrowHov.png")}}';
    border: .5px solid #777;
 }
 /*/images/member_uploads/member_backgrounds/member_background_default.jpg*/
+
+
 .addBG {
   background: #eee url('../../images/member_uploads/member_backgrounds/member_background_default.jpg') no-repeat center center;
   width: 100%;
@@ -141,10 +150,11 @@ $rightArrowHov: '{{asset("../images/graphics/rightArrowHov.png")}}';
 }
 
 #myCarousel {
-   max-width: 940px;
-   width: 100%;
-   height: auto;
+  max-width: 940px;
+  width: 100%;
+  height: auto;
   margin: 0 auto 30%;
+  min-height: 1000px;
 }
 
 .carousel-indicators {

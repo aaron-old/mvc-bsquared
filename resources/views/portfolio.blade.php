@@ -11,14 +11,13 @@
     @include('layouts.navigation')
 @stop
 
-
-
 @section('BodyContent')
 
     <div id="portImgHolder" class="container">
         <div class="row">
             <img class="memberPhoto" src="{{asset('images/member_uploads/default_profile.png')}}"
                  alt="{{$portfolio->profile->firstName.' '.$portfolio->profile->lastName}}">
+            <p id="profilePictureName">{{$portfolio->profile->firstName. ' ' .$portfolio->profile->lastName}}</p>
         </div>
     </div>
 
@@ -42,17 +41,25 @@
 
                 @for($i = 7, $k=22; $i < 10; $i++, $k++)
                     <div class="col-sm-4">
-                        <img src="{{asset('images/member_uploads/about/default_profile.png')}}" alt="About Me">
-                        @foreach($portfolio->labels as $label)
-                            @if($label['destination_id'] === $k)
-                                <h3>{{$label['label']}}</h3>
+                        @if($portfolio->paths->where('destination_id', $k)->first())
+                            @if($portfolio->paths->where('destination_id', $k)->first()->path)
+                                <img src="{{asset('/images/member_uploads/about/'. $portfolio->paths->where('destination_id', $k)->first()->path)}}" alt="my skill">
                             @endif
-                        @endforeach
-                        @foreach($portfolio->columns as $column)
-                            @if($column['destination_id'] === $i)
-                                <p>{{$column['column_text']}}</p>
-                            @endif
-                        @endforeach
+                        @else
+                            <img src="{{asset('images/member_uploads/about/default_profile.png')}}" alt="">
+                        @endif
+
+                        @if($portfolio->labels->where('destination_id',$k)->first())
+                            <h3 class="skillHeader">{{$portfolio->labels->where('destination_id',$k)->first()->label}}</h3>
+                         @else
+                            <h3 class="skillHeader">Coming Soon!</h3>
+                        @endif
+
+                        @if($portfolio->columns->where('destination_id',$i)->first())
+                            <p>{{$portfolio->columns->where('destination_id',$i)->first()->column_text}}</p>
+                        @else
+                            <p>Stay Tuned!</p>
+                        @endif
                     </div>
                 @endfor
             </div>
@@ -61,26 +68,33 @@
                 <div class="row skillsColumns">
                     @for($i = 1, $k=4; $i<4; $i++, $k++)
                         <div class="col-sm-4">
-                            <img src="{{asset('images/member_uploads/skills/default_icon.png')}}" alt="my skill">
-                            @foreach($portfolio->labels as $label)
-                                @if($label['destination_id'] === $i)
-                                    <h3 class="skillHeader">{{$label['label']}}</h3>
+                            @if($portfolio->paths->where('destination_id', $i)->first())
+                                @if($portfolio->paths->where('destination_id', $i)->first()->path)
+                                    <img src="{{asset('/images/member_uploads/skills/'. $portfolio->paths->where('destination_id', $i)->first()->path)}}" alt="my skill">
                                 @endif
-
-                            @endforeach
-                            @foreach($portfolio->columns as $column)
-                                @if($column['destination_id'] === $k)
-                                    <p>{{$column['column_text']}}</p>
-                                @endif
-                            @endforeach
+                            @else
+                                <img src="{{asset('/images/member_uploads/skills/default_icon.png')}}" alt="my skill">
+                            @endif
+                            @if($portfolio->labels->where('destination_id',$i)->first())
+                               <h3 class="skillHeader">{{$portfolio->labels->where('destination_id',$i)->first()->label}}</h3>
+                            @else
+                               <h3 class="skillHeader">Coming Soon!</h3>
+                            @endif
+                            @if($portfolio->columns->where('destination_id',$k)->first())
+                               <p>{{$portfolio->columns->where('destination_id',$k)->first()->column_text}}</p>
+                            @else
+                               <p>Stay Tuned!</p>
+                            @endif
                         </div>
                     @endfor
                 </div>
 
                 <div id="resumeDiv">
-                    <a href="#" target="_blank">
+                    @foreach($portfolio->paths->where('destination_id', 35) as $resume)
+                        <a href="/resume/{{$resume->path}}" target="_blank">
+                    @endforeach
                         <button class="button button--nina button--text-thick button--text-upper button--size-l"
-                                data-text="Resumé"> <!--onclick="this.form.submit()"-->
+                                data-text="Resumé">
                             <span>R</span><span>e</span><span>s</span><span>u</span><span>m</span><span>é</span>
                         </button>
                     </a>
@@ -88,24 +102,33 @@
             </div>
 
             <div id="slide4" class="item">
-
-                <!-- Todo: Add the on hoverstate via javascript module usercontrols.-->
                 <h2 id="worksTitle">Select a Project!</h2>
                 <p id="descriptionWorks">Hover over a project to gather a brief description, or click thee image to see the specs!</p>
                 @for($row =1, $count=1, $destination_id=10; $row<4; $row++)
                     <div class="row">
                         @for($column = 1, $rowCount=$count; $column<4; $column++, $count++, $destination_id++)
                             <div class="col-sm-4">
-                                <!-- todo: need to add the images within a user portfolio.-->
-                                <img src="{{asset('images/member_uploads/works/default_works.png')}}"
-                                     id="worksImage{{$count}}"
-                                     class="worksImageHover"
-                                     type="button"
-                                     data-toggle="modal"
-                                     data-target="#modal{{$count}}"
-                                     height="130"
-                                     width="130"
-                                     alt="{{$destination_id}}">
+                                @if($portfolio->paths->where('destination_id', $destination_id)->first())
+                                    <img src="{{asset('/images/member_uploads/works/'. $portfolio->paths->where('destination_id', $destination_id)->first()->path)}}"
+                                         id="worksImage{{$count}}"
+                                         class="worksImageHover"
+                                         type="button"
+                                         data-toggle="modal"
+                                         data-target="#modal{{$count}}"
+                                         height="130"
+                                         width="130"
+                                         alt="{{$destination_id}}">
+                                @else
+                                    <img src="{{asset('images/member_uploads/works/default_works.png')}}"
+                                         id="worksImage{{$count}}"
+                                         class="worksImageHover"
+                                         type="button"
+                                         data-toggle="modal"
+                                         data-target="#modal{{$count}}"
+                                         height="130"
+                                         width="130"
+                                         alt="{{$destination_id}}">
+                                @endif
                             </div>
                         @endfor
                     </div>
@@ -124,15 +147,14 @@
                             <div class="result"></div>
                             <form id="contactMember"
                                   method="post"
-                                  action="{{url('/')}}">
-
+                                  action="">
                                 <input type="text" id="name" name="name" placeholder="Name" required="required">
                                 <br>
                                 <input type="email" id="email" name="email" placeholder="Email" required="required">
                                 <br>
                                 <input type="text" name="subject" placeholder="Subject" required="required">
                                 <br>
-                                <input type="text" name="userID" value="1" style="display: none">
+                                <input id="memberContactEmail" type="hidden" name="email" value="{{$portfolio->user->email}}">
                                 <textarea name="content" placeholder="Your Message" required="required"></textarea>
                                 <br><br>
                                 <button id="btnSendMemberMail"  type="button"

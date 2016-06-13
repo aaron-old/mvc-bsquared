@@ -2,6 +2,9 @@
 
 namespace Bsquared\Http\Controllers;
 
+use Bsquared\Http\Controllers\AboutController;
+use Bsquared\Label;
+use Bsquared\Path;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Bsquared\User;
@@ -49,11 +52,14 @@ class MainController extends Controller
 		$member = User::where('username', '=', $username)->first();
 		$userID = $member->user_id;
 		$portfolio = User::getUserPortfolio($userID);
+        
+        $resumePath = Path::where('user_id', $userID)
+            ->where('destination_id', 35)->first();
+        
+        $aboutLabels = AboutController::getLabels();
+        
+        
+		return view('portfolio', compact('portfolio', 'resumePath', 'aboutLabels'));
+	}
 
-		return view('portfolio', compact('portfolio'));
-	}
-	
-	public function showWorksHover($username, $destination_id){
-		
-	}
 }

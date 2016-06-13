@@ -1,5 +1,6 @@
 <?php namespace Bsquared\Http\Controllers;
 
+use Bsquared\Label;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Contracts\Queue\EntityNotFoundException;
@@ -11,6 +12,41 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 
 class AboutController extends Controller {
+
+
+    
+    private $defaultPath = 'images/member_uploads/about/default_profile.png';
+
+    public function index(){
+        
+
+    }
+    
+    public static function getLabels()
+    {
+        $match_1 = ['destination_id'=>22];
+        $match_2 = ['destination_id'=>23];
+        $match_3 = ['destination_id'=>24];
+
+        $aboutLabel = Label::where($match_1)
+            ->orWhere($match_2)
+            ->orWhere($match_3);
+        
+        $countLabelsFound = count($aboutLabel);
+
+        if($countLabelsFound < 3){
+            switch($countLabelsFound)
+            {
+                case 1:
+                    break;
+                case 2:
+                    break;
+            }
+        }
+        else {
+            return $aboutLabel;
+        }
+    }
     
 
     /**

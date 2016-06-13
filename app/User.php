@@ -37,7 +37,7 @@ class User extends Authenticatable
     public function labels() {
         return $this->hasMany(Label::class, 'user_id', 'user_id');
     }
-
+    
     public function paths() {
         return $this->hasMany(Path::class, 'user_id', 'user_id');
     }

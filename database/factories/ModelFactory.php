@@ -11,25 +11,29 @@
 |
 */
 
-$factory->define(Bsquared\PortfolioMember::class, function (Faker\Generator $faker) {
+$factory->define(Bsquared\User::class, function (Faker\Generator $faker) {
     return [
         'username' => $faker->userName,
         'email' => $faker->safeEmail,
-        'password' => str_random(10),
+        'password' => bcrypt('password'),
         'remember_token' => str_random(10),
         'role' => 'member'
     ];
 });
 
-$factory->define(Bsquared\PortfolioProfile::class, function (Faker\Generator $faker){
+$factory->define(Bsquared\Profile::class, function (Faker\Generator $faker){
    return [
 
        'firstName' => $faker->firstName,
        'lastName' => $faker->lastName,
        'aboutMe' => $faker->paragraph
    ];
-    
 });
 
+$factory->define(Bsquared\Statement::class, function (Faker\Generator $faker){
+    return [
+        'statement' => $faker->paragraph
+    ];
+});
 
 
