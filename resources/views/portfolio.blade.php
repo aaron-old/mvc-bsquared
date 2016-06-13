@@ -15,7 +15,7 @@
 
     <div id="portImgHolder" class="container">
         <div class="row">
-            <img class="memberPhoto" src="{{asset('images/member_uploads/default_profile.png')}}"
+            <img class="memberPhoto" src="{{secure_asset('images/member_uploads/default_profile.png')}}"
                  alt="{{$portfolio->profile->firstName.' '.$portfolio->profile->lastName}}">
             <p id="profilePictureName">{{$portfolio->profile->firstName. ' ' .$portfolio->profile->lastName}}</p>
         </div>
@@ -43,10 +43,10 @@
                     <div class="col-sm-4">
                         @if($portfolio->paths->where('destination_id', $k)->first())
                             @if($portfolio->paths->where('destination_id', $k)->first()->path)
-                                <img src="{{asset('/images/member_uploads/about/'. $portfolio->paths->where('destination_id', $k)->first()->path)}}" alt="my skill">
+                                <img src="{{secure_asset('/images/member_uploads/about/'. $portfolio->paths->where('destination_id', $k)->first()->path)}}" alt="my skill">
                             @endif
                         @else
-                            <img src="{{asset('images/member_uploads/about/default_profile.png')}}" alt="">
+                            <img src="{{secure_asset('images/member_uploads/about/default_profile.png')}}" alt="">
                         @endif
 
                         @if($portfolio->labels->where('destination_id',$k)->first())
@@ -70,10 +70,10 @@
                         <div class="col-sm-4">
                             @if($portfolio->paths->where('destination_id', $i)->first())
                                 @if($portfolio->paths->where('destination_id', $i)->first()->path)
-                                    <img src="{{asset('/images/member_uploads/skills/'. $portfolio->paths->where('destination_id', $i)->first()->path)}}" alt="my skill">
+                                    <img src="{{secure_asset('/images/member_uploads/skills/'. $portfolio->paths->where('destination_id', $i)->first()->path)}}" alt="my skill">
                                 @endif
                             @else
-                                <img src="{{asset('/images/member_uploads/skills/default_icon.png')}}" alt="my skill">
+                                <img src="{{secure_asset('/images/member_uploads/skills/default_icon.png')}}" alt="my skill">
                             @endif
                             @if($portfolio->labels->where('destination_id',$i)->first())
                                <h3 class="skillHeader">{{$portfolio->labels->where('destination_id',$i)->first()->label}}</h3>
@@ -109,7 +109,7 @@
                         @for($column = 1, $rowCount=$count; $column<4; $column++, $count++, $destination_id++)
                             <div class="col-sm-4">
                                 @if($portfolio->paths->where('destination_id', $destination_id)->first())
-                                    <img src="{{asset('/images/member_uploads/works/'. $portfolio->paths->where('destination_id', $destination_id)->first()->path)}}"
+                                    <img src="{{secure_asset('/images/member_uploads/works/'. $portfolio->paths->where('destination_id', $destination_id)->first()->path)}}"
                                          id="worksImage{{$count}}"
                                          class="worksImageHover"
                                          type="button"
@@ -119,7 +119,7 @@
                                          width="130"
                                          alt="{{$destination_id}}">
                                 @else
-                                    <img src="{{asset('images/member_uploads/works/default_works.png')}}"
+                                    <img src="{{secure_asset('images/member_uploads/works/default_works.png')}}"
                                          id="worksImage{{$count}}"
                                          class="worksImageHover"
                                          type="button"
