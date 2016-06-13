@@ -45,7 +45,7 @@
     <!-- Stylesheets -->
     <link href="{{ asset('favicon.ico') }}"  rel="icon" type="image/ico">
     <link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="{{secure_asset('public/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{elixir('css/bootstrap.css')}}">
     <link href="{{ elixir('css/app.css') }}"  rel="stylesheet" type="text/css">
 
     <!-- JavaScript -->
