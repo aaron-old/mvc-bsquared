@@ -15,8 +15,13 @@
 
     <div id="portImgHolder" class="container">
         <div class="row">
-            <img class="memberPhoto" src="{{asset('images/member_uploads/default_profile.png')}}"
-                 alt="{{$portfolio->profile->firstName.' '.$portfolio->profile->lastName}}">
+            @if($portfolio->paths->where('destination_id', 36)->first())
+                <img class="memberPhoto" src="{{asset('images/member_uploads/'.$portfolio->paths->where('destination_id', 36)->first()->path)}}"
+                     alt="{{$portfolio->profile->firstName.' '.$portfolio->profile->lastName}}">
+            @else
+                <img class="memberPhoto" src="{{asset('images/member_uploads/default_profile.png')}}"
+                     alt="{{$portfolio->profile->firstName.' '.$portfolio->profile->lastName}}">
+            @endif
             <p id="profilePictureName">{{$portfolio->profile->firstName. ' ' .$portfolio->profile->lastName}}</p>
         </div>
     </div>
@@ -109,7 +114,7 @@
                         @for($column = 1, $rowCount=$count; $column<4; $column++, $count++, $destination_id++)
                             <div class="col-sm-4">
                                 @if($portfolio->paths->where('destination_id', $destination_id)->first())
-                                    <img src="{{asset('/images/member_uploads/works/'. $portfolio->paths->where('destination_id', $destination_id)->first()->path)}}"
+                                    <img src="{{asset('/images/member_uploads/works/'.$portfolio->paths->where('destination_id', $destination_id)->first()->path)}}"
                                          id="worksImage{{$count}}"
                                          class="worksImageHover"
                                          type="button"
@@ -134,12 +139,9 @@
                     </div>
                 @endfor
             </div>
-
             <div id="slide5" class="item">
-
                 <div class="row">
                     <div class="col-sm-12">
-
                         <h2>Get in Touch</h2>
                         <div id="faqForm" class="container">
                             <p>If you would like to contact me, please complete the form below with your name,
@@ -154,7 +156,7 @@
                                 <br>
                                 <input type="text" name="subject" placeholder="Subject" required="required">
                                 <br>
-                                <input id="memberContactEmail" type="hidden" name="email" value="">
+                                <input id="memberContactEmail" type="hidden" name="email" value="{{$portfolio->email}}">
                                 <textarea name="content" placeholder="Your Message" required="required"></textarea>
                                 <br><br>
                                 <button id="btnSendMemberMail"  type="button"
@@ -179,37 +181,45 @@
             <span class="sr-only">Next</span>
         </a>
 
-        @for($i = 1, $k=25, $j=10; $i < 10; $i++, $k++, $j)
+        @for($i = 1, $k=25, $j=10; $i < 10; $i++, $k++, $j++)
             <div class="modal fade" id="modal{{$i}}" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            @foreach($portfolio->works as $work)
-                                @if($work['destination_id'] === $j)
-                                    <h4 class="modal-title">{{$work['title']}}</h4>
-                                @endif
-                            @endforeach
+                            @if($portfolio->works->where('destination_id', $j)->first())
+                                <h4 class="modal-title">{{$portfolio->works->where('destination_id', $j)->first()->title}}</h4>
+                            @else
+                                <h4 class="modal-title">Coming Soon!</h4>
+                            @endif
                         </div>
                         <div id="myModal{{$i}}" class="modal-body">
-
-                            <!-- todo: After configuring file load dynamically load this resource. -->
                             <img id="modImage{{$i}}"
-                                 src="{{asset('images/member_uploads/project_uploads/project_preview_default.png')}}"
-                                 alt="Project Preview">
+                                 @if($portfolio->paths->where('destination_id', $k)->first())
+                                     src="{{asset('/images/member_uploads/project_uploads/'. $portfolio->paths->where('destination_id', $k)->first()->path)}}"
+                                     alt="Project Preview">
+                                 @else
+                                    src="{{asset('images/member_uploads/project_uploads/project_preview_default.png')}}"
+                                    alt="Project Preview">
+                                 @endif
 
-                            @foreach($portfolio->works as $work)
-                                @unless($work['destination_id'] !== $j)
-                                @if($work['destination_id'] === $j && $work['project_description'] !== '')
-                                    <p>{{$work['project_description']}}</p>
-                                    <p>
-                                        @if($work['work_link'] !== '')
-                                            Check out the project <a href="{{$work['work_link']}}">at this website</a>
-                                        @endif
-                                    </p>
+                                 @if($portfolio->works->where('destination_id', $j)->first())
+                                     @if($portfolio->works->where('destination_id', $j)->first()->project_description)
+                                        <p>{{$portfolio->works->where('destination_id', $j)->first()->project_description}}</p>
+                                    @endif
+                                 @else
+                                     <p>Stay Tuned!</p>
+                                 @endif
+                                @if($portfolio->works->where('destination_id', $j)->first())
+                                    @if($portfolio->works->where('destination_id', $j)->first()->work_link)
+                                        <p>Check out the project
+                                            <a href="{{$portfolio->works->where('destination_id', $j)->first()->work_link}}">
+                                                at this website</a>
+                                        </p>
+                                    @endif
+                                @else
+                                    <p></p>
                                 @endif
-                                @endunless
-                            @endforeach
                         </div>
                         <div class="modal-footer">
                             <button type="button"

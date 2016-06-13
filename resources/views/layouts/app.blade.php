@@ -84,7 +84,6 @@
             <a target="_blank " href="{{url('#')}}">Privacy Policy</a>
         </p>
     </footer>
-
     @yield('ExtraJavaScript')
 </body>
 </html>
